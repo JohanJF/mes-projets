@@ -49,8 +49,8 @@ function creer_table()
 		input_carte.type = "text";
 		input_carte.className = "form-control";
 		input_carte.placeholder = "Tache";
-		input_carte.ariaLabel = "Recipient's username";
-		input_carte.ariaDescribedby = "basic-addon2";
+		input_carte.id = 'titre_tache';
+		input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+liste_carte.id+'")');
 
 
 	var div_bouton_carte = document.createElement("div");
@@ -62,7 +62,7 @@ function creer_table()
 		bouton_carte_creer.type = "button";
 		bouton_carte_creer.setAttribute("onclick","creer_tache('"+liste_carte.id+"')");
 
-		console.log('"'+liste_carte.id+'"');
+		console.log(liste_carte.id);
 
 
 		bouton_carte_creer_element = document.createTextNode("Créer");
@@ -79,7 +79,7 @@ function creer_table()
 	var bouton_carte_supprimer = document.createElement("button");
 		bouton_carte_supprimer.className = "btn btn-danger card-link";
 		bouton_carte_supprimer.href = "#";
-		bouton_carte_supprimer.setAttribute("onclick","supprimer_table("+mon_article.id+","+id_table+")");
+		bouton_carte_supprimer.setAttribute("onclick","supprimer_table("+mon_article.id+")");
 
 		bouton_carte_supprimer_element = document.createTextNode("Supprimer");
 
@@ -183,7 +183,7 @@ function supprimer_table(id_table)
 	{
 		ma_table.parentNode.removeChild(ma_table);
 	}
-	console.log(ma_table);
+	//console.log(ma_table);
 }
 
 
@@ -199,16 +199,23 @@ function creer_tache(id_liste,id_table)
 
 	var titre_tache = document.createElement("h6");
 	
-	titre_tache_element = document.createTextNode("Tâche" + ma_tache++);
+	//titre_tache_element = document.createTextNode("Tâche" + ma_tache++);
+	titre_tache_element = document.createTextNode(document.getElementById('titre_tache').value);
 
 	ma_tache_liste.appendChild(titre_tache);
 	titre_tache.appendChild(titre_tache_element);
 
 	document.getElementById(id_liste).appendChild(ma_tache_liste);
+
 }
 
 function modifier_table(id_table)
 {
-	
+	var mon_titre = document.getElementsByTagName('h5');
+	for (var i = 0; i < mon_titre.length; i++) 
+	{
+		console.log(mon_titre[i]);
+	}
+
 }
 
