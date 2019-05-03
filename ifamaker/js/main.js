@@ -142,6 +142,7 @@ function creer_table()
 			input_creation.placeholder = 'Titre';
 			input_creation.id = 'titre_table';
 			input_creation.className = 'form-control';
+			input_creation.setAttribute('onkeypress','if (event.keyCode == 13) creer_table()')
 
 		var div_input_group_creation = document.createElement('div');
 			div_input_group_creation.className = 'input-group-append';
@@ -211,8 +212,3 @@ function modifier_table(id_table)
 	
 }
 
-function afficher()
-{
-	var	titre_carte_element = document.getElementById('titre_table').value;
-	document.write(titre_carte_element);
-}

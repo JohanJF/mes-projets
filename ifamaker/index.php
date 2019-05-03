@@ -78,9 +78,9 @@
 			    	<h5 class="card-title">Ma nouvelle table</h5>
 			    	<div class="card-text my-2">
 			    	 	<div class="input-group input-group-sm">
-		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" />
+		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button class="btn btn-outline-secondary" type="button" onclick="creer_table()">Créer</button>
+							    <button class="btn btn-outline-secondary" type="button"  onclick="creer_table()">Créer</button>
 							  </div>
 						</div>
 				    </div>
