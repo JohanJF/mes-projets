@@ -10,7 +10,7 @@ function creer_table()
 
 	var mon_article = document.createElement("article");
 		mon_article.className = "col my-3";
-		mon_article.id = id_table++; // incrémentation de l'id unique de ma table*/
+		mon_article.id = id_table; // incrémentation de l'id unique de ma table*/
 
 
 	var ma_section = document.createElement("section");
@@ -26,6 +26,9 @@ function creer_table()
 	var titre_carte = document.createElement("h5");
 		titre_carte.className = "card-title";
 
+	var span_titre_carte = document.createElement("span");
+		span_titre_carte.id = 'titre-' + id_table; // id unique du titre de la table
+
 
 	var	titre_carte_element = document.createTextNode(document.getElementById('titre_table').value);
 
@@ -35,7 +38,7 @@ function creer_table()
 
 	var liste_carte = document.createElement("ul");
 		liste_carte.className = "list-group";
-		liste_carte.id = "ma_liste-" + id_table;
+		liste_carte.id = "ma_liste-" + mon_article.id;
 
 
 	var liste_input_carte = document.createElement("li");
@@ -71,7 +74,7 @@ function creer_table()
 	var bouton_carte_modifier = document.createElement("button");
 		bouton_carte_modifier.className = "btn btn-primary card-link";
 		bouton_carte_modifier.href = "#";
-		bouton_carte_modifier.setAttribute("onclick","modifier_table("+mon_article.id+")");
+		bouton_carte_modifier.setAttribute("onclick","modifier_table('titre-"+mon_article.id+"',"+mon_article.id+")");
 
 		bouton_carte_modifier_element = document.createTextNode("Modifier");
 
@@ -89,7 +92,8 @@ function creer_table()
 		mon_article.appendChild(ma_section);
 		ma_section.appendChild(div_carte_body);
 		div_carte_body.appendChild(titre_carte);
-		titre_carte.appendChild(titre_carte_element);
+		titre_carte.appendChild(span_titre_carte);
+		span_titre_carte.appendChild(titre_carte_element);
 		div_carte_body.appendChild(texte_carte);
 		texte_carte.appendChild(liste_carte);
 		liste_carte.appendChild(liste_input_carte);
@@ -135,8 +139,6 @@ function creer_table()
 		var div_input_creation = document.createElement('div');
 			div_input_creation.className = 'input-group input-group-sm';
 
-		//var form = document.createElement("form");
-
 		var input_creation = document.createElement('input');
 			input_creation.type = 'text';
 			input_creation.placeholder = 'Titre';
@@ -168,11 +170,11 @@ function creer_table()
 		/* On ajoute le tout imbriqué dans la div "ma_base" à la suite */	
 		document.getElementById("ma_base").appendChild(mon_article_creation);
 
-		ma_tache = 0
-
-		
+		ma_tache = 0;
+		id_table++;		
 
 }
+
 
 /* suppression de ma table */
 
@@ -183,7 +185,6 @@ function supprimer_table(id_table)
 	{
 		ma_table.parentNode.removeChild(ma_table);
 	}
-	//console.log(ma_table);
 }
 
 
@@ -199,7 +200,6 @@ function creer_tache(id_liste,id_table)
 
 	var titre_tache = document.createElement("h6");
 	
-	//titre_tache_element = document.createTextNode("Tâche" + ma_tache++);
 	titre_tache_element = document.createTextNode(document.getElementById('titre_tache').value);
 
 	ma_tache_liste.appendChild(titre_tache);
@@ -209,13 +209,51 @@ function creer_tache(id_liste,id_table)
 
 }
 
-function modifier_table(id_table)
-{
-	var mon_titre = document.getElementsByTagName('h5');
-	for (var i = 0; i < mon_titre.length; i++) 
-	{
-		console.log(mon_titre[i]);
-	}
 
+/* crée un input dans la balise "titre" */
+
+function modifier_table(id_titre,id_table)
+{
+	var mon_titre = document.getElementById(id_titre);
+
+	//mon_titre.innerHTML = '<div class="input-group input-group-sm"><input type="text" class="form-control" value="'+mon_titre.innerHTML+'" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" /><div class="input-group-append"><button class="btn btn-outline-secondary" type="button"  onclick="creer_table()">Créer</button></div></div>'
+
+	var div_input_creation = document.createElement('div');
+		div_input_creation.className = 'input-group input-group-sm';
+
+	var input_creation = document.createElement('input');
+		input_creation.type = 'text';
+		input_creation.placeholder = 'Titre';
+		input_creation.id = 'titre_modif_'+id_table; // id unique pour input de modification liée à la table
+		input_creation.value = mon_titre.innerHTML
+		input_creation.className = 'form-control';
+		input_creation.setAttribute('onkeypress','if (event.keyCode == 13) modification_texte("'+id_titre+'","'+input_creation.id+'")');
+
+	var div_input_group_creation = document.createElement('div');
+		div_input_group_creation.className = 'input-group-append';
+
+	var button_creation = document.createElement('button');
+		button_creation.type = 'button';
+		button_creation.className = 'btn btn-outline-secondary';
+		button_creation.setAttribute('onclick','modification_texte("'+id_titre+'","'+input_creation.id+'")');
+
+	var button_text_creation = document.createTextNode('Modifier');
+
+	div_input_creation.appendChild(input_creation);
+	div_input_creation.appendChild(div_input_group_creation);
+	div_input_group_creation.appendChild(button_creation);
+	button_creation.appendChild(button_text_creation);
+
+	mon_titre.appendChild(div_input_creation);
+	
+}
+
+
+/* Remplace le titre déjà présent (↑) par le nouveau titre saisie dans l'input */
+
+function modification_texte(id_titre,titre_modif)
+{
+	var mon_titre = document.getElementById(id_titre);
+	mon_titre.innerHTML = document.getElementById(titre_modif).value;
 }
 
