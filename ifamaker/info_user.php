@@ -4,7 +4,7 @@
 		<div class="row">
 			<article class="container col-10 border border-info  my-5"  style="height: auto">
 
-				<!--CONTENU ARTICLE-->
+				<!--CONTENU ARTICLE
 
 				<table class="table">
 				  <tbody>
@@ -36,7 +36,13 @@
 				  </tbody>
 				</table>
 
-				<!--CONTENU ARTICLE-->
+				CONTENU ARTICLE-->
+
+				<!-- SCRIPT -->
+
+				<?php include 'php/user_script.php'; ?>
+
+				<!-- SCRIPT -->
 
 			</article>
 		</div>

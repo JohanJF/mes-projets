@@ -56,10 +56,10 @@
 			
 		}
 
-		public static function load_by_prenom ($pdo, $prenom) 
+		public static function load_by_prenom($pdo) 
 		{
-    		$rqt = $pdo->prepare('SELECT * FROM user WHERE prenom=?');
-    		$rqt->execute([$prenom]);
+    		$rqt = $pdo->prepare('SELECT * FROM user');
+    		$rqt->execute();
     		return $rqt->fetchObject(__CLASS__);
 		}
 	}
