@@ -284,6 +284,54 @@ function modification_texte(id_titre,titre_modif)
 	mon_titre.innerHTML = document.getElementById(titre_modif).value;
 }
 
+/* Crée un élément "input texte" afin de modifier les informations personnelles de l'user */
+
+function modifier_info(id)
+{
+	var form = document.getElementById(id).getElementsByTagName('form')[0];
+	console.log(form)
+
+	if (typeof form != "undefined") 
+	{
+		if (form.parentNode) 
+		{
+			form.parentNode.removeChild(form); // évite les multiplications de l'élément "input"
+		}
+	} 
+	else 
+	{
+
+		var form = document.createElement('form');
+			form.action = '#';
+			form.method = 'POST';
+
+		var div = document.createElement('div');
+			div.className = 'input-group input-group-sm';
+
+		var input = document.createElement('input');
+			input.type = 'text';
+			input.value = document.getElementById(id).innerHTML;
+			input.name = 'modifier_info_user';
+			input.className = 'form-control';
+
+		var div_submit = document.createElement('div');
+			div_submit.className = 'input-group-append';
+
+		var input_submit = document.createElement('input');
+			input_submit.type = 'submit';
+			input_submit.name = id;
+			input_submit.value = 'Modifier';
+			input_submit.className = 'btn btn-outline-success';
+
+		form.appendChild(div);
+		div.appendChild(input);
+		div.appendChild(div_submit);
+		div_submit.appendChild(input_submit);
+
+		document.getElementById(id).appendChild(form);
+	}
+	
+}
 
 
 

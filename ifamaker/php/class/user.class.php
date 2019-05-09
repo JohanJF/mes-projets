@@ -56,7 +56,7 @@
 			
 		}
 
-		public static function load_by_prenom($pdo,$id) 
+		public static function load_by_id($pdo,$id) 
 		{
     		$rqt = $pdo->prepare('SELECT * FROM user WHERE user_id=?');
     		$rqt->execute([$id]);
