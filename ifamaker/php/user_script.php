@@ -9,7 +9,7 @@
 
 	foreach ($pdo as $value) 
 	{
-		$user = user::load_by_prenom($connexion);
+		$user = user::load_by_prenom($connexion,$_SESSION['user_id']);
 	}
 
 ?>
@@ -61,12 +61,12 @@
 	      </td>
 	    </tr>
 	    <tr>
-	      <th scope="row">
+	      <th scope="row">Mot de passe</th>
+	      <td>
 <?php 
 			echo $user->get_password();
  ?>	
-	      </th>
-	      <td>motdepasse</td>
+	      </td>
 	      <td>
 	      		<input type="image" src="img/modifier.png" name="">
 	      	</form>
@@ -74,6 +74,11 @@
 	    </tr>
 	  </tbody>
 	</table>
+	<div class="row">
+		<form action="#" method="POST" class="col text-center">
+			<input class="btn btn-outline-danger my-1" type="submit" name="deconnexion" value="Se déconnecter">
+		</form>
+	</div>
 <?php
 
  ?>

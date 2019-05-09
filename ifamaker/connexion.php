@@ -38,7 +38,6 @@
 
 				<div class="row">
 					<?php include 'php/inscription_script.php'; ?>
-					<?php include 'php/connexion_script.php'; ?>
 				</div>
 
 				<div class="row">

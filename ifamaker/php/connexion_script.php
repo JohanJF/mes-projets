@@ -30,7 +30,7 @@
 				if ($login_success == true) 
 				{
 					echo "<p class='badge badge-success'>connexion réussi</p>";
-					header('Refresh: 3; URL=http://localhost/mes-projets/ifamaker/info_user.php');
+					header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/info_user.php');
 				}
 				else
 				{

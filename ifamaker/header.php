@@ -1,3 +1,18 @@
+<?php 
+
+	if(session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}
+
+	if (isset($_POST['deconnexion'])) 
+	{
+		session_destroy(); // ferme la session
+		header('Location: #');
+	}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +29,7 @@
 		<div class="row my-2 border border-info rounded bg-light">
 			<div class="col">
 				<h1 class="text-center">IfaMaker</h1>
+				<?php include 'php/connexion_script.php'; ?>
 			</div>
 		</div>
 	</header>
