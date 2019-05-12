@@ -194,7 +194,7 @@ function supprimer_table(id_table)
 function creer_tache(id_liste,id_input)
 {
 	var ma_tache_liste = document.createElement("li");
-		ma_tache_liste.className = "list-group-item";
+		ma_tache_liste.className = "list-group-item tache_detail";
 
 	var titre_tache = document.createElement("h6");
 	
@@ -215,6 +215,9 @@ function creer_tache(id_liste,id_input)
 		console.log(test[i]);
 	}
 	*/
+
+	console.log(id_liste);
+	console.log(id_input);
 }
 
 
@@ -331,6 +334,140 @@ function modifier_info(id)
 		document.getElementById(id).appendChild(form);
 	}
 	
+}
+
+/* cree une fenêtre modal sur tache */
+
+function creer()
+{
+	/* modal header */
+
+	var modal_fade = document.createElement('div');
+		modal_fade.className = 'modal fade';
+		modal_fade.id = 'moi';
+		modal_fade.setAttribute('tabindex','-1');
+		modal_fade.setAttribute('role','dialog');
+		modal_fade.setAttribute('aria-hidden','true');
+		modal_fade.setAttribute('aria-labelledby','moiLabel');
+
+	var modal_dialog = document.createElement('div');
+		modal_dialog.className = 'modal-dialog modal-dialog-centered';
+		modal_dialog.setAttribute('role','document');
+
+	var modal_content = document.createElement('div');
+		modal_content.className = 'modal-content';
+
+	var modal_header = document.createElement('div');
+		modal_header.className = 'modal-header';
+
+	var modal_title = document.createElement('h5'); // PS ajouter createTexteNode
+		modal_title.className = 'modal-title';
+
+	var button_close = document.createElement('button');
+		button_close.className = 'close';
+		button_close.type = 'button';
+		button_close.setAttribute('data-dismiss','modal');
+		button_close.setAttribute('aria-label','close');
+
+	var span = document.createElement('span');
+		span.setAttribute('aria-hidden', 'true');
+
+	var span_text = document.createTextNode('fermer'); // texte
+
+	/* modal body */
+
+	var modal_body = document.createElement('div');
+		modal_body.className = 'modal-body';
+
+	var form_group_modal = document.createElement('div');
+		form_group_modal.className = 'form-group';
+
+	var container_modal = document.createElement('div');
+		container_modal.className = 'container';
+
+/*	var row_modal = document.createElement('div');
+		row_modal.className = 'row';
+
+	var col_modal = document.createElement('div');
+		col_modal.className = 'col';
+
+	var small = document.createElement('small'); // PS ajouter createTexteNode
+		small.className = 'col';
+
+	var button_modifier_modal = document.createElement('button');
+		button_modifier_modal.className = 'btn btn-info btn-sm';
+
+	var button_modifier_modal_text = document.createTextNode('modifier'); // texte
+
+	var button_supprimer_modal = document.createElement('button');
+		button_supprimer_modal.className = 'btn btn-danger btn-sm';
+
+	var button_supprimer_modal_text = document.createTextNode('supprimer'); //texte */
+
+	var label = document.createElement('label');
+		label.setAttribute('for','comment');
+		label.className = 'text-left'
+
+	var label_text = document.createTextNode('A faire:'); // texte
+
+	var textarea = document.createElement('textarea');
+		textarea.className = 'form-control';
+		textarea.rows = '5';
+		textarea.id ='comment';
+
+	/* modal footer */
+
+	var modal_footer = document.createElement('div');
+		modal_footer.className = 'modal-footer';
+
+	var button_annuler_modal = document.createElement('button');
+		button_annuler_modal.className = 'btn btn-secondary';
+		button_annuler_modal.type = 'button';
+		button_annuler_modal.setAttribute('data-dismiss','modal');
+
+	var button_annuler_modal_text = document.createTextNode('Annuler');
+
+	var button_sauvegarder_modal = document.createElement('button');
+		button_sauvegarder_modal.className ='btn btn-primary';
+		button_sauvegarder_modal.type = 'button';
+
+
+	var button_sauvegarder_modal_text = document.createTextNode('Sauvegarder'); // texte
+
+	modal_fade.appendChild(modal_dialog);
+	modal_dialog.appendChild(modal_content);
+	modal_content.appendChild(modal_header);
+	modal_header.appendChild(modal_title);
+	modal_header.appendChild(button_close);
+	button_close.appendChild(span);
+	span.appendChild(span_text);
+	modal_content.appendChild(modal_body)
+	modal_body.appendChild(form_group_modal);
+	form_group_modal.appendChild(container_modal);
+/*	container_modal.appendChild(row_modal);
+	row_modal.appendChild(col_modal);
+	col_modal.appendChild(small);
+	col_modal.appendChild(button_modifier_modal);
+	button_modifier_modal.appendChild(button_modifier_modal_text);
+	col_modal.appendChild(button_supprimer_modal);
+	button_supprimer_modal.appendChild(button_supprimer_modal_text); */
+	form_group_modal.appendChild(label);
+	label.appendChild(label_text);
+	form_group_modal.appendChild(textarea);
+	modal_content.appendChild(modal_footer);
+	modal_footer.appendChild(button_annuler_modal)
+	button_annuler_modal.appendChild(button_annuler_modal_text);
+	modal_footer.appendChild(button_sauvegarder_modal);
+	button_sauvegarder_modal.appendChild(button_sauvegarder_modal_text);
+
+
+
+	document.getElementById('hello').appendChild(modal_fade);
+
+
+
+
+
 }
 
 

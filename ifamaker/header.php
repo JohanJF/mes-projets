@@ -20,6 +20,19 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<title>IfaMaker</title>
 	<script type="text/javascript" src="js/main.js"></script>
+	<style type="text/css">
+
+		.tache_detail:hover { 
+			background-color: grey; 
+			color : white;
+		}
+
+		a.tache { 
+			text-decoration: none;
+		 	color: black;
+		 }
+		 
+	</style>
 </head>
 <body>
 
