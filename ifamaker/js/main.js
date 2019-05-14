@@ -41,7 +41,7 @@ function creer_table()
 
 	var liste_carte = document.createElement("ul");
 		liste_carte.className = "list-group";
-		liste_carte.id = "ma_liste-" + mon_article.id;
+		liste_carte.id = "ma_liste-" + mon_article.id; // id unique de la liste
 
 
 	var liste_input_carte = document.createElement("li");
@@ -55,7 +55,7 @@ function creer_table()
 	var input_carte = document.createElement("input");
 		input_carte.type = "text";
 		input_carte.className = "form-control";
-		input_carte.placeholder = "Tache";
+		input_carte.placeholder = "Ajouter tâche";
 		input_carte.id = 'titre_tache-' + id_table;
 		input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+liste_carte.id+'","'+input_carte.id+'","'+liste_input_carte.id+'")');
 
@@ -142,7 +142,7 @@ function creer_table()
 		var titre_creation = document.createElement('h5');
 			titre_creation.className = 'card-title';
 
-		var titre_texte_creation = document.createTextNode('Ma nouvelle table');
+		var titre_texte_creation = document.createTextNode('Ajouter une table');
 
 		var div_card_text_creation = document.createElement('div');
 			div_card_text_creation.className = 'card-text my-2';
@@ -201,7 +201,7 @@ function supprimer_table(id_table)
 
 /* création d'une tache dans une liste */
 
-//var id_tache_increment = 0; // id unique pour chaque tâche
+var id_tache_increment = 0; // id unique pour chaque tâche
 
 function creer_tache(id_liste,id_input,id_li_input)
 {
@@ -210,11 +210,11 @@ function creer_tache(id_liste,id_input,id_li_input)
 
 	/* création de la tache visible dans table */
 
-	var id_tache_increment = 0; // id unique pour chaque tâche
+	/*var id_tache_increment = 0; // id unique pour chaque tâche
 	var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
 	id_tache_increment = nb_tache.length; 			// nombre de li dans une liste 
 	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
-	console.log(id_tache);
+	console.log(id_tache);*/
 
 
 	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
@@ -324,7 +324,7 @@ function creer_tache(id_liste,id_input,id_li_input)
 			label.setAttribute('for','comment');
 			label.className = 'text-left'
 
-		var label_text = document.createTextNode('A faire:'); // texte
+		var label_text = document.createTextNode('Détails:'); // texte
 
 		var textarea = document.createElement('textarea');
 			textarea.className = 'form-control';
@@ -405,7 +405,7 @@ function creer_tache(id_liste,id_input,id_li_input)
 		var input_carte = document.createElement("input");
 			input_carte.type = "text";
 			input_carte.className = "form-control";
-			input_carte.placeholder = "Tache";
+			input_carte.placeholder = "Ajouter tâche";
 			input_carte.id = id_input;
 			input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+id_liste+'","'+id_input+'","'+id_li_input+'")');
 
@@ -437,15 +437,11 @@ function creer_tache(id_liste,id_input,id_li_input)
 	
 	// nombre de li dans une liste 
 
-	//var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
+	var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
 
-	//id_tache_increment = nb_tache.length + 1;
-	
-	
+	id_tache_increment++; // incrémentation de id_tache
 
-	//id_tache_increment++; // incrémentation de id_tache
-
-	//console.log(lien_modal.href);
+	console.log(lien_modal.href);
 }
 
 
@@ -560,6 +556,7 @@ function modifier_info(id)
 			input.value = document.getElementById(id).innerHTML;
 			input.name = 'modifier_info_user';
 			input.className = 'form-control';
+			input.required = true;
 
 		var div_submit = document.createElement('div');
 			div_submit.className = 'input-group-append';

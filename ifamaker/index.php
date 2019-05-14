@@ -75,7 +75,7 @@
 			<article class="col my-3" id="nouvelle_table">
 				<section class="card" style="width: 16rem;">
 				  <div class="card-body">
-			    	<h5 class="card-title">Ma nouvelle table</h5>
+			    	<h5 class="card-title">Ajouter une table</h5>
 			    	<div class="card-text my-2">
 			    	 	<div class="input-group input-group-sm">
 		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
