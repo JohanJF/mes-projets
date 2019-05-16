@@ -210,14 +210,6 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 	/* création de la tache visible dans table */
 
-	/*var id_tache_increment = 0; // id unique pour chaque tâche
-	var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
-	id_tache_increment = nb_tache.length; 			// nombre de li dans une liste 
-	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
-	console.log(id_tache);*/
-
-	console.log(titre_table);
-
 	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
 
 	var lien_modal = document.createElement('a');

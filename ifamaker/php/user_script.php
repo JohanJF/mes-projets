@@ -80,47 +80,59 @@
 		
 
 ?>
-	<table class="table">
-	  <tbody>
-	    <tr>
-	      <th scope="row">Nom</th>
-	      	<td id="user_1"><?php echo $user->get_name();?></td>
-	      <td>
-	      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_1')">
-	      </td>
-	    </tr>
-	    <tr>
-	      <th scope="row">Prénom</th>
-	      <td id="user_2"><?php echo $user->get_firstname();?></td>
-	      <td>
-	      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_2')">
-	      </td>
-	    </tr>
-	    <tr>
-	      <th scope="row">Adresse</th>
-	      <td id="user_3"><?php echo $user->get_address();?></td>
-	      <td>
-	      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_3')">
-	      </td>
-	    </tr>
-	    <tr>
-	      <th scope="row">E-mail</th>
-	      <td id="user_4"><?php echo $user->get_mail();?>	</td>
-	      <td>
-	      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_4')">
-	      </td>
-	    </tr>
-	    <tr>
-	      <th scope="row">Mot de passe</th>
-	      <td id="user_5"><?php echo $user->get_password();?></td>
-	      <td>
-	      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_5')">
-	      </td>
-	    </tr>
-	  </tbody>
-	</table>
-	<div class="row">
-		<form action="#" method="POST" class="col text-center">
-			<input class="btn btn-outline-danger my-1" type="submit" name="deconnexion" value="Se déconnecter">
-		</form>
+	<div class="row border mx-photo my-4 border-IFA rounded-circle">
+		<div class="col py-5 text-center">
+			<span>Photo</span>
+		</div>
 	</div>
+	<div class="row">
+		<div class="container col-10 border border-IFA  my-3">
+		<table class="table" style="height: auto">
+		  <tbody>
+		    <tr>
+		      <th scope="row">Nom</th>
+		      	<td id="user_1"><?php echo $user->get_name();?></td>
+		      <td>
+		      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_1')">
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Prénom</th>
+		      <td id="user_2"><?php echo $user->get_firstname();?></td>
+		      <td>
+		      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_2')">
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Adresse</th>
+		      <td id="user_3"><?php echo $user->get_address();?></td>
+		      <td>
+		      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_3')">
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row">E-mail</th>
+		      <td id="user_4"><?php echo $user->get_mail();?>	</td>
+		      <td>
+		      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_4')">
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row">Mot de passe</th>
+		      <td id="user_5"><?php echo $user->get_password();?></td>
+		      <td>
+		      	<input type="image" src="img/modifier.png" onclick="modifier_info('user_5')">
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+		<div class="row">
+			<form action="#" method="POST" class="col text-center">
+				<input class="btn btn-outline-danger my-1" type="submit" name="deconnexion" value="Se déconnecter">
+			</form>
+		</div>
+	</div>
+	</div>
+	
+	
+	

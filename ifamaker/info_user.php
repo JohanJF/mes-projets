@@ -9,8 +9,6 @@
 ?>
 
 <div class="container">
-		<div class="row">
-			<article class="container col-10 border border-info  my-5"  style="height: auto">
 
 				<!--CONTENU ARTICLE-->
 
@@ -22,8 +20,6 @@
 
 				<!--CONTENU ARTICLE-->
 
-			</article>
-		</div>
 	</div>
 
 <?php include 'footer.php' ?>

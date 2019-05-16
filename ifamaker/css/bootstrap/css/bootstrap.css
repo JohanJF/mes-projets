@@ -7680,6 +7680,9 @@ button.bg-dark:focus {
   margin-right: 3rem !important;
 }
 
+.mx-photo {
+  margin-right: 30rem !important;
+}
 .mb-5,
 .my-5 {
   margin-bottom: 3rem !important;
@@ -7688,6 +7691,10 @@ button.bg-dark:focus {
 .ml-5,
 .mx-5 {
   margin-left: 3rem !important;
+}
+
+.mx-photo {
+  margin-left: 30rem !important;
 }
 
 .p-0 {
