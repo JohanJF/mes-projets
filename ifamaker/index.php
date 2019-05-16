@@ -1,4 +1,38 @@
-	<?php include 'header.php'; ?>
+	<?php 
+
+	if(session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}
+
+	if (isset($_POST['deconnexion'])) 
+	{
+		session_destroy(); // ferme la session
+		header('Location: #');
+	}
+
+ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Connexion</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body id="page-table" class="bg-grey">
+	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
+		<!-- HEADER -->
+		<div class="row">
+			<div class="col">
+				<h1 class="text-center">IfaMaker</h1>
+				<?php include 'php/connexion_script.php'; ?>
+			</div>
+		</div>
+		<!-- HEADER -->
+	</header>
 	<!-- MAIN -->
 
 	<main class="container">
@@ -91,17 +125,6 @@
 	</main>
 
 	<span id="fenetre_modal"></span>
-
-
-	<footer id="footer" class="page-footer bg-IFA text-white border-top border-IFA">
-		<!-- FOOTER -->
-		  <!-- Copyright -->
-		  <div class="footer-copyright text-center py-3 text-grey">
-			©<b>Ifamaker 2019</b>, Tous droits réservés.
-		  </div>
-		  <!-- Copyright -->
-		<!-- FOOTER -->
-	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

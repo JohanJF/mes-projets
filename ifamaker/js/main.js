@@ -17,7 +17,7 @@ function creer_table()
 
 
 	var ma_section = document.createElement("section");
-		ma_section.className = "card";
+		ma_section.className = "card bg-grey-darkskin border border-IFA";
 		ma_section.style.width = "16rem";
 
 
@@ -27,7 +27,7 @@ function creer_table()
 
 
 	var titre_carte = document.createElement("h5");
-		titre_carte.className = "card-title";
+		titre_carte.className = "card-title text-white";
 
 	var span_titre_carte = document.createElement("span");
 		span_titre_carte.id = 'titre-' + id_table; // id unique du titre de la table
@@ -45,7 +45,7 @@ function creer_table()
 
 
 	var liste_input_carte = document.createElement("li");
-		liste_input_carte.className = "list-group-item";
+		liste_input_carte.className = "list-group-item border border-dark";
 		liste_input_carte.id = 'li-'+id_table; // id unique du li qui contient balise input (titre , cf : fonction supprimer_input)
 
 
@@ -57,7 +57,7 @@ function creer_table()
 		input_carte.className = "form-control";
 		input_carte.placeholder = "Ajouter tâche";
 		input_carte.id = 'titre_tache-' + id_table;
-		input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+liste_carte.id+'","'+input_carte.id+'","'+liste_input_carte.id+'")');
+		input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+liste_carte.id+'","'+input_carte.id+'","'+liste_input_carte.id+'","'+span_titre_carte.id+'")');
 
 
 	var div_bouton_carte = document.createElement("div");
@@ -67,7 +67,7 @@ function creer_table()
 	var bouton_carte_creer = document.createElement("button");
 		bouton_carte_creer.className = "btn btn-outline-secondary";
 		bouton_carte_creer.type = "button";
-		bouton_carte_creer.setAttribute("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"')");
+		bouton_carte_creer.setAttribute("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
 
 		console.log(liste_carte.id);
 
@@ -76,7 +76,7 @@ function creer_table()
 
 
 	var bouton_carte_modifier = document.createElement("button");
-		bouton_carte_modifier.className = "btn btn-primary card-link";
+		bouton_carte_modifier.className = "btn btn-modifier card-link";
 		bouton_carte_modifier.href = "#";
 		bouton_carte_modifier.setAttribute("onclick","modifier_table('"+span_titre_carte.id+"',"+mon_article.id+")");
 		console.log(span_titre_carte.id);
@@ -84,7 +84,7 @@ function creer_table()
 
 
 	var bouton_carte_supprimer = document.createElement("button");
-		bouton_carte_supprimer.className = "btn btn-danger card-link";
+		bouton_carte_supprimer.className = "btn btn-supprimer card-link";
 		bouton_carte_supprimer.href = "#";
 		bouton_carte_supprimer.setAttribute("onclick","supprimer_table("+mon_article.id+")");
 
@@ -203,7 +203,7 @@ function supprimer_table(id_table)
 
 var id_tache_increment = 0; // id unique pour chaque tâche
 
-function creer_tache(id_liste,id_input,id_li_input)
+function creer_tache(id_liste,id_input,id_li_input,titre_table)
 {
 
 	//----------------------    ETAPE 1    -----------------------------------------------
@@ -216,6 +216,7 @@ function creer_tache(id_liste,id_input,id_li_input)
 	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
 	console.log(id_tache);*/
 
+	console.log(titre_table);
 
 	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
 
@@ -225,7 +226,7 @@ function creer_tache(id_liste,id_input,id_li_input)
 		lien_modal.setAttribute('data-toggle','modal');
 
 	var ma_tache_liste = document.createElement("li");
-		ma_tache_liste.className = "list-group-item tache_detail";
+		ma_tache_liste.className = "list-group-item tache_detail border border-dark my-1";
 
 	var titre_tache = document.createElement("h6");
 	
@@ -269,15 +270,20 @@ function creer_tache(id_liste,id_input,id_li_input)
 			modal_dialog.setAttribute('role','document');
 
 		var modal_content = document.createElement('div');
-			modal_content.className = 'modal-content';
+			modal_content.className = 'modal-content bg-grey';
 
 		var modal_header = document.createElement('div');
 			modal_header.className = 'modal-header';
 
-		var modal_title = document.createElement('h5'); // PS ajouter createTexteNode
-			modal_title.className = 'modal-title';
+		var modal_title = document.createElement('h3'); // PS ajouter createTexteNode
+			modal_title.className = 'modal-title text-dark';
 
 		var modal_title_text = document.createTextNode(document.getElementById(id_input).value);
+
+		var modal_small = document.createElement('small');
+			modal_small.className = 'badge badge-pill badge-info';
+
+			modal_small_text = document.createTextNode(document.getElementById(titre_table).innerHTML);
 
 		var button_close = document.createElement('button');
 			button_close.className = 'close';
@@ -322,12 +328,12 @@ function creer_tache(id_liste,id_input,id_li_input)
 
 		var label = document.createElement('label');
 			label.setAttribute('for','comment');
-			label.className = 'text-left'
+			label.className = 'text-left text-grey'
 
-		var label_text = document.createTextNode('Détails:'); // texte
+		var label_text = document.createTextNode('Ajouter détails'); // texte
 
 		var textarea = document.createElement('textarea');
-			textarea.className = 'form-control';
+			textarea.className = 'form-control border border-dark';
 			textarea.rows = '5';
 			textarea.id ='comment';
 
@@ -337,14 +343,14 @@ function creer_tache(id_liste,id_input,id_li_input)
 			modal_footer.className = 'modal-footer';
 
 		var button_annuler_modal = document.createElement('button');
-			button_annuler_modal.className = 'btn btn-secondary';
+			button_annuler_modal.className = 'btn btn-grey';
 			button_annuler_modal.type = 'button';
 			button_annuler_modal.setAttribute('data-dismiss','modal');
 
 		var button_annuler_modal_text = document.createTextNode('Annuler');
 
 		var button_sauvegarder_modal = document.createElement('button');
-			button_sauvegarder_modal.className ='btn btn-primary';
+			button_sauvegarder_modal.className ='btn btn-sauvegarder';
 			button_sauvegarder_modal.type = 'button';
 
 
@@ -355,6 +361,8 @@ function creer_tache(id_liste,id_input,id_li_input)
 		modal_content.appendChild(modal_header);
 		modal_header.appendChild(modal_title);
 		modal_title.appendChild(modal_title_text);
+		modal_header.appendChild(modal_small);
+		modal_small.appendChild(modal_small_text);
 		modal_header.appendChild(button_close);
 		button_close.appendChild(span);
 		span.appendChild(span_text);
@@ -395,19 +403,15 @@ function creer_tache(id_liste,id_input,id_li_input)
 		/* création d'un nouvel input */
 
 		var liste_input_carte = document.createElement("li");
-		liste_input_carte.className = "list-group-item";
-		liste_input_carte.id = id_li_input;
-
-
-		var div_input_carte = document.createElement("div");
-			div_input_carte.className = "input-group input-group-sm";
+			liste_input_carte.className = "input-group input-group-sm my-1";
+			liste_input_carte.id = id_li_input;
 
 		var input_carte = document.createElement("input");
 			input_carte.type = "text";
-			input_carte.className = "form-control";
+			input_carte.className = "form-control border border-dark";
 			input_carte.placeholder = "Ajouter tâche";
 			input_carte.id = id_input;
-			input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+id_liste+'","'+id_input+'","'+id_li_input+'")');
+			input_carte.setAttribute('onkeypress','if (event.keyCode == 13) creer_tache("'+id_liste+'","'+id_input+'","'+id_li_input+'","'+titre_table+'")');
 
 
 		var div_bouton_carte = document.createElement("div");
@@ -415,21 +419,18 @@ function creer_tache(id_liste,id_input,id_li_input)
 
 
 		var bouton_carte_creer = document.createElement("button");
-			bouton_carte_creer.className = "btn btn-outline-secondary";
+			bouton_carte_creer.className = "btn btn-outline-grey";
 			bouton_carte_creer.type = "button";
-			bouton_carte_creer.setAttribute("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"')");
+			bouton_carte_creer.setAttribute("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"','"+titre_table+"')");
 
 			bouton_carte_creer_element = document.createTextNode("Créer");
 
-		liste_input_carte.appendChild(div_input_carte);
-		div_input_carte.appendChild(input_carte);
-		div_input_carte.appendChild(div_bouton_carte);
+		liste_input_carte.appendChild(input_carte);
+		liste_input_carte.appendChild(div_bouton_carte);
 		div_bouton_carte.appendChild(bouton_carte_creer);
 		bouton_carte_creer.appendChild(bouton_carte_creer_element);
 
 		document.getElementById(id_liste).appendChild(liste_input_carte);
-
-
 
 
 	//-------------------------------------------------------------------------------------------

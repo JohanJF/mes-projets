@@ -33,7 +33,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col text-center">
-							<h3 class="text-center text-white">Inscription</h3>
+							<h3 class="text-center text-white">Créer un compte</h3>
 						</div>
 					</div>
 
