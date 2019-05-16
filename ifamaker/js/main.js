@@ -133,14 +133,14 @@ function creer_table()
 			mon_article_creation.id = 'nouvelle_table';
 
 		var section_creation = document.createElement('section');
-			section_creation.className = 'card';
+			section_creation.className = 'card rounded-top';
 			section_creation.style.width = '16rem';
 
 		var div_card_creation = document.createElement('div');
-			div_card_creation.className = 'card-body';
+			div_card_creation.className = 'card-body bg-grey-darkskin border border-IFA rounded-top';
 
 		var titre_creation = document.createElement('h5');
-			titre_creation.className = 'card-title';
+			titre_creation.className = 'card-title text-white';
 
 		var titre_texte_creation = document.createTextNode('Ajouter une table');
 
@@ -162,7 +162,7 @@ function creer_table()
 
 		var button_creation = document.createElement('button');
 			button_creation.type = 'button';
-			button_creation.className = 'btn btn-outline-secondary';
+			button_creation.className = 'btn btn-outline-grey';
 			button_creation.setAttribute("onclick","creer_table()");
 
 		var button_text_creation = document.createTextNode('Créer');

@@ -16,33 +16,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-	<title>IfaMaker</title>
+	<meta charset="utf-8">
+	<title>Connexion</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/main.js"></script>
-	<style type="text/css">
-
-		.tache_detail:hover { 
-			background-color: grey; 
-			color : white;
-		}
-
-		a.tache { 
-			text-decoration: none;
-		 	color: black;
-		 }
-		 
-	</style>
 </head>
-<body>
-
-	<!--HEADER-->
-
-	<header class="container-fluid">
-		<div class="row my-2 border border-info rounded bg-light">
+<body class="bg-grey">
+	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
+		<!-- HEADER -->
+		<div class="row">
 			<div class="col">
 				<h1 class="text-center">IfaMaker</h1>
 				<?php include 'php/connexion_script.php'; ?>
 			</div>
 		</div>
+		<!-- HEADER -->
 	</header>

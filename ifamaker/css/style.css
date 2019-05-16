@@ -1,0 +1,31 @@
+html, body {
+	height: 100%;
+	/*
+ 	* Fix taille header / footer
+	*/
+}
+body {
+	padding: 58px 0;
+}
+main {
+	height: 100%;
+}
+main>.row {
+	height: 100%;
+}
+#aside {
+	height: 100%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tache_detail:hover { 
+			background-color: grey; 
+			color : white;
+		}
+
+a.tache { 
+	text-decoration: none;
+ 	color: black;
+ }

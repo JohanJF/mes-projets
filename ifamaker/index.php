@@ -3,20 +3,20 @@
 
 	<main class="container">
 		<div class="row" id="ma_base">
-			<article class="col">
-				<section class="card" style="width: 16rem;">
+			<article class="col my-3">
+				<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
 				  <div class="card-body">
-			    	<h5 class="card-title">Ma table</h5>
+			    	<h5 class="card-title text-white">Ma table</h5>
 			    	<div class="card-text my-2">
 				    	<ul class="list-group">
 				    	  <a class="tache" href="#maTache1" data-toggle="modal" >
-							  <li class="list-group-item tache_detail">
+							  <li class="list-group-item tache_detail border border-dark">
 							  	<h6>Tâche 1</h6>						  	
 							  	<small>Faire les courses</small>
 							  </li>
 						  </a>
 					  	<!--MODAL DEBUT -->
-							<div class="modal fade" id="maTache1" tabindex="-1" role="dialog" aria-hidden="true">
+<!--							<div class="modal fade" id="maTache1" tabindex="-1" role="dialog" aria-hidden="true">
 							  <div class="modal-dialog modal-dialog-centered" role="document">
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -47,8 +47,8 @@
 							    </div>
 							  </div>
 							</div>
-							<!--FIN-->
-						  <li class="list-group-item">
+-->							<!--FIN-->
+<!--						  <li class="list-group-item">
 						  	<h6>Tache 2</h6>
 						  	<small>mon texte 2</small>
 						  </li>
@@ -64,23 +64,23 @@
 							  </div>
 							</div>
 						  </li>
-						</ul>	
+-->						</ul>	
 				    </div>
-				    <button href="#" class="btn btn-primary card-link">Modifier</button>
-				    <button href="#" class="btn btn-danger card-link">Supprimer</button>
+				    <button href="#" class="btn btn-modifier card-link">Modifier</button>
+				    <button href="#" class="btn btn-supprimer card-link">Supprimer</button>
 				  </div>
 				</section>
 			</article>
 
 			<article class="col my-3" id="nouvelle_table">
-				<section class="card" style="width: 16rem;">
-				  <div class="card-body">
-			    	<h5 class="card-title">Ajouter une table</h5>
+				<section class="card rounded-top" style="width: 16rem;">
+				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
+			    	<h5 class="card-title text-white">Ajouter une table</h5>
 			    	<div class="card-text my-2">
 			    	 	<div class="input-group input-group-sm">
 		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button class="btn btn-outline-secondary" type="button"  onclick="creer_table()">Créer</button>
+							    <button class="btn btn-outline-grey" type="button"  onclick="creer_table()">Créer</button>
 							  </div>
 						</div>
 				    </div>
@@ -92,10 +92,19 @@
 
 	<span id="fenetre_modal"></span>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+	<footer id="footer" class="page-footer bg-IFA text-white border-top border-IFA">
+		<!-- FOOTER -->
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3 text-grey">
+			©<b>Ifamaker 2019</b>, Tous droits réservés.
+		  </div>
+		  <!-- Copyright -->
+		<!-- FOOTER -->
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
 </body>
 </html>
