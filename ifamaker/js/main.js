@@ -277,6 +277,16 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 			modal_small_text = document.createTextNode(document.getElementById(titre_table).innerHTML);
 
+		var modal_small_icon = document.createElement('small');
+
+		var modifier_title = document.createElement('input');
+			modifier_title.type = 'image';
+			modifier_title.src = './img/modifier_small.png';
+
+		var supprimer_title = document.createElement('input');
+			supprimer_title.type = 'image'; 
+			supprimer_title.src = './img/supprimer_small.png'; 
+
 		var button_close = document.createElement('button');
 			button_close.className = 'close';
 			button_close.type = 'button';
@@ -355,6 +365,9 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		modal_title.appendChild(modal_title_text);
 		modal_header.appendChild(modal_small);
 		modal_small.appendChild(modal_small_text);
+		modal_header.appendChild(modal_small_icon);
+		modal_small_icon.appendChild(modifier_title);
+		modal_small_icon.appendChild(supprimer_title);
 		modal_header.appendChild(button_close);
 		button_close.appendChild(span);
 		span.appendChild(span_text);

@@ -30,17 +30,17 @@
 	      <nav class="navbar navbar-default">
 	        <div class="container-fluid">
 	          <section id="accordeon" class="col collapse" aria-labelledby="titre1" data-parent="#accordion">
-	            <div class="container-fluid py-5">
+	            <div class="container-fluid">
 	              <div class="row px-5">
-	                <article class="col-4 border-left">
+	                <article class="col-4 border-left py-5">
 	                  <h1 class="text-light">Collaboratif</h1>
 	                </article>
-	                <article class="col-4 border-left">
+	                <article class="col-4 border-left py-5">
 	                	<h1 class="text-light">Tableaux</h1>
 	                </article>
-	                <article class="col-4 border-left">
-	                  <h1 class="text-light"><a href="info_user.php">Mon compte</a></h1>
-	                </article>
+	                <a href="info_user.php" class="col-4 border-left py-5 header_nav">
+		                  <h1 class="text-light">Mon compte</h1>
+	            	</a>
 	              </div>
 	            </div>
 	          </section>

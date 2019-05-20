@@ -33,6 +33,14 @@ a.tache {
  	color: black;
  }
 
+a.header_nav { 
+	text-decoration: none;
+ }
+
+ .header_nav:hover {
+ 	background-color: #444444;
+ }
+
 .hr {
   border-left: 2px solid white;
   height: 500px;
