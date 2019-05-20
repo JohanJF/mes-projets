@@ -1,5 +1,5 @@
 <?php 
-	include 'header.php';
+	include 'header_connected.php';
 
 	if(!isset($_SESSION['auth']) || $_SESSION['auth'] == false)
 	{

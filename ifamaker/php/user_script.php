@@ -127,7 +127,7 @@
 		  </tbody>
 		</table>
 		<div class="row">
-			<form action="#" method="POST" class="col text-center">
+			<form action="connexion.php" method="POST" class="col text-center">
 				<input class="btn btn-outline-danger my-1" type="submit" name="deconnexion" value="Se déconnecter">
 			</form>
 		</div>

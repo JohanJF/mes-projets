@@ -4,9 +4,12 @@ html, body {
  	* Fix taille header / footer
 	*/
 }
-body {
+#body-not-connected {
 	padding: 58px 0;
 }
+
+#body-connected { padding: 74px 0 58px 0; }
+
 main {
 	height: 100%;
 }
@@ -29,3 +32,9 @@ a.tache {
 	text-decoration: none;
  	color: black;
  }
+
+.hr {
+  border-left: 2px solid white;
+  height: 500px;
+}
+
