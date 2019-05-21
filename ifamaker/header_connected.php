@@ -17,7 +17,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Connexion</title>
+	<title>IfaMaker</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/main.js"></script>
@@ -54,8 +54,8 @@
 		              <img src="img/menu.png"/>
 		            </a>
 		         </article>
-				<div class="col-9 text-center">
-					<a href="index.php"><img src="img/logo.png" /></a>
+				<div class="col-9 px-3 text-center">
+					<a href="page_table.php"><img src="img/logo.png" /></a>
 					<?php include 'php/connexion_script.php'; ?>
 				</div>
 <?php 

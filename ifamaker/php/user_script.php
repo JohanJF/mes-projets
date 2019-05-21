@@ -38,6 +38,15 @@
 
 	}
 
+	function delete_account($connexion,$requete)
+	{
+		$result = $connexion->prepare('DELETE FROM user WHERE user_id = ?');
+
+		$result->execute(array(
+			$_SESSION['user_id']
+		));
+	}
+
 	try{
 
 		//----- Paramètre différent en fonction de la requête
@@ -63,6 +72,12 @@
 			update($connexion,$_POST['modifier_info_user'],'user_5');
 		}
 
+		if (isset($_POST['supprimer_compte'])) 
+		{
+		 	delete_account($connexion);
+		} 
+
+
 		//-----------
 
 		$pdo = $connexion->prepare('SELECT * FROM user');
@@ -80,9 +95,9 @@
 		
 
 ?>
-	<div class="row border mx-photo my-4 border-IFA rounded-circle">
-		<div class="col py-5 text-center">
-			<span>Photo</span>
+	<div class="row my-4">
+		<div class="col py-5 text-center ">
+			<span class="border border-IFA rounded-circle bg-white px-5 py-5">Photo</span>
 		</div>
 	</div>
 	<div class="row">
@@ -128,7 +143,7 @@
 		</table>
 		<div class="row">
 			<form action="connexion.php" method="POST" class="col text-center">
-				<input class="btn btn-outline-danger my-1" type="submit" name="deconnexion" value="Se déconnecter">
+				<input class="btn btn-outline-danger my-1" type="submit" name="supprimer_compte" value="Supprimer ce compte">
 			</form>
 		</div>
 	</div>

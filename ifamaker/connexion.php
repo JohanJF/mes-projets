@@ -8,7 +8,8 @@
 	if (isset($_POST['submit_connexion'])) 
 	{
 	 	$mail_login = $_POST['email_connexion'];
-	} 
+	}
+
 ?>
 
 	<main class="container-fluid">

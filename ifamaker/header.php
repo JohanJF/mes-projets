@@ -17,7 +17,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Connexion</title>
+	<title>IfaMaker</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/main.js"></script>
