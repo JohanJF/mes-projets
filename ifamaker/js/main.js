@@ -266,12 +266,17 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			modal_content.className = 'modal-content bg-grey';
 
 		var modal_header = document.createElement('div');
-			modal_header.className = 'modal-header';
+			modal_header.className = 'modal-header container';
+
+		var div_header_row = document.createElement('div');
+			div_header_row.className = 'row ml-2';
 
 		var modal_title = document.createElement('h3'); // PS ajouter createTexteNode
 			modal_title.className = 'modal-title text-dark';
 
 		var modal_title_text = document.createTextNode(document.getElementById(id_input).value);
+
+		var modal_span_small = document.createElement('span');
 
 		var modal_small = document.createElement('small');
 			modal_small.className = 'badge badge-pill badge-info';
@@ -287,21 +292,9 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		var supprimer_title = document.createElement('input');
 			supprimer_title.type = 'image'; 
 			supprimer_title.src = './img/supprimer_small.png';
-			supprimer_title.className = 'close';
 			supprimer_title.setAttribute('onclick','supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")');
 			supprimer_title.setAttribute('data-dismiss','modal');
 			supprimer_title.setAttribute('aria-label','close'); 
-
-		var button_close = document.createElement('button');
-			button_close.className = 'close';
-			button_close.type = 'button';
-			button_close.setAttribute('data-dismiss','modal');
-			button_close.setAttribute('aria-label','close');
-
-		var span = document.createElement('span');
-			span.setAttribute('aria-hidden', 'true');
-
-		var span_text = document.createTextNode('Fermer'); // texte
 
 		// modal body 
 
@@ -366,16 +359,15 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		modal_fade.appendChild(modal_dialog);
 		modal_dialog.appendChild(modal_content);
 		modal_content.appendChild(modal_header);
-		modal_header.appendChild(modal_title);
+		modal_header.appendChild(div_header_row);
+		div_header_row.appendChild(modal_title);
 		modal_title.appendChild(modal_title_text);
-		modal_header.appendChild(modal_small);
+		div_header_row.appendChild(modal_span_small);
+		modal_span_small.appendChild(modal_small);
 		modal_small.appendChild(modal_small_text);
-		modal_header.appendChild(modal_small_icon);
+		div_header_row.appendChild(modal_small_icon);
 		modal_small_icon.appendChild(modifier_title);
 		modal_small_icon.appendChild(supprimer_title);
-		modal_header.appendChild(button_close);
-		button_close.appendChild(span);
-		span.appendChild(span_text);
 		modal_content.appendChild(modal_body)
 		modal_body.appendChild(form_group_modal);
 		form_group_modal.appendChild(container_modal);
