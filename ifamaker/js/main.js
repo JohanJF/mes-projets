@@ -503,7 +503,7 @@ function modifier_table(id_titre,id_table)
 
 		var button_creation = document.createElement('button');
 			button_creation.type = 'button';
-			button_creation.className = 'btn btn-outline-secondary';
+			button_creation.className = 'btn btn-outline-grey';
 			button_creation.setAttribute('onclick','modification_texte("'+id_titre+'","'+input_creation.id+'")');
 
 		var button_text_creation = document.createTextNode('Modifier');
