@@ -227,14 +227,11 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			$(modal_content).addClass('modal-content bg-grey');
 
 		var modal_header = document.createElement('div');
-<<<<<<< HEAD
 			$(modal_header).addClass('modal-header');
-=======
 			modal_header.className = 'modal-header container';
 
 		var div_header_row = document.createElement('div');
 			div_header_row.className = 'row ml-2';
->>>>>>> c815db9a9b46e6057ebf3796eef7f3f8507318a9
 
 		var modal_title = document.createElement('h3'); 
 			$(modal_title).addClass('modal-title text-dark');
@@ -250,7 +247,6 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			$(modifier_title).attr("type","image").attr("src","./img/modifier_small.png");
 
 		var supprimer_title = document.createElement('input');
-<<<<<<< HEAD
 			$(supprimer_title).addClass("close").attr("type","image").attr("src","./img/supprimer_small.png").attr("onclick",'supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")').attr("data-dismiss","modal").attr("aria-label","close"); 
 
 		var button_close = document.createElement('button');
@@ -260,14 +256,12 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			$(span).attr("aria-hidden","true");
 
 
-=======
 			supprimer_title.type = 'image'; 
 			supprimer_title.src = './img/supprimer_small.png';
 			supprimer_title.setAttribute('onclick','supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")');
 			supprimer_title.setAttribute('data-dismiss','modal');
 			supprimer_title.setAttribute('aria-label','close'); 
 
->>>>>>> c815db9a9b46e6057ebf3796eef7f3f8507318a9
 		// modal body 
 
 		var modal_body = document.createElement('div');
@@ -313,7 +307,6 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			$(button_annuler_modal).addClass("btn btn-grey").attr("type","button").attr("data-dismiss","modal");
 
 		var button_sauvegarder_modal = document.createElement('button');
-<<<<<<< HEAD
 			$(button_sauvegarder_modal).addClass("btn btn-sauvegarder").attr("type","button");
 
 
@@ -333,29 +326,6 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		modal_content.append(modal_body)
 		modal_body.append(form_group_modal);
 		form_group_modal.append(container_modal);
-=======
-			button_sauvegarder_modal.className ='btn btn-sauvegarder';
-			button_sauvegarder_modal.type = 'button';
-
-
-		var button_sauvegarder_modal_text = document.createTextNode('Sauvegarder'); // texte
-
-		modal_fade.appendChild(modal_dialog);
-		modal_dialog.appendChild(modal_content);
-		modal_content.appendChild(modal_header);
-		modal_header.appendChild(div_header_row);
-		div_header_row.appendChild(modal_title);
-		modal_title.appendChild(modal_title_text);
-		div_header_row.appendChild(modal_span_small);
-		modal_span_small.appendChild(modal_small);
-		modal_small.appendChild(modal_small_text);
-		div_header_row.appendChild(modal_small_icon);
-		modal_small_icon.appendChild(modifier_title);
-		modal_small_icon.appendChild(supprimer_title);
-		modal_content.appendChild(modal_body)
-		modal_body.appendChild(form_group_modal);
-		form_group_modal.appendChild(container_modal);
->>>>>>> c815db9a9b46e6057ebf3796eef7f3f8507318a9
 	/*	container_modal.appendChild(row_modal);
 		row_modal.appendChild(col_modal);
 		col_modal.appendChild(small);
