@@ -20,7 +20,9 @@
 	<title>IfaMaker</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/drag_drop.js"></script>
 </head>
 <body id="body-not-connected" class="bg-grey">
 	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
