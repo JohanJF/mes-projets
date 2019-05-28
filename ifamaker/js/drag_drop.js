@@ -1,12 +1,19 @@
-var dropper1 = document.getElementsByTagName("article");
+var dropper1 = document.getElementsByTagName("article")[3];
 
-console.log(dropper1[3]);
-/*dropper2.addEventListener('dragenter',function(e) {
-	dropper2.css("border","dashed black 1em");
-})
+dropper1.addEventListener('dragenter',function(e) {
+	dropper1.style.borderStyle = "dashed";
+});
 
-dropper2.addEventListener('drop',function (e) {
+dropper1.addEventListener('dragleave',function(e) {
+	dropper1.style.borderStyle = "";
+});
+
+document.addEventListener('dragend',function(e) {
+	alert("hors zone ! ");
+});
+
+dropper1.addEventListener('drop',function(e) {
 	e.preventDefault();
-	alert("test");
-})*/
-
+	
+	alert("yesss !");
+});
