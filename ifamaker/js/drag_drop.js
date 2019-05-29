@@ -44,12 +44,13 @@ dropper1.addEventListener('drop',function(e) {
 			dropper.addEventListener('dragover',function(e){
 				e.preventDefault();
 				dropper.style.borderStyle = 'dashed';
-			});
+			},false);
 
 			dropper.addEventListener('dragleave', function() {
 				dropper.style.borderStyle = '';
 			});
 
+			var dndHandler = this;
 
 			dropper.addEventListener('drop', function(e) {
 
