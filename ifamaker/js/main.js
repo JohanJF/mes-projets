@@ -455,44 +455,52 @@ function modification_texte(id_titre,titre_modif)
 
 /* Crée un élément "input texte" afin de modifier les informations personnelles de l'user */
 
-function modifier_info(id)
+var display = false;
+
+function modifier_info()
 {
-	var form = document.getElementById(id).getElementsByTagName('form')[0];
-	console.log(form)
+	nb = $('td');
 
-	if (typeof form != "undefined") 
+	for (var i = 0; i < nb.length; i++)
 	{
-		if (form.parentNode) 
+		
+		id = 'user_'+ (i+1);
+		var form = document.getElementsByTagName('td')[i].getElementsByTagName('form')[0];
+
+		if (typeof form != "undefined") 
 		{
-			form.parentNode.removeChild(form); // évite les multiplications de l'élément "input"
+			if (form.parentNode) 
+			{
+				form.parentNode.removeChild(form); // évite les multiplications de l'élément "input"
+			}
+		} 
+		else 
+		{
+			console.log(nb[i].innerHTML);
+
+			var form = document.createElement('form');
+				$(form).attr("action","#").attr("method","POST").css('display','true');
+
+			var div = document.createElement('div');
+				$(div).addClass("input-group input-group-sm");
+
+			var input = document.createElement('input');
+				$(input).addClass("form-control").attr("type","text").attr("value",nb[i].innerHTML).attr("name","modifier_info_user").attr("required","true");
+
+			var div_submit = document.createElement('div');
+				$(div_submit).addClass("input-group-append")
+
+			var input_submit = document.createElement('input');
+				$(input_submit).addClass("btn btn-outline-success").attr("type","submit").attr("name",id).attr("value","Modifier");
+
+			form.append(div);
+			div.append(input);
+			div.append(div_submit);
+			div_submit.append(input_submit);
+
+			nb[i].append(form);
 		}
-	} 
-	else 
-	{
-
-		var form = document.createElement('form');
-			$(form).attr("action","#").attr("method","POST");
-
-		var div = document.createElement('div');
-			$(div).addClass("input-group input-group-sm");
-
-		var input = document.createElement('input');
-			$(input).addClass("form-control").attr("type","text").attr("value",$("#"+id).html()).attr("name","modifier_info_user").attr("required","true");
-
-		var div_submit = document.createElement('div');
-			$(div_submit).addClass("input-group-append")
-
-		var input_submit = document.createElement('input');
-			$(input_submit).addClass("btn btn-outline-success").attr("type","submit").attr("name",id).attr("value","Modifier");
-
-		form.append(div);
-		div.append(input);
-		div.append(div_submit);
-		div_submit.append(input_submit);
-
-		$('#'+id).append(form);
 	}
-	
 }
 
 
