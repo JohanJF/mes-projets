@@ -9,7 +9,7 @@
 
 		public function __construct()
 		{
-
+			$this->welcome();
 		}
 
 		public function welcome() 
