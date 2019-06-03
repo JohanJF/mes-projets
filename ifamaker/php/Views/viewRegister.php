@@ -21,7 +21,7 @@
 					</div>
 				</div>
 
-				<form class="row" action="connexion.php" method="POST">
+				<form class="row" action="?rqt=accueil" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class="col text-center form-group">

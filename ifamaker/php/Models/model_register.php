@@ -2,6 +2,7 @@
 
 class model_register extends Model
 {
+
 	
 }
 

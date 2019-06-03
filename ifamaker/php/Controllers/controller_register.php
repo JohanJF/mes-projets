@@ -5,7 +5,7 @@
 
 	class controller_register
 	{
-		public $modelAccueil;
+		public $model_register;
 
 		public function __construct()
 		{

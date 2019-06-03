@@ -22,7 +22,7 @@
 					</div>
 				</div>
 
-				<form class="row" action="connexion.php" method="POST">
+				<form class="row" action="?rqt=account" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class="col text-center form-group">
@@ -40,7 +40,8 @@
 							<input class="btn btn-grey" type="submit" name="submit_connexion" value="Se connecter">
 						</div>
 					</div>			
-				</form>			
+				</form>
+				<?= $insert_user ?>			
 
 					
 			<!-- FIN -->

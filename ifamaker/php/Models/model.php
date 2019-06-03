@@ -14,6 +14,40 @@ class Model {
 		return self::$bdd;
 	}
 
+	protected function select_req($query,$data=null) {
+		if ($data == null)
+			$res = $this->getBDD()->query($query);
+		else {
+			$res = $this->getBDD()->prepare($query);
+			$res->execute($data);
+		}
+
+		return $res;
+	}
+
+	protected function insert_req($query) 
+	{
+		
+		$name = $_POST['nom_inscription'];
+		$firstname = $_POST['prenom_inscription'];
+		$address = $_POST['adresse_inscription'];
+		$mail = $_POST['email_inscription'];
+		$password = $_POST['mdp_inscription'];
+
+		$res = $this->getBDD()->prepare($query);
+		$res->execute(
+			array(
+					'name' => $name,
+					'firstname' => $firstname,
+					'address' => $address,
+					'mail' => $mail,
+					'password' => $password
+				)
+		);
+
+		return $res;
+	}
+
 	
 }
 

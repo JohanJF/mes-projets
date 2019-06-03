@@ -102,43 +102,43 @@
 	</div>
 	<div class="row">
 		<div class="container col-10 border border-IFA  my-3">
-		<table class="table" style="height: auto">
-		  <tbody>
-		  	<div class="container">
-		  		<div class="row">
-		  			<div class="col my-2 text-right">
-		  				<input type="image" src="img/modifier.png" onclick="modifier_info()">
-		  			</div>	
-		  		</div>
-		  	</div>
-		    <tr>
-		      <th scope="row">Nom</th>
-		      	<td id="user_1"><?php echo $user->get_name();?></td>
-		    </tr>
-		    <tr>
-		      <th scope="row">Prénom</th>
-		      <td id="user_2"><?php echo $user->get_firstname();?></td>
-		    </tr>
-		    <tr>
-		      <th scope="row">Adresse</th>
-		      <td id="user_3"><?php echo $user->get_address();?></td>
-		    </tr>
-		    <tr>
-		      <th scope="row">E-mail</th>
-		      <td id="user_4"><?php echo $user->get_mail();?>	</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">Mot de passe</th>
-		      <td id="user_5"><?php echo $user->get_password();?></td>
-		    </tr>
-		  </tbody>
-		</table>
-		<div class="row">
-			<form action="connexion.php" method="POST" class="col text-center">
-				<input class="btn btn-danger my-1" type="submit" name="supprimer_compte" value="Supprimer ce compte">
-			</form>
+			<table class="table" style="height: auto">
+			  <tbody>
+			  	<div class="container">
+			  		<div class="row">
+			  			<div class="col my-2 text-right">
+			  				<input type="image" src="img/modifier.png" onclick="modifier_info()">
+			  			</div>	
+			  		</div>
+			  	</div>
+			    <tr>
+			      <th scope="row">Nom</th>
+			      	<td id="user_1"><?php echo $user->get_name();?></td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Prénom</th>
+			      <td id="user_2"><?php echo $user->get_firstname();?></td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Adresse</th>
+			      <td id="user_3"><?php echo $user->get_address();?></td>
+			    </tr>
+			    <tr>
+			      <th scope="row">E-mail</th>
+			      <td id="user_4"><?php echo $user->get_mail();?>	</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Mot de passe</th>
+			      <td id="user_5"><?php echo $user->get_password();?></td>
+			    </tr>
+			  </tbody>
+			</table>
+			<div class="row">
+				<form action="connexion.php" method="POST" class="col text-center">
+					<input class="btn btn-danger my-1" type="submit" name="supprimer_compte" value="Supprimer ce compte">
+				</form>
+			</div>
 		</div>
-	</div>
 	</div>
 	
 	
