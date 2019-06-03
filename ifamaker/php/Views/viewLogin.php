@@ -22,7 +22,7 @@
 					</div>
 				</div>
 
-				<form class="row" action="?rqt=account" method="POST">
+				<form class="row" action="#" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class="col text-center form-group">
@@ -41,8 +41,8 @@
 						</div>
 					</div>			
 				</form>
-				<?= $insert_user ?>			
-
+				<?= $insert_user ?>
+				<?= $information ?>
 					
 			<!-- FIN -->
 

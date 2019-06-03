@@ -9,12 +9,17 @@
 
 		public function __construct()
 		{
-			$this->connexion();
+			$this->mon_compte();
 		}
 
-		public function connexion() 
-		{	
-			require_once './Views/viewAccount.php';
+		public function mon_compte() 
+		{
+			if(!isset($_SESSION['auth']) || $_SESSION['auth'] == false)
+			{
+				header('Location: http://localhost/mes-projets/ifamaker/php/index.php');
+			} 
+			else
+				require_once './Views/viewAccount.php';
 		}
 	}
 

@@ -1,6 +1,6 @@
 <?php $title = 'Ifamaker - Mon compte'; ?>
 
-<?php ob_start(); ?>
+<?php ob_start();?>
 <div class="container">
 
 				<!--CONTENU ARTICLE-->
@@ -23,7 +23,7 @@
 			  	</div>
 			    <tr>
 			      <th scope="row">Nom</th>
-			      	<td id="user_1"></td>
+			      	<td id="user_1"><?= $information['name'] ?></td>
 			    </tr>
 			    <tr>
 			      <th scope="row">Prénom</th>

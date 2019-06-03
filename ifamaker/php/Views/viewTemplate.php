@@ -10,6 +10,17 @@
 	 	$mail_login = $_POST['email_connexion'];
 	}
 
+	if(session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}
+
+	if (isset($_POST['deconnexion'])) 
+	{
+		session_destroy(); // ferme la session
+		header('Location: #');
+	}
+
 ?>
 
 

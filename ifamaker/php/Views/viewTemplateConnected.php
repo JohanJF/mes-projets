@@ -58,12 +58,7 @@
 				<div class="col-9 px-3 text-center">
 					<a href="page_table.php"><img src="./src/img/logo.png" /></a>
 				</div>
-<?php 
 
-				if (isset($_SESSION['auth']) && $_SESSION['auth'] == true)
-				{
-					/* Affiche accordeon header + bouton déconnexion si utilisateur connecté */
-?>
 				<div class="col-2 text-right container">
 					<div class="row">
 						<div class="col">
@@ -74,9 +69,7 @@
 					</form>
 					</div>
 				</div>
-<?php
-				}
-?>
+
 	        </section>
 	      </nav>
 	    </div>

@@ -2,54 +2,8 @@
 
 	class model_user extends Model
 	{
-		private $user_id;
-		private $name;
-		private $firstname;
-		private $address;
-		private $mail;
-		private $password;
 
-		public function get_userID()
-		{
-			return $this->user_id;
-		}
-
-		//---------------------
-
-		public function get_name()
-		{
-			return $this->name;
-		}
-
-		//---------------------
-
-		public function get_firstname()
-		{
-			return $this->firstname;
-		}
-
-		//---------------------
-
-		public function get_address()
-		{
-			return $this->address;
-		}
-
-		//---------------------
-
-		public function get_mail()
-		{
-			return $this->mail;
-		}
-
-		//---------------------
-
-		public function get_password()
-		{
-			return $this->password;
-		}
-
-		function insert_user()
+		public function insert_user()
 		{
 
 			/* Inscription d'un utilisateur dans la BDD */
@@ -74,19 +28,45 @@
 
 		}
 
-		//---------------------
+		public function connexion_user()
+		{ 
 
-		public function __toString()
-		{
-			
+				/* vérifie l'identité de l'utilisateur */
+
+				$mail = $_POST['email_connexion'];
+				$password = $_POST['mdp_connexion'];
+				$login_success = false;
+
+				$result = $this->select_req("
+					SELECT user_id,mail, password 
+					FROM user
+					");
+
+				while ($row = $result->fetch()) 
+				{
+					if ($mail == $row['mail'] && $password == $row['password']) 
+					{
+						$_SESSION['user_id'] = $row['user_id'];
+						$_SESSION['auth'] = true;
+						$login_success = true;
+						break;
+					}
+				}
+
+				/* message info utilisateur */
+
+				if ($login_success == true) 
+				{
+					header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/php/index.php?rqt=account');
+					return "<p class='badge badge-success'>connexion réussi</p>";
+				}
+				else
+				{
+					return "<p class='badge badge-danger'>connexion échoué</p>";
+					
+				}
 		}
 
-		public static function load_by_id($pdo,$id) 
-		{
-    		$rqt = $pdo->prepare('SELECT * FROM user WHERE user_id=?');
-    		$rqt->execute([$id]);
-    		return $rqt->fetchObject(__CLASS__);
-		}
 	}
 
 
