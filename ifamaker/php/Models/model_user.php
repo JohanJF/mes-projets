@@ -32,8 +32,6 @@
 		{ 
 
 			/* vérifie l'identité de l'utilisateur */
-			echo $_POST['email_connexion'];
-			echo $_POST['mdp_connexion'];
 
 			$result = $this->select_req("
 				SELECT user_id,mail, password 
@@ -51,9 +49,7 @@
 						$_SESSION['auth'] = true;
 						$login_success = true;
 						break;
-					}
-					
-					
+					}	
 				}
 			}
 

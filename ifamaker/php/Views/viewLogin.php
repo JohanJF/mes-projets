@@ -7,8 +7,30 @@
 	<!-- MAIN -->
 	<div class="row">
 		<article id="content" class="col-9 bg-grey">
-			<div class=”row”>
-				
+			<div class="container">
+				<div class="row my-3">
+					<section class="col-6">
+						<div class="bg-section">
+							<p>hello</p>
+						</div>
+					</section>
+					<section class="col-6 text-center">
+						<img class="shadow p-1 bg-white rounded" src="./src/img/co_work.jpg">
+					</section>
+				</div>
+				<hr>
+				<div class="row my-3">
+					<section class="col-6 text-center">
+						<img class="shadow p-1 bg-white rounded" src="./src/img/work.jpg">
+					</section>
+					<section class="col-6">
+						<div class="bg-section">
+							<p>hello</p>
+						</div>
+					</section>
+				</div>
+			</div>
+			
 		</article>
 		<aside id="aside" class="col-3 bg-IFA fixed">
 

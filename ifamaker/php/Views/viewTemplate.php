@@ -15,11 +15,7 @@
 		session_start();
 	}
 
-	if (isset($_POST['deconnexion'])) 
-	{
-		session_destroy(); // ferme la session
-		header('Location: #');
-	}
+	
 
 ?>
 

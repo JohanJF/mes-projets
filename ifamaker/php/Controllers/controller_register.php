@@ -14,7 +14,19 @@
 
 		public function register() 
 		{	
-			require_once './Views/viewRegister.php';
+			if(session_status() == PHP_SESSION_NONE)
+			{
+				session_start();
+				/* Redirection si user non connecté */
+				if(isset($_SESSION['auth']) && $_SESSION['auth'] === true)
+				{
+					header('Location: http://localhost/mes-projets/ifamaker/php/index.php?rqt=projet');
+				}
+				else
+				{
+					require_once './Views/viewRegister.php';
+				}
+			}
 		}
 	}
 

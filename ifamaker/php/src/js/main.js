@@ -516,3 +516,4 @@ function supprimer_tache(id_tache,id_modal)
 	}
 	console.log(modal);
 }
+

@@ -9,36 +9,37 @@
 
 		public function __construct()
 		{
-			/*if(session_status() == PHP_SESSION_NONE)
+			
+			if (isset($_POST['submit_inscription']))
 			{
-				session_start();
-				/* Redirection si user non connecté */
-			/*	if(isset($_SESSION['auth']) && $_SESSION['auth'] == true)
-				{
-					header('Location: http://localhost/mes-projets/ifamaker/php/index.php?rqt=projet');
-				}
-				else
-				{*/
-					if (isset($_POST['submit_inscription']))
-					{
-						$this->register();
-					}
-					else if (isset($_POST['submit_connexion'])) 
-					{
-						$this->login();
-					}
-					else
-						$this->welcome();
-				//}
-			//}
+				$this->register();
+			}
+			else if (isset($_POST['submit_connexion'])) 
+			{
+				$this->login();
+			}
+			else
+				$this->welcome();
 		} 
 			
 
 		public function welcome() 
 		{	
-				$insert_user = '';
-				$connexion = '';
-				require_once './Views/viewHome.php';
+			if(session_status() == PHP_SESSION_NONE)
+			{
+				session_start();
+				/* Redirection si user non connecté */
+				if(isset($_SESSION['auth']) && $_SESSION['auth'] === true)
+				{
+					header('Location: http://localhost/mes-projets/ifamaker/php/index.php?rqt=projet');
+				}
+				else
+				{
+					$insert_user = '';
+					$connexion = '';
+					require_once './Views/viewHome.php';
+				}
+			}
 		}
 
 		public function register() 

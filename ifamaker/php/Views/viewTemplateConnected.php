@@ -6,7 +6,7 @@
 	}
 
 	if (isset($_POST['deconnexion'])) 
-	{
+	{	
 		session_destroy(); // ferme la session
 		header('Location: #');
 	}
@@ -64,7 +64,7 @@
 						<div class="col">
 							<span class="border rounded-circle px-2 py-3">Photo</span>
 						</div>
-					<form action="index.php" method="POST" class="col">
+					<form action="#" method="POST" class="col">
 						<input class="btn btn-outline-danger btn-sm" type="submit" name="deconnexion" value="Déconnexion" />
 					</form>
 					</div>
