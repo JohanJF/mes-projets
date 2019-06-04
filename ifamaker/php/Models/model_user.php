@@ -32,6 +32,8 @@
 		{ 
 
 			/* vérifie l'identité de l'utilisateur */
+			echo $_POST['email_connexion'];
+			echo $_POST['mdp_connexion'];
 
 			$result = $this->select_req("
 				SELECT user_id,mail, password 
@@ -51,6 +53,7 @@
 						break;
 					}
 					
+					
 				}
 			}
 
@@ -59,7 +62,8 @@
 			if ($login_success == true) 
 			{
 				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/php/index.php?rqt=account');
-				return "<p class='badge badge-success'>connexion réussi</p>";
+				//return "<p class='badge badge-success'>connexion réussi</p>";
+				return '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
 			}
 			else
 			{

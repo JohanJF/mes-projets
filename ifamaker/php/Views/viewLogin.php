@@ -41,12 +41,13 @@
 						</div>
 					</div>			
 				</form>
-				<?= $insert_user ?>
-				<?= $connexion ?>
-					
+				<?= $insert_user ?>		
 			<!-- FIN -->
 
 				<div class="row">
+					<div class="col text-center">
+						<?= $connexion ?>
+					</div>	
 				</div>
 
 				<div class="row">

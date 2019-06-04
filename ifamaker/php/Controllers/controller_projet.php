@@ -24,9 +24,9 @@
 			{
 				header('Location: http://localhost/mes-projets/ifamaker/php/index.php');
 			} 
-			else
-
+			else{
 				require_once './Views/viewProjet.php';
+			}
 			
 		}
 	}

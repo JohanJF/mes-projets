@@ -30,6 +30,7 @@
 					else
 						$this->welcome();
 				//}
+			//}
 		} 
 			
 
