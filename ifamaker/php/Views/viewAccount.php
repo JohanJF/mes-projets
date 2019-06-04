@@ -27,19 +27,19 @@
 			    </tr>
 			    <tr>
 			      <th scope="row">Prénom</th>
-			      <td id="user_2"></td>
+			      <td id="user_2"><?= $information['firstname'] ?></td>
 			    </tr>
 			    <tr>
 			      <th scope="row">Adresse</th>
-			      <td id="user_3"></td>
+			      <td id="user_3"><?= $information['address'] ?></td>
 			    </tr>
 			    <tr>
 			      <th scope="row">E-mail</th>
-			      <td id="user_4"></td>
+			      <td id="user_4"><?= $information['mail'] ?></td>
 			    </tr>
 			    <tr>
 			      <th scope="row">Mot de passe</th>
-			      <td id="user_5"></td>
+			      <td id="user_5"><?= $information['password'] ?></td>
 			    </tr>
 			  </tbody>
 			</table>

@@ -1,22 +1,22 @@
 <?php 
 
 	require_once './Models/Model.php';
-	require_once './Models/model_account.php';
+	require_once './Models/model_projet.php';
 
-	class controller_account
+	class controller_projet
 	{
-		public $model_account;
+		public $model_projet;
 
 		public function __construct()
 		{
 			if(session_status() == PHP_SESSION_NONE)
 			{
 				session_start();
-				$this->mon_compte();
+				$this->mon_projet();
 			}
 		}
 
-		public function mon_compte() 
+		public function mon_projet() 
 		{
 			
 			/* Redirection si user non connecté */
@@ -25,9 +25,8 @@
 				header('Location: http://localhost/mes-projets/ifamaker/php/index.php');
 			} 
 			else
-				$this->model_account = new model_account();
-				$information = $this->model_account->user_info($_SESSION['user_id']);
-				require_once './Views/viewAccount.php';
+
+				require_once './Views/viewProjet.php';
 			
 		}
 	}

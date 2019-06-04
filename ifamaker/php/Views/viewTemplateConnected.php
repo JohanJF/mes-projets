@@ -56,7 +56,7 @@
 		            </a>
 		         </article>
 				<div class="col-9 px-3 text-center">
-					<a href="page_table.php"><img src="./src/img/logo.png" /></a>
+					<a href="?rqt=projet"><img src="./src/img/logo.png" /></a>
 				</div>
 
 				<div class="col-2 text-right container">
@@ -64,7 +64,7 @@
 						<div class="col">
 							<span class="border rounded-circle px-2 py-3">Photo</span>
 						</div>
-					<form action="connexion.php" method="POST" class="col">
+					<form action="index.php" method="POST" class="col">
 						<input class="btn btn-outline-danger btn-sm" type="submit" name="deconnexion" value="Déconnexion" />
 					</form>
 					</div>

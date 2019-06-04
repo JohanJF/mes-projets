@@ -5,7 +5,7 @@
 <main class="container-fluid">
 	<!-- MAIN -->
 	<div class="row">
-		<article id="content" class="col-9 bg-light">
+		<article id="content" class="col-9 bg-grey">
 			<div class=”row”>
 				
 		</article>

@@ -1,7 +1,10 @@
 <?php ob_start(); ?>
 <?php $title = 'Ifamaker - Error'; ?>
-<h1><u>Oops ! Something went wrong.</u></h1>
-<p><?= $msg ?></p>
+
+<div class="alert alert-danger" role="alert">
+	 <h1><u>Votre requête est indisponible !</u></h1>
+	 <p><?= $msg ?></p>
+</div>
 
 <?php 
 	$content = ob_get_clean();

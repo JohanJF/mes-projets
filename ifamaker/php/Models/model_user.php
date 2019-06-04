@@ -28,43 +28,44 @@
 
 		}
 
-		public function connexion_user()
+		public function connexion_user($mail,$password,$login_success)
 		{ 
 
-				/* vérifie l'identité de l'utilisateur */
+			/* vérifie l'identité de l'utilisateur */
 
-				$mail = $_POST['email_connexion'];
-				$password = $_POST['mdp_connexion'];
-				$login_success = false;
+			$result = $this->select_req("
+				SELECT user_id,mail, password 
+				FROM user
+				");
 
-				$result = $this->select_req("
-					SELECT user_id,mail, password 
-					FROM user
-					");
-
-				while ($row = $result->fetch()) 
-				{
-					if ($mail == $row['mail'] && $password == $row['password']) 
+			while ($row = $result->fetch()) 
+			{
+				if ($mail == $row['mail'] && $password == $row['password']) 
+				{	
+					if(session_status() == PHP_SESSION_NONE)
 					{
+						session_start();
 						$_SESSION['user_id'] = $row['user_id'];
 						$_SESSION['auth'] = true;
 						$login_success = true;
 						break;
 					}
-				}
-
-				/* message info utilisateur */
-
-				if ($login_success == true) 
-				{
-					header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/php/index.php?rqt=account');
-					return "<p class='badge badge-success'>connexion réussi</p>";
-				}
-				else
-				{
-					return "<p class='badge badge-danger'>connexion échoué</p>";
 					
 				}
+			}
+
+			/* message info utilisateur */
+
+			if ($login_success == true) 
+			{
+				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/php/index.php?rqt=account');
+				return "<p class='badge badge-success'>connexion réussi</p>";
+			}
+			else
+			{
+				return "<p class='badge badge-danger'>connexion échoué</p>";
+				
+			}
 		}
 
 	}

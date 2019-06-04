@@ -241,10 +241,10 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		var modal_small_icon = document.createElement('small');
 
 		var modifier_title = document.createElement('input');
-			$(modifier_title).attr("type","image").attr("src","./img/modifier_small.png");
+			$(modifier_title).attr("type","image").attr("src","./src/img/modifier_small.png");
 
 		var supprimer_title = document.createElement('input');
-			$(supprimer_title).addClass("close").attr("type","image").attr("src","./img/supprimer_small.png").attr("onclick",'supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")').attr("data-dismiss","modal").attr("aria-label","close"); 
+			$(supprimer_title).addClass("close").attr("type","image").attr("src","./src/img/supprimer_small.png").attr("onclick",'supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")').attr("data-dismiss","modal").attr("aria-label","close"); 
 
 		var button_close = document.createElement('button');
 			$(button_close).addClass("close").attr("type","button").attr("data-dismiss","modal").attr("aria-label","close");
@@ -254,7 +254,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 
 			supprimer_title.type = 'image'; 
-			supprimer_title.src = './img/supprimer_small.png';
+			supprimer_title.src = './src/img/supprimer_small.png';
 			supprimer_title.setAttribute('onclick','supprimer_tache("'+lien_modal.id+'","'+modal_fade.id+'")');
 			supprimer_title.setAttribute('data-dismiss','modal');
 			supprimer_title.setAttribute('aria-label','close'); 
@@ -313,7 +313,6 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		modal_small_icon.append(supprimer_title);
 		modal_header.append(button_close);
 		button_close.append(span);
-		span.append("Fermer");
 		modal_content.append(modal_body)
 		modal_body.append(form_group_modal);
 		form_group_modal.append(container_modal);

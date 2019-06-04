@@ -9,7 +9,6 @@
 
 		public function __construct()
 		{
-						echo $_SESSION['auth'];
 			if (isset($_POST['submit_inscription']))
 			{
 				$this->register();
@@ -25,13 +24,13 @@
 		public function welcome() 
 		{	
 			$insert_user = '';
-			$information = '';
+			$connexion = '';
 			require_once './Views/viewHome.php';
 		}
 
 		public function register() 
 		{	
-			$information = '';
+			$connexion = '';
 			$this->model_user = new model_user();
 			$insert_user = $this->model_user->insert_user();
 
@@ -42,7 +41,7 @@
 		{
 			$insert_user = '';
 			$this->model_user = new model_user();
-			$information = $this->model_user->connexion_user();
+			$connexion = $this->model_user->connexion_user($_POST['email_connexion'],$_POST['mdp_connexion'],false);
 
 			require_once './Views/viewHome.php';
 		}

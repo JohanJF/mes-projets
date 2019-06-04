@@ -5,7 +5,7 @@
 
 		
 		
-		/*public function user_info($user_id)
+		public function user_info($user_id)
 		{
 				
 
@@ -38,7 +38,7 @@
 			} 
 
 
-			//-----------
+			//----------- Récupère les informations de l'utilisateur connecté
 
 			$result = $this->select_req('
 				SELECT * 
@@ -46,11 +46,13 @@
 				WHERE user_id = ?
 
 			', [$user_id]);
+
+			return $result->fetch();
 		}
 
 		/* Fonction permettant de modifier les données de l'user */
 
-		/*function update($connexion,$requete,$click)
+		function update($connexion,$requete,$click)
 		{
 			switch ($click) 
 			{
@@ -90,7 +92,7 @@
 			$result->execute(array(
 				$_SESSION['user_id']
 			));
-		}*/
+		}
 		
 	}
 
