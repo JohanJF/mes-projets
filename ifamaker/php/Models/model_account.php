@@ -13,28 +13,28 @@
 
 			if (isset($_POST['user_1'])) 
 			{
-				update($connexion,$_POST['modifier_info_user'],'user_1');
+				$this->update($_POST['modifier_info_user'],'user_1');
 			}
 			else if (isset($_POST['user_2'])) 
 			{
-				update($connexion,$_POST['modifier_info_user'],'user_2');
+				$this->update($_POST['modifier_info_user'],'user_2');
 			}
 			else if (isset($_POST['user_3'])) 
 			{
-				update($connexion,$_POST['modifier_info_user'],'user_3');
+				$this->update($_POST['modifier_info_user'],'user_3');
 			}
 			else if (isset($_POST['user_4'])) 
 			{
-				update($connexion,$_POST['modifier_info_user'],'user_4');
+				$this->update($_POST['modifier_info_user'],'user_4');
 			}
 			else if (isset($_POST['user_5'])) 
 			{
-				update($connexion,$_POST['modifier_info_user'],'user_5');
+				$this->update($_POST['modifier_info_user'],'user_5');
 			}
 
 			if (isset($_POST['supprimer_compte'])) 
 			{
-			 	delete_account($connexion);
+			 	$this->delete_account($connexion);
 			} 
 
 
@@ -52,8 +52,12 @@
 
 		/* Fonction permettant de modifier les données de l'user */
 
-		function update($connexion,$requete,$click)
+		function update($requete,$click)
 		{
+
+			$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+			$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
 			switch ($click) 
 			{
 				case 'user_1':
