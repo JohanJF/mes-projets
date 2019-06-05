@@ -20,7 +20,7 @@
 				/* Redirection si user non connecté */
 				if(isset($_SESSION['auth']) && $_SESSION['auth'] === true)
 				{
-					header('Location: http://localhost/mes-projets/ifamaker/php/index.php?rqt=projet');
+					header('Location: http://localhost/mes-projets/ifamaker/index.php?rqt=projet');
 				}
 				else
 				{

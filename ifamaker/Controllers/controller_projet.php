@@ -22,7 +22,7 @@
 			/* Redirection si user non connecté */
 			if(!isset($_SESSION['auth']) || $_SESSION['auth'] == false)
 			{
-				header('Location: http://localhost/mes-projets/ifamaker/php/index.php');
+				header('Location: http://localhost/mes-projets/ifamaker/index.php');
 			} 
 			else{
 				require_once './Views/viewProjet.php';

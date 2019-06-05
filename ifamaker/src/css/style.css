@@ -16,12 +16,27 @@ main {
 main>.row {
 	height: 100%;
 }
+
+/* content center (index) */
 #aside {
 	height: 100%;
 	display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.welcome {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg-section {
+  background-color: #C0C0C0;
+  padding: 20px 40px;
+}
+/* ------------------- */
 
 .tache_detail:hover { 
 			background-color: #D2853F; 
@@ -107,6 +122,4 @@ a.header_nav {
 
 /* ------------------- */
 
-.bg-section {
-  background-color: #C0C0C0;
-}
+

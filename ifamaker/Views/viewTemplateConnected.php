@@ -17,7 +17,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>IfaMaker</title>
+	<title><?= $title ?></title>
 	<link rel="stylesheet" type="text/css" href="./src/css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/style.css">
 	<script type="text/javascript" src="./src/js/jquery-3.4.1.js"></script>

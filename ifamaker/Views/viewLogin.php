@@ -7,11 +7,13 @@
 	<!-- MAIN -->
 	<div class="row">
 		<article id="content" class="col-9 bg-grey">
-			<div class="container">
+			<div class="container welcome">
 				<div class="row my-3">
 					<section class="col-6">
-						<div class="bg-section">
-							<p>hello</p>
+						<div class="bg-section jumbotron shadow">
+							<p>
+								Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans.
+							</p>
 						</div>
 					</section>
 					<section class="col-6 text-center">
@@ -24,8 +26,10 @@
 						<img class="shadow p-1 bg-white rounded" src="./src/img/work.jpg">
 					</section>
 					<section class="col-6">
-						<div class="bg-section">
-							<p>hello</p>
+						<div class="bg-section jumbotron shadow">
+							<p>
+								Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans.
+							</p>
 						</div>
 					</section>
 				</div>
