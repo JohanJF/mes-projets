@@ -3990,7 +3990,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #FF7A00;
 }
 
 .nav-tabs .nav-item {
@@ -4004,20 +4004,25 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  color: #FF7A00;
+  border-color: #AAAAAA #AAAAAA #FF7A00;
+}
+
+.nav-title {
+  color: #000000;
 }
 
 .nav-tabs .nav-link.disabled {
-  color: #6c757d;
+  color: #FF7A00;
   background-color: transparent;
   border-color: transparent;
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  color: #fff;
+  background-color: #878787;
+  border-color: #FF7A00 #FF7A00 #FF7A00;
 }
 
 .nav-tabs .dropdown-menu {
