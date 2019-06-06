@@ -33,13 +33,10 @@
 	          <section id="accordeon" class="col collapse" aria-labelledby="titre1" data-parent="#accordion">
 	            <div class="container-fluid">
 	              <div class="row px-5">
-	                <article class="col-4 border-left py-5">
-	                  <h1 class="text-light">Collaboratif</h1>
-	                </article>
-	                <article class="col-4 border-left py-5">
-	                	<h1 class="text-light">Tableaux</h1>
-	                </article>
-	                <a href="?rqt=account" class="col-4 border-left py-5 header_nav">
+	                <a href="?rqt=perso#nav-home" class="col-6 border-left py-5 header_nav">
+	                  <h1 class="text-light">Tableaux - collaboratif</h1>
+	                </a>
+	                <a href="?rqt=account" class="col-6 border-left py-5 header_nav">
 		                  <h1 class="text-light">Mon compte</h1>
 	            	</a>
 	              </div>

@@ -10,13 +10,24 @@
 
 		public function __construct()
 		{
-			$this->perso();	
+			if(session_status() == PHP_SESSION_NONE)
+			{
+				session_start();
+				$this->perso();	
+			}
 		} 
 			
 
 		public function perso() 
 		{	
-			require_once './Views/viewPerso.php';
+			if(!isset($_SESSION['auth']) || $_SESSION['auth'] == false)
+			{
+				header('Location: http://localhost/mes-projets/ifamaker/index.php');
+			} 
+			else
+			{
+				require_once './Views/viewPerso.php';
+			}
 		}
 	}
 
