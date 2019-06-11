@@ -6,6 +6,37 @@ var updated = false; // variable servant à la modification du titre de la table
 function creer_table()
 {
 
+	$(document).ready(function(){
+     
+	    $("#btn_table").click(function(e){
+		        e.preventDefault();
+		 
+		        $.post(
+		            'index.php', // Un script PHP que l'on va créer juste après
+		            {
+		                username : $("#username").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+		            },
+		 
+		            function(data){
+
+
+		                if(data == 'Success'){
+		                     // Le membre est connecté. Ajoutons lui un message dans la page HTML.
+		 						console.log('1')
+		                     $("#test").html("<p>Vous avez été connecté avec succès !</p>");
+		                }
+		                else{
+		                     // Le membre n'a pas été connecté. (data vaut ici "failed")
+		 
+		                     $("#test").html("<p>Erreur lors de la connexion...</p>");
+		                }
+		         
+		            },
+		            'text'
+		         );
+		    });
+	});	
+
 	//----------------------    ETAPE 1    -----------------------------------------------
 
 	/* création de mes noeuds constituant une table */
@@ -135,7 +166,7 @@ function creer_table()
 			$(div_input_group_creation).addClass('input-group-append');
 
 		var button_creation = document.createElement('button');
-			$(button_creation).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","onclick","creer_table()").attr("id","btn_table");
+			$(button_creation).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","onclick","creer_table()");
 
 		/* imbrication */
 		mon_article_creation.append(section_creation);
@@ -152,32 +183,7 @@ function creer_table()
 		$("#ma_base").append(mon_article_creation);
 
 		ma_tache = 0;
-		id_table++;	// incrémentation de l'id unique de la table	
-
-		// On reprend le même id que dans le précédent chapitre
-
-		/*$("#btn_table").click(function(){
-		     
-		    $.ajax({
-		       url : 'test.php',
-		       type : 'POST',
-		       dataType : 'html',
-		       success : function(code_html, statut){
-		           $(code_html).appendTo("#ma_base"); // On passe code_html à jQuery() qui va nous créer l'arbre DOM !
-		       },
-
-		       error : function(resultat, statut, erreur){
-		         
-		       },
-
-		       complete : function(resultat, statut){
-
-		       }
-
-		    });
-		   
-		});*/
-
+		id_table++;	// incrémentation de l'id unique de la table
 
 }
 
@@ -541,4 +547,6 @@ function supprimer_tache(id_tache,id_modal)
 	}
 	console.log(modal);
 }
+
+
 

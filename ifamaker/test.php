@@ -5,17 +5,16 @@
      */
      
     $username = "jf";
+    $password = "mada";
  
-    if( isset($_POST['username']){
+    if( isset($_POST['username']) && isset($_POST['password']) ){
  
-        if($_POST['username'] == $username
-        { // Si les infos correspondent...
+        if($_POST['username'] == $username && $_POST['password'] == $password){ // Si les infos correspondent...
             session_start();
             $_SESSION['user'] = $username;
             echo "Success";    
         }
-        else
-        { // Sinon
+        else{ // Sinon
             echo "Failed";
         }
     }

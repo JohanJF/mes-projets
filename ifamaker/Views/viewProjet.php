@@ -77,7 +77,7 @@
 	</header>
 
 <!-- MAIN -->
-
+	<div id="test"></div>
 	<main class="container">
 		<div class="row" id="ma_base">
 			<article class="col my-3">
@@ -154,12 +154,12 @@
 				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
 			    	<h5 class="card-title text-white">Ajouter une table</h5>
 			    	<div class="card-text my-2">
-			    	 	<div class="input-group input-group-sm">
-		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
+			    	 	<form class="input-group input-group-sm">
+		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" id="username" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button id="btn_table" class="btn btn-outline-grey" type="button"  onclick="creer_table()">Créer</button>
+							    <button type="button" class="btn btn-outline-grey" onclick="creer_table()" id="btn_table"  >Créer</button>
 							  </div>
-						</div>
+						</form>
 				    </div>
 				  </div>
 				</section>
@@ -167,10 +167,11 @@
 		</div>
 		<span id="fenetre_modal"></span>	
 	</main>
+	
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
