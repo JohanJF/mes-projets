@@ -35,10 +35,10 @@
 	          <section id="accordeon" class="col collapse" aria-labelledby="titre1" data-parent="#accordion">
 	            <div class="container-fluid">
 	              <div class="row px-5">
-	                <a href="?rqt=perso#nav-home" class="col-6 border-left py-5 header_nav">
+	                <a href="?rqt=perso&user=<?=$_SESSION['user_id']?>" class="col-6 border-left py-5 header_nav">
 	                  <h1 class="text-light">Tableaux - collaboratif</h1>
 	                </a>
-	                <a href="?rqt=account" class="col-6 border-left py-5 header_nav">
+	                <a href="?rqt=account&user=<?=$_SESSION['user_id']?>" class="col-6 border-left py-5 header_nav">
 		                  <h1 class="text-light">Mon compte</h1>
 	            	</a>
 	              </div>
@@ -55,7 +55,7 @@
 		            </a>
 		         </article>
 				<div class="col-9 px-3 text-center">
-					<a href="?rqt=projet"><img src="./src/img/logo.png" /></a>
+					<a href="?rqt=projet&user=<?=$_SESSION['user_id']?>"><img src="./src/img/logo.png" /></a>
 				</div>
 
 				<div class="col-2 text-right container">
@@ -157,7 +157,7 @@
 			    	 	<div class="input-group input-group-sm">
 		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button class="btn btn-outline-grey" type="button"  onclick="creer_table()">Créer</button>
+							    <button id="btn_table" class="btn btn-outline-grey" type="button"  onclick="creer_table()">Créer</button>
 							  </div>
 						</div>
 				    </div>
@@ -168,6 +168,7 @@
 		<span id="fenetre_modal"></span>	
 	</main>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

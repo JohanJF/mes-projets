@@ -135,7 +135,7 @@ function creer_table()
 			$(div_input_group_creation).addClass('input-group-append');
 
 		var button_creation = document.createElement('button');
-			$(button_creation).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","onclick","creer_table()");
+			$(button_creation).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","onclick","creer_table()").attr("id","btn_table");
 
 		/* imbrication */
 		mon_article_creation.append(section_creation);
@@ -153,6 +153,31 @@ function creer_table()
 
 		ma_tache = 0;
 		id_table++;	// incrémentation de l'id unique de la table	
+
+		// On reprend le même id que dans le précédent chapitre
+
+		/*$("#btn_table").click(function(){
+		     
+		    $.ajax({
+		       url : 'test.php',
+		       type : 'POST',
+		       dataType : 'html',
+		       success : function(code_html, statut){
+		           $(code_html).appendTo("#ma_base"); // On passe code_html à jQuery() qui va nous créer l'arbre DOM !
+		       },
+
+		       error : function(resultat, statut, erreur){
+		         
+		       },
+
+		       complete : function(resultat, statut){
+
+		       }
+
+		    });
+		   
+		});*/
+
 
 }
 

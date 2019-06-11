@@ -57,7 +57,7 @@
 
 			if ($login_success == true) 
 			{
-				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/index.php?rqt=perso');
+				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/index.php?rqt=perso&user='.$_SESSION['user_id']);
 				//return "<p class='badge badge-success'>connexion réussi</p>";
 				return '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
 			}
