@@ -8,7 +8,7 @@ function creer_table()
 
 	$(document).ready(function(){
      
-	    $("#btn_table").click(function(e){
+	    $(".btn_table").click(function(e){
 		        e.preventDefault();
 		 
 		        $.post(
@@ -552,7 +552,7 @@ function supprimer_tache(id_tache,id_modal)
 
 $(document).ready(function(){
      
-	    $("#btn_table").click(function(e){
+	    $(".btn_table").click(function(e){
 
 	    		//----------------------    ETAPE 1    -----------------------------------------------
 
@@ -683,7 +683,7 @@ $(document).ready(function(){
 			$(div_input_group_creation).addClass('input-group-append');
 
 		var button_creation = document.createElement('button');
-			$(button_creation).attr("type","button").addClass("btn btn-outline-grey").attr("id","btn_table"); //attr("onclick","creer_table()");
+			$(button_creation).attr("type","button").addClass("btn btn-outline-grey"); //attr("onclick","creer_table()");
 
 		/* imbrication */
 		mon_article_creation.append(section_creation);

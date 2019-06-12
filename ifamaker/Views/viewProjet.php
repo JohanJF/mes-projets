@@ -143,7 +143,7 @@
 						  </li>
 -->						</ul>	
 				    </div>
-				    <button href="#" class="btn btn-modifier card-link">Modifier</button>
+				    <button href="#" class="btn btn-modifier card-link btn_table">Modifier</button>
 				    <button href="#" class="btn btn-supprimer card-link">Supprimer</button>
 				  </div>
 				</section>
@@ -157,7 +157,7 @@
 			    	 	<form class="input-group input-group-sm">
 		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button type="button" class="btn btn-outline-grey" id="btn_table"  >Créer</button>
+							    <button type="button" class="btn btn-outline-grey btn_table" >Créer</button>
 							  </div>
 						</form>
 				    </div>
