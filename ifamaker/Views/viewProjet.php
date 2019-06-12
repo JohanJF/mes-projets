@@ -155,9 +155,9 @@
 			    	<h5 class="card-title text-white">Ajouter une table</h5>
 			    	<div class="card-text my-2">
 			    	 	<form class="input-group input-group-sm">
-		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" id="username" onkeypress="if (event.keyCode == 13) creer_table()" />
+		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button type="button" class="btn btn-outline-grey" onclick="creer_table()" id="btn_table"  >Créer</button>
+							    <button type="button" class="btn btn-outline-grey" id="btn_table"  >Créer</button>
 							  </div>
 						</form>
 				    </div>

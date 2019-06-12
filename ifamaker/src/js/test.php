@@ -6,16 +6,12 @@
      
     $username = "jf";
  
-    if( isset($_POST['username']){
+    if( isset($_POST['titre_table'])){
  
-        if($_POST['username'] == $username
-        { // Si les infos correspondent...
-            session_start();
-            $_SESSION['user'] = $username;
+        if($_POST['titre_table'] == $username ){ // Si les infos correspondent...
             echo "Success";    
         }
-        else
-        { // Sinon
+        else{ // Sinon
             echo "Failed";
         }
     }
