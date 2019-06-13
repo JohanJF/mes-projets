@@ -517,39 +517,79 @@ function supprimer_tache(id_tache,id_modal)
 	console.log(modal);
 }
 
-	// REQUÊTE AJAX
 
-	$(document).ready(function(){
+// REQUÊTE AJAX
 
-     	$("#zone").on("click", "#add_list", function(e){
-     		//$(".add_table").click(function(e){
+/* Ajouter list dans BDD */
+$(document).ready(function(){
 
-	    	e.preventDefault();
+ 	$("#zone").on("click", "#add_list", function(e){
+ 		//$(".add_table").click(function(e){
 
-	    	
+    	e.preventDefault();
+
+    	
+
+        $.post(
+            'test.php', // Un script PHP que l'on va créer juste après
+            {
+                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+            },
  
-	        $.post(
-	            'test.php', // Un script PHP que l'on va créer juste après
-	            {
-	                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-	            },
-	 
-	            function(data){
+            function(data){
 
-	            	if (data == "Success") 
-	            	{
-						$('#test').html('requete AJAX');
-	            	}
-	            	else
-	            	{
-	            		$('#test').html('Erreur');
-	            	}
-	                
-	         
-	            },
-	            'text'
-	         );
-	        creer_table();
-	     });
-    
-	});	
+            	if (data == "Success") 
+            	{
+					$('#test').html('requete AJAX');
+            	}
+            	else
+            	{
+            		$('#test').html('Erreur');
+            	}
+                
+         
+            },
+            'text'
+         );
+        creer_table();
+     });
+
+});	
+
+
+/* Ajouter tache dans BDD *//*
+$(document).ready(function(){
+
+ 	$("#zone").on("click", "[class^='titre_tache-']", function(e){
+ 		//$(".add_table").click(function(e){
+
+    	e.preventDefault();
+
+    	
+
+        $.post(
+            'add_list.php', // Un script PHP que l'on va créer juste après
+            {
+                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+            },
+ 
+            function(data){
+
+            	if (data == "Success") 
+            	{
+					$('#test').html('requete AJAX');
+            	}
+            	else
+            	{
+            		$('#test').html('Erreur');
+            	}
+                
+         
+            },
+            'text'
+         );
+        creer_table();
+     });
+
+});	
+*/

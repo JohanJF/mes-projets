@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * Nous créons deux variables : $username et $password qui valent respectivement "Sdz" et "salut"
+     * injecte le titre et l'id étrangère de la tache dans la BDD
      */
      
      try 
@@ -13,7 +13,7 @@
             $conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $result = $conn->prepare('INSERT INTO list(title,id_board_foreign) VALUES (:title,:id)');
+            $result = $conn->prepare('INSERT INTO task(title,description,id_list_foreign) VALUES (:title,:description,:id)');
             $result->execute(
                                  array(
                                     'title' => $title,
@@ -32,16 +32,5 @@
         {
             echo "Une erreur s'est produite";
         }
-    /*$username = "jf";
- 
-    if( isset($_POST['username'])){
- 
-        if($_POST['username'] == $username ){ // Si les infos correspondent...
 
-            echo "Success";    
-        }
-        else{ // Sinon
-            echo "Failed";
-        }
-    }*/
 ?>
