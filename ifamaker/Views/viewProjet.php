@@ -23,7 +23,6 @@
 	<link rel="stylesheet" type="text/css" href="./src/css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/style.css">
 	<script type="text/javascript" src="./src/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="./src/js/main.js"></script>
 </head>
 <body id="body-connected" class="bg-grey">
 	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
@@ -78,7 +77,7 @@
 
 <!-- MAIN -->
 	<div id="test"></div>
-	<main class="container">
+	<main class="container" id="zone">
 		<div class="row" id="ma_base">
 			<article class="col my-3">
 				<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
@@ -143,7 +142,7 @@
 						  </li>
 -->						</ul>	
 				    </div>
-				    <button href="#" class="btn btn-modifier card-link btn_table">Modifier</button>
+				    <button href="#" class="btn btn-modifier card-link">Modifier</button>
 				    <button href="#" class="btn btn-supprimer card-link">Supprimer</button>
 				  </div>
 				</section>
@@ -157,7 +156,7 @@
 			    	 	<form class="input-group input-group-sm">
 		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
 							  <div class="input-group-append">
-							    <button type="button" class="btn btn-outline-grey btn_table" >Créer</button>
+							    <button type="button" class="btn btn-outline-grey" id="add_list">Créer</button>
 							  </div>
 						</form>
 				    </div>
@@ -171,6 +170,7 @@
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

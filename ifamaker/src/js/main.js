@@ -5,38 +5,7 @@ var updated = false; // variable servant à la modification du titre de la table
 
 function creer_table()
 {
-
-	$(document).ready(function(){
-     
-	    $(".btn_table").click(function(e){
-		        e.preventDefault();
-		 
-		        $.post(
-		            'index.php', // Un script PHP que l'on va créer juste après
-		            {
-		                username : $("#username").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-		            },
-		 
-		            function(data){
-
-
-		                if(data == 'Success'){
-		                     // Le membre est connecté. Ajoutons lui un message dans la page HTML.
-		 						console.log('1')
-		                     $("#test").html("<p>Vous avez été connecté avec succès !</p>");
-		                }
-		                else{
-		                     // Le membre n'a pas été connecté. (data vaut ici "failed")
-		 
-		                     $("#test").html("<p>Erreur lors de la connexion...</p>");
-		                }
-		         
-		            },
-		            'text'
-		         );
-		    });
-	});	
-
+	
 	//----------------------    ETAPE 1    -----------------------------------------------
 
 	/* création de mes noeuds constituant une table */
@@ -166,7 +135,7 @@ function creer_table()
 			$(div_input_group_creation).addClass('input-group-append');
 
 		var button_creation = document.createElement('button');
-			$(button_creation).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","onclick","creer_table()");
+			$(button_creation).attr("type","button").addClass("btn btn-outline-grey").attr("id","add_list");
 
 		/* imbrication */
 		mon_article_creation.append(section_creation);
@@ -548,183 +517,39 @@ function supprimer_tache(id_tache,id_modal)
 	console.log(modal);
 }
 
+	// REQUÊTE AJAX
 
+	$(document).ready(function(){
 
-$(document).ready(function(){
-     
-	    $(".btn_table").click(function(e){
+     	$("#zone").on("click", "#add_list", function(e){
+     		//$(".add_table").click(function(e){
 
-	    		//----------------------    ETAPE 1    -----------------------------------------------
+	    	e.preventDefault();
 
-	/* création de mes noeuds constituant une table */
-
-	var mon_article = document.createElement("article");
-		$(mon_article).addClass("col my-3").attr("draggable","true");
-		mon_article.id = id_table; // incrémentation de l'id unique de ma table
-
-
-	var ma_section = document.createElement("section");
-		$(ma_section).addClass("card bg-grey-darkskin border border-IFA").css("width","16rem");
-
-
-	var div_carte_body = document.createElement("div");
-		$(div_carte_body).addClass("card-body");
-
-
-	var titre_carte = document.createElement("h5");
-		$(titre_carte).addClass("card-title text-white");
-
-	var span_titre_carte = document.createElement("span");
-		span_titre_carte.id = 'titre-' + id_table; // id unique du titre de la table
-
-
-	var texte_carte = document.createElement("div");
-		$(texte_carte).addClass("card-text my-2");
-
-	var liste_carte = document.createElement("ul");
-		$(liste_carte).addClass("list-group");
-		liste_carte.id = "ma_liste-" + mon_article.id; // id unique de la liste
-
-
-	var liste_input_carte = document.createElement("li");
-		$(liste_input_carte).addClass("list-group-item border border-dark");
-		liste_input_carte.id = 'li-'+id_table; // id unique du li qui contient balise input (titre , cf : fonction supprimer_input)
-
-
-	var div_input_carte = document.createElement("div");
-		$(div_input_carte).addClass("input-group input-group-sm");
-
-	var input_carte = document.createElement("input");
-		input_carte.id = 'titre_tache-' + id_table;
-		$(input_carte).attr("type","text").addClass("form-control").attr("placeholder","Ajouter tâche").attr("onkeypress",'if (event.keyCode == 13) creer_tache("'+liste_carte.id+'","'+input_carte.id+'","'+liste_input_carte.id+'","'+span_titre_carte.id+'")');
-		
-
-
-	var div_bouton_carte = document.createElement("div");
-		$(div_bouton_carte).addClass("input-group-append");
-
-
-	var bouton_carte_creer = document.createElement("button");
-		$(bouton_carte_creer).addClass("btn btn-outline-secondary").attr("type","button").attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
-
-		console.log(liste_carte.id);
-
-
-	var bouton_carte_modifier = document.createElement("button");
-		$(bouton_carte_modifier).addClass("btn btn-modifier card-link").attr("href","#").attr("onclick","modifier_table('"+span_titre_carte.id+"',"+mon_article.id+")");
-		console.log(span_titre_carte.id);
-
-
-	var bouton_carte_supprimer = document.createElement("button");
-		$(bouton_carte_supprimer).addClass("btn btn-supprimer card-link").attr("href","#").attr("onclick","supprimer_table("+mon_article.id+")");
-
-
-		/* on imbrique le tout */
-
-		mon_article.append(ma_section);
-		ma_section.append(div_carte_body);
-		div_carte_body.append(titre_carte);
-		titre_carte.append(span_titre_carte);
-		span_titre_carte.append($("#titre_table").val());
-		div_carte_body.append(texte_carte);
-		texte_carte.append(liste_carte);
-		liste_carte.append(liste_input_carte);
-		liste_input_carte.append(div_input_carte);
-		div_input_carte.append(input_carte);
-		div_input_carte.append(div_bouton_carte);
-		div_bouton_carte.append(bouton_carte_creer);
-		bouton_carte_creer.append("Créer");
-		div_carte_body.append(bouton_carte_modifier);
-		bouton_carte_modifier.append("Modifier");
-		div_carte_body.append(bouton_carte_supprimer);
-		bouton_carte_supprimer.append("Supprimer");
-
-		/* on ajoute le contenu entier dans la div "ma_base" */
-		$("#ma_base").append(mon_article);
-
-
-		//----------------------    ETAPE 2    -----------------------------------------------
-
-
-		/* On supprime la table qui nou permet de créer une nouvelle table */
-
-		supprimer_table('nouvelle_table');  
-
-
-		//----------------------    ETAPE 3    -----------------------------------------------
-
-
-		/* on crée à la suite une nouvelle table permettant la creation d'une table */
-
-		var mon_article_creation = document.createElement('article');
-			$(mon_article_creation).addClass('col my-3');
-			mon_article_creation.id = 'nouvelle_table';
-
-		var section_creation = document.createElement('section');
-			$(section_creation).addClass('card rounded-top').css("width","16rem");
-
-		var div_card_creation = document.createElement('div');
-			$(div_card_creation).addClass('card-body bg-grey-darkskin border border-IFA rounded-top');
-
-		var titre_creation = document.createElement('h5');
-			$(titre_creation).addClass('card-title text-white');
-
-		var div_card_text_creation = document.createElement('div');
-			$(div_card_text_creation).addClass('card-text my-2');
-
-		var div_input_creation = document.createElement('form');
-			$(div_input_creation).addClass('input-group input-group-sm');
-
-		var input_creation = document.createElement('input');
-			$(input_creation).addClass("form-control").attr("type","text").attr("placeholder","Titre").attr("onkeypress","if (event.keyCode == 13) creer_table()");
-			input_creation.id = 'titre_table';
-
-		var div_input_group_creation = document.createElement('div');
-			$(div_input_group_creation).addClass('input-group-append');
-
-		var button_creation = document.createElement('button');
-			$(button_creation).attr("type","button").addClass("btn btn-outline-grey"); //attr("onclick","creer_table()");
-
-		/* imbrication */
-		mon_article_creation.append(section_creation);
-		section_creation.append(div_card_creation);
-		div_card_creation.append(titre_creation);
-		titre_creation.append("Ajouter une table");
-		div_card_creation.append(div_input_creation);
-		div_input_creation.append(input_creation);
-		div_input_creation.append(div_input_group_creation);
-		div_input_group_creation.append(button_creation);
-		button_creation.append("Créer");
-
-		/* On ajoute le tout imbriqué dans la div "ma_base" à la suite */	
-		$("#ma_base").append(mon_article_creation);
-
-		ma_tache = 0;
-		id_table++;	// incrémentation de l'id unique de la table
-
-
-        e.preventDefault();
+	    	
  
-        $.post(
-            'test.php', // Un script PHP que l'on va créer juste après
-            {
-                username : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-            },
- 
-            function(data){
+	        $.post(
+	            'test.php', // Un script PHP que l'on va créer juste après
+	            {
+	                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+	            },
+	 
+	            function(data){
 
-
-                if(data == 'Success'){
-                     // Le membre est connecté. Ajoutons lui un message dans la page HTML.
-                     $("#test").html("<p>Vous avez été connecté avec succès !</p>");
-                }
-                else{
-                     // Le membre n'a pas été connecté. (data vaut ici "failed")
-                     $("#test").html("<p>Erreur lors de la connexion...</p>");
-                }
-         
-            },
-            'text'
-         );
-    });
-});	
+	            	if (data == "Success") 
+	            	{
+						$('#test').html('requete AJAX');
+	            	}
+	            	else
+	            	{
+	            		$('#test').html('Erreur');
+	            	}
+	                
+	         
+	            },
+	            'text'
+	         );
+	        creer_table();
+	     });
+    
+	});	
