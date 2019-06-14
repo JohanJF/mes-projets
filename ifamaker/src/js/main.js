@@ -531,13 +531,13 @@ $(document).ready(function(){
     	
 
         $.post(
-            'test.php', // Un script PHP que l'on va créer juste après
+            'add_list.php', // Un script PHP que l'on va créer juste après
             {
                 success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
             },
  
             function(data){
-
+            	console.log(data);
             	if (data == "Success") 
             	{
 					$('#test').html('Ajout liste');
@@ -557,7 +557,7 @@ $(document).ready(function(){
 });	
 
 
-/* Ajouter tache dans BDD */
+/* Ajouter tache dans BDD *//*
 $(document).ready(function(){
 
  	$("#zone").on("click", ".add_task", function(e){
@@ -592,3 +592,4 @@ $(document).ready(function(){
      });
 
 });	
+*/
