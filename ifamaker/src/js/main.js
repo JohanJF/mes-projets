@@ -57,7 +57,7 @@ function creer_table()
 
 
 	var bouton_carte_creer = document.createElement("button");
-		$(bouton_carte_creer).addClass("btn btn-outline-secondary").attr("type","button").attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
+		$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-secondary add_task");//.attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
 
 		console.log(liste_carte.id);
 
@@ -363,7 +363,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 
 		var bouton_carte_creer = document.createElement("button");
-			$(bouton_carte_creer).addClass("btn btn-outline-grey").attr("type","button").attr("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"','"+titre_table+"')");
+			$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-grey add_task");//.attr("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"','"+titre_table+"')");
 
 		liste_input_carte.append(input_carte);
 		liste_input_carte.append(div_bouton_carte);
@@ -540,11 +540,11 @@ $(document).ready(function(){
 
             	if (data == "Success") 
             	{
-					$('#test').html('requete AJAX');
+					$('#test').html('Ajout liste');
             	}
             	else
             	{
-            		$('#test').html('Erreur');
+            		$('#test').html('Erreur ajout liste');
             	}
                 
          
@@ -557,10 +557,10 @@ $(document).ready(function(){
 });	
 
 
-/* Ajouter tache dans BDD *//*
+/* Ajouter tache dans BDD */
 $(document).ready(function(){
 
- 	$("#zone").on("click", "[class^='titre_tache-']", function(e){
+ 	$("#zone").on("click", ".add_task", function(e){
  		//$(".add_table").click(function(e){
 
     	e.preventDefault();
@@ -568,28 +568,27 @@ $(document).ready(function(){
     	
 
         $.post(
-            'add_list.php', // Un script PHP que l'on va créer juste après
+            'add_task.php', // Un script PHP que l'on va créer juste après
             {
-                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                success : $('#titre_tache-0').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
             },
  
             function(data){
 
             	if (data == "Success") 
             	{
-					$('#test').html('requete AJAX');
+					$('#test').html('Ajout tâche');
             	}
             	else
             	{
-            		$('#test').html('Erreur');
+            		$('#test').html('Erreur ajout tâche');
             	}
                 
          
             },
             'text'
          );
-        creer_table();
+        creer_tache();
      });
 
 });	
-*/
