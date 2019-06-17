@@ -17,37 +17,49 @@
 				<div class="tab-pane fade show active mx-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<!-- PERSONNEL -->
 
-					<div class="bg-IFA border border-IFA rounded my-2 container px-5">
+					<div class="bg-white border border-dark rounded my-2 container px-5">
 						<div class="row">
 							<article class="col-12 text-center">
-								<label class="text-white text-center">Créer un tableau personnel</label>
+								<h5>Créer un tableau personnel</h5>
+							</article>
+							<article class="col-12">
+								<label>Créez un tableau où vous serez le seul à consulter et modifier</label>
 							</article>
 							<form class="col-12 text-center" action="?rqt=perso&user=<?=$_SESSION['user_id']?>" method="POST">
 								 <div class="input-group mb-3">
-								  <input type="text" class="form-control" placeholder="Nom tableau">
+								  <input type="text" class="form-control" placeholder="Nom tableau" name="tableau_perso">
 								  <div class="input-group-append">
-								    <input type="submit" class=" btn" id="" />
+								    <input type="submit" class=" btn" name="submit_tab_perso" />
 								  </div>
 								</div>
 							</form>
 						</div>
 					</div>
 
+					<?= 
+						
+							var_dump($mes_tableau);
+						
+					?>
+
 					<!-- PERSONNEL -->
 				</div>
-				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+				<div class="tab-pane fade mx-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 					<!-- COLLABORATIF -->
 
-					<div class="bg-IFA border border-IFA rounded my-2 container px-5">
+					<div class="bg-white border border-dark rounded my-2 container px-5">
 						<div class="row">
 							<article class="col-12 text-center">
-								<label class="text-white text-center">Créer un tableau collaboratif</label>
+								<h5>Créer un tableau collaboratif</h5>
+							</article>
+							<article class="col-12">
+								<label>Créez un tableau où vous et votre team pourrait consulter et modifier</label>
 							</article>
 							<form class="col-12 text-center" action="?rqt=perso&user=<?=$_SESSION['user_id']?>" method="POST">
 								 <div class="input-group mb-3">
-								  <input type="text" class="form-control" placeholder="Nom tableau">
+								  <input type="text" class="form-control" placeholder="Nom tableau" name="tableau_collab">
 								  <div class="input-group-append">
-								    <input type="submit" class=" btn" id="" />
+								    <input type="submit" class=" btn" name="submit_tab_collab" />
 								  </div>
 								</div>
 							</form>

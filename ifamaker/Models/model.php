@@ -47,7 +47,6 @@ class Model {
 
 		return $res;
 	}
-
 	
 }
 
