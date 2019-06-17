@@ -14,9 +14,47 @@
 				  </div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-			  	<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-			  		Horum adventum praedocti speculationibus fidis rectores militum tessera data sollemni armatos omnes celeri eduxere procursu et agiliter praeterito Calycadni fluminis ponte, cuius undarum magnitudo murorum adluit turres, in speciem locavere pugnandi. neque tamen exiluit quisquam nec permissus est congredi. formidabatur enim flagrans vesania manus et superior numero et ruitura sine respectu salutis in ferrum.
+				<div class="tab-pane fade show active mx-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+					<!-- PERSONNEL -->
+
+					<div class="bg-IFA border border-IFA rounded my-2 container px-5">
+						<div class="row">
+							<article class="col-12 text-center">
+								<label class="text-white text-center">Créer un tableau personnel</label>
+							</article>
+							<form class="col-12 text-center" action="?rqt=perso&user=<?=$_SESSION['user_id']?>" method="POST">
+								 <div class="input-group mb-3">
+								  <input type="text" class="form-control" placeholder="Nom tableau">
+								  <div class="input-group-append">
+								    <input type="submit" class=" btn" id="" />
+								  </div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<!-- PERSONNEL -->
+				</div>
+				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+					<!-- COLLABORATIF -->
+
+					<div class="bg-IFA border border-IFA rounded my-2 container px-5">
+						<div class="row">
+							<article class="col-12 text-center">
+								<label class="text-white text-center">Créer un tableau collaboratif</label>
+							</article>
+							<form class="col-12 text-center" action="?rqt=perso&user=<?=$_SESSION['user_id']?>" method="POST">
+								 <div class="input-group mb-3">
+								  <input type="text" class="form-control" placeholder="Nom tableau">
+								  <div class="input-group-append">
+								    <input type="submit" class=" btn" id="" />
+								  </div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<!-- COLLABORATIF -->
 				</div>
 			</div>
 		</div>

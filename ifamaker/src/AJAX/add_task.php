@@ -7,9 +7,9 @@
      try 
     {
 
-         if( isset($_POST['success']))
+         if( isset($_POST['task']))
          {  
-            $title = $_POST['success'];
+            $title = $_POST['task'];
             $description = "Test";
             $conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,7 +22,7 @@
                                     'id' => 1
                                 )
                             );
-            echo json_encode($data);
+            echo "Success";
             
         }
         else

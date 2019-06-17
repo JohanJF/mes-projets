@@ -1,9 +1,6 @@
 <?php $title = 'Ifamaker'; ?>
 
 <?php 
-	/*$root = $_SERVER['DOCUMENT_ROOT'];
-	define("root", $root);
-	define("mon_fichier", root."add_list.php");*/
 
 	if(session_status() == PHP_SESSION_NONE)
 	{

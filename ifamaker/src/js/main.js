@@ -57,7 +57,7 @@ function creer_table()
 
 
 	var bouton_carte_creer = document.createElement("button");
-		$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-secondary add_task");//.attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
+		$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-secondary").attr("id","add_task"+id_table);//.attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
 
 		console.log(liste_carte.id);
 
@@ -531,7 +531,7 @@ $(document).ready(function(){
     	
 
         $.post(
-            'add_list.php', // Un script PHP que l'on va créer juste après
+            'src/AJAX/add_list.php', // Un script PHP que l'on va créer juste après
             {
                 success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
             },
@@ -557,11 +557,10 @@ $(document).ready(function(){
 });	
 
 
-/* Ajouter tache dans BDD *//*
+/* Ajouter tache dans BDD */
 $(document).ready(function(){
 
- 	$("#zone").on("click", ".add_task", function(e){
- 		//$(".add_table").click(function(e){
+ 	$("#zone").on("click", "#add_task0", function(e){
 
     	e.preventDefault();
 
@@ -570,7 +569,7 @@ $(document).ready(function(){
         $.post(
             'add_task.php', // Un script PHP que l'on va créer juste après
             {
-                success : $('#titre_tache-0').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                task : $('[id^=titre_tache-]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
             },
  
             function(data){
@@ -592,4 +591,3 @@ $(document).ready(function(){
      });
 
 });	
-*/
