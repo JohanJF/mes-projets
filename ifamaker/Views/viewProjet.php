@@ -167,7 +167,11 @@
 		<span id="fenetre_modal"></span>	
 	</main>
 	
-
+	<?php 
+		foreach($mes_listes as $mes_listes):
+			echo $mes_listes['title'];
+		endforeach
+	?>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>

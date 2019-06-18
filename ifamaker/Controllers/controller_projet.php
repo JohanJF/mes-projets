@@ -25,6 +25,8 @@
 				header('Location: http://localhost/mes-projets/ifamaker/index.php');
 			} 
 			else{
+				$this->model_projet = new model_projet();
+				$mes_listes = $this->model_projet->mes_listes();
 				require_once './Views/viewProjet.php';
 			}
 			

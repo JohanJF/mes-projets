@@ -4,9 +4,13 @@
 class model_projet extends Model
 {
 	
-	function __construct()
+	public function mes_listes()
 	{
-		# code...
+		$mes_listes = $this->select_req('
+				SELECT * 
+				FROM list');
+
+		return $mes_listes;
 	}
 }
 
