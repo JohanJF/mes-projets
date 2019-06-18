@@ -5,7 +5,7 @@
 
 				<!--CONTENU ARTICLE-->
 
-	<div class="row jumbotron bg-section h-75 border border-dark">
+	<div class="row jumbotron bg-section border border-dark" style="max-height: 75vh;">
 		<div class="col">
 			<nav class="container">
 					<div class="nav nav-tabs row" id="nav-tab" role="tablist">
@@ -36,11 +36,25 @@
 						</div>
 					</div>
 
-					<?= 
+					<div class="container">
+						<div class="row justify-content-between" style="max-height: 50vh; overflow-y: auto; text-overflow: nowrap;">
+							<?php 
+								foreach($mes_tableaux as $mes_tableaux):
+							?>
+									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+									  <div class="card-body">
+									    <h5 class="card-title"><?= $mes_tableaux['title'] ?></h5>
+									    <a href="?rqt=projet&id=<?= $mes_tableaux['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									  </div>
+									</div>
+							<?php
+								endforeach;
+							 ?>
+						</div>							
+					</div>
 						
-							var_dump($mes_tableau);
 						
-					?>
+					
 
 					<!-- PERSONNEL -->
 				</div>

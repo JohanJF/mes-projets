@@ -29,7 +29,7 @@
 				/* Affichage taableaux */
 				$this->model_perso = new model_perso();
 				$tableau = $this->model_perso->insert_tableau_perso();
-				$mes_tableau = $this->model_perso->mes_tableaux_perso();
+				$mes_tableaux = $this->model_perso->mes_tableaux_perso();
 				require_once './Views/viewPerso.php';
 			}
 		}

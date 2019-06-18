@@ -22,11 +22,13 @@ class model_perso extends Model
 
 	public function mes_tableaux_perso()
 	{
-		$result = $this->select_req('
+		$mes_tableaux = $this->select_req('
 				SELECT * 
 				FROM board');
 
-			return $result->fetchAll(PDO::FETCH_BOTH);
+		return $mes_tableaux;
+
+
 	}
 }
 
