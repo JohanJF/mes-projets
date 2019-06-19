@@ -376,13 +376,13 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 	//-------------------------------------------------------------------------------------------
 
 	
-	// nombre de li dans une liste 
+	/*// nombre de li dans une liste 
 
 	var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
 
 	id_tache_increment++; // incrémentation de id_tache
 
-	console.log(lien_modal.href);
+	console.log(lien_modal.href);*/
 }
 
 
@@ -579,20 +579,20 @@ $(document).ready(function(){
 /* Ajouter tache dans BDD */
 $(document).ready(function(){
 
- 	$("#zone").on("click", "#add_task0", function(e){
+ 	$("#zone").on("click", "#add_task1", function(e){
 
     	e.preventDefault();
 
     	
 
         $.post(
-            'add_task.php', // Un script PHP que l'on va créer juste après
+            'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
             {
-                task : $('[id^=titre_tache-]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                task : $('input[id^="titre_tache-"]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
             },
  
             function(data){
-
+            	console.log(data);
             	if (data == "Success") 
             	{
 					$('#test').html('Ajout tâche');
@@ -606,7 +606,6 @@ $(document).ready(function(){
             },
             'text'
          );
-        creer_tache();
      });
 
 });	

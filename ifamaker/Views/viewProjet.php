@@ -157,19 +157,19 @@
 								<span id="titre-2"><?= $mes_listes['title'] ?></span>
 							</h5>
 						<div class="card-text my-2">
-							<ul class="list-group" id="ma_liste-2">
-								<li class="list-group-item border border-dark" id="li-2">
+							<ul class="list-group" id="ma_liste-<?=$mes_listes['id_list']?>">
+								<li class="list-group-item border border-dark" id="li-<?=$mes_listes['id_list']?>">
 									<div class="input-group input-group-sm">
-										<input id="titre_tache-2" type="text" class="form-control" placeholder="Ajouter tâche" onkeypress="if (event.keyCode == 13) creer_tache()">
+										<input id="titre_tache-<?=$mes_listes['id_list']?>" type="text" class="form-control" placeholder="Ajouter tâche">
 										<div class="input-group-append">
-											<button type="button" class="btn btn-outline-secondary" id="add_task2">Créer</button>
+											<button type="button" class="btn btn-outline-secondary" id="add_task<?=$mes_listes['id_list']?>">Créer</button>
 										</div>
 									</div>
 								</li>
 							</ul>
 						</div>
-						<button class="btn btn-modifier card-link" href="#" onclick="modifier_table()">Modifier</button>
-						<button class="btn btn-supprimer card-link" href="#" onclick="supprimer_table()">Supprimer</button>
+						<button class="btn btn-modifier card-link" href="#">Modifier</button>
+						<button class="btn btn-supprimer card-link" href="#">Supprimer</button>
 						</div>
 					</section>
 				</article>
