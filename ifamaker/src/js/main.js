@@ -518,7 +518,25 @@ function supprimer_tache(id_tache,id_modal)
 }
 
 
+
+
 // REQUÊTE AJAX
+
+/* Récupère l'id dans l'URL */
+function $_GET(param) {
+	var vars = {};
+	window.location.href.replace( location.hash, '' ).replace( 
+		/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+		function( m, key, value ) { // callback
+			vars[key] = value !== undefined ? value : '';
+		}
+	);
+
+	if ( param ) {
+		return vars[param] ? vars[param] : null;	
+	}
+	return vars;
+}
 
 /* Ajouter list dans BDD */
 $(document).ready(function(){
@@ -534,6 +552,7 @@ $(document).ready(function(){
             'src/AJAX/add_list.php', // Un script PHP que l'on va créer juste après
             {
                 success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                id : $_GET('id')
             },
  
             function(data){
@@ -591,3 +610,4 @@ $(document).ready(function(){
      });
 
 });	
+

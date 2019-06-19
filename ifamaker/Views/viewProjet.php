@@ -12,7 +12,6 @@
 		session_destroy(); // ferme la session
 		header('Location: #');
 	}
-
  ?>
 
 <!DOCTYPE html>
