@@ -8,7 +8,7 @@ class model_projet extends Model
 	{
 		$mes_listes = $this->select_req('
 				SELECT * 
-				FROM list');
+				FROM list WHERE id_board_foreign = ' . $_GET['id']);
 
 		return $mes_listes;
 	}

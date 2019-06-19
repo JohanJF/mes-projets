@@ -77,7 +77,7 @@
 
 <!-- MAIN -->
 	<div id="test"></div>
-	<main class="container" id="zone">
+	<main class="container-fluid" id="zone">
 		<div class="row" id="ma_base">
 			<article class="col my-3">
 				<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
@@ -148,6 +148,36 @@
 				</section>
 			</article>
 
+			<?php 
+				foreach($mes_listes as $mes_listes):
+			?>
+				<article class="col my-3" draggable="true" id="2">
+					<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
+						<div class="card-body">
+							<h5 class="card-title text-white">
+								<span id="titre-2"><?= $mes_listes['title'] ?></span>
+							</h5>
+						<div class="card-text my-2">
+							<ul class="list-group" id="ma_liste-2">
+								<li class="list-group-item border border-dark" id="li-2">
+									<div class="input-group input-group-sm">
+										<input id="titre_tache-2" type="text" class="form-control" placeholder="Ajouter tâche" onkeypress="if (event.keyCode == 13) creer_tache()">
+										<div class="input-group-append">
+											<button type="button" class="btn btn-outline-secondary" id="add_task2">Créer</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<button class="btn btn-modifier card-link" href="#" onclick="modifier_table()">Modifier</button>
+						<button class="btn btn-supprimer card-link" href="#" onclick="supprimer_table()">Supprimer</button>
+						</div>
+					</section>
+				</article>
+			<?php
+				endforeach
+			?>
+
 			<article class="col my-3" id="nouvelle_table">
 				<section class="card rounded-top" style="width: 16rem;">
 				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
@@ -167,11 +197,7 @@
 		<span id="fenetre_modal"></span>	
 	</main>
 	
-	<?php 
-		foreach($mes_listes as $mes_listes):
-			echo $mes_listes['title'];
-		endforeach
-	?>
+	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>
