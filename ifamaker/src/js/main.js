@@ -134,7 +134,7 @@ function creer_table()
 			$(div_input_group_creation).addClass('input-group-append');
 
 		var button_creation = document.createElement('button');
-			$(button_creation).attr("type","button").addClass("btn btn-outline-grey").attr("id","add_list");
+			$(button_creation).attr("type","button").addClass("btn btn-outline-grey").attr("id","add_list"+id_table);
 
 		/* imbrication */
 		mon_article_creation.append(section_creation);
@@ -362,7 +362,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 
 		var bouton_carte_creer = document.createElement("button");
-			$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-grey add_task");//.attr("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"','"+titre_table+"')");
+			$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-grey add_task").attr('id','add_task'+id_liste);//.attr("onclick","creer_tache('"+id_liste+"','"+id_input+"','"+id_li_input+"','"+titre_table+"')");
 
 		liste_input_carte.append(input_carte);
 		liste_input_carte.append(div_bouton_carte);
@@ -575,10 +575,43 @@ $(document).ready(function(){
 });	
 
 
-/* Ajouter tache dans BDD */
+/* Ajouter tache dans BDD *//*
 $(document).ready(function(){
 
  	$("#zone").on("click", "#add_task1", function(e){
+
+    	e.preventDefault();
+
+    	
+
+        $.post(
+            'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
+            {
+                task : $('input[id^="titre_tache-"]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+            },
+ 
+            function(data){
+            	console.log(data);
+            	if (data == "Success") 
+            	{
+					$('#test').html('Ajout tâche');
+            	}
+            	else
+            	{
+            		$('#test').html('Erreur ajout tâche');
+            	}
+            },
+            'text'
+         );
+        creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
+     });
+
+});	
+*/
+
+$(document).ready(function(){
+
+ 	$('button[id^="add_task"]').on("click", this, function(e){
 
     	e.preventDefault();
 
