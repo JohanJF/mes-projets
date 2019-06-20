@@ -41,6 +41,11 @@ main>.row {
 }
 /* ------------------- */
 
+.tache_detail { 
+      background-color: white; 
+      color : black;
+    }
+
 .tache_detail:hover { 
 			background-color: #D2853F; 
 			color : white;

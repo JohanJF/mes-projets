@@ -11,10 +11,11 @@
             $title = $_POST['task'];
             $conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $result = $conn->prepare('INSERT INTO task(title,id_list_foreign) VALUES (:title,:id)');
+            $result = $conn->prepare('INSERT INTO task(title,description,id_list_foreign) VALUES (:title,:description,:id)');
             $result->execute(
                                  array(
                                     'title' => $title,
+                                    'description' => 'test',
                                     'id' => 1
                                 )
                             );

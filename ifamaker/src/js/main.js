@@ -38,8 +38,7 @@ function creer_table()
 		liste_carte.id = "ma_liste-" + mon_article.id; // id unique de la liste
 
 
-	var liste_input_carte = document.createElement("li");
-		$(liste_input_carte).addClass("list-group-item border border-dark");
+	var liste_input_carte = document.createElement("div");
 		liste_input_carte.id = 'li-'+id_table; // id unique du li qui contient balise input (titre , cf : fonction supprimer_input)
 
 
@@ -57,7 +56,7 @@ function creer_table()
 
 
 	var bouton_carte_creer = document.createElement("button");
-		$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-secondary").attr("id","add_task"+id_table);//.attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
+		$(bouton_carte_creer).attr("type","button").addClass("btn btn-outline-grey").attr("id","add_task"+id_table);//.attr("onclick","creer_tache('"+liste_carte.id+"','"+input_carte.id+"','"+liste_input_carte.id+"','"+span_titre_carte.id+"')");
 
 		console.log(liste_carte.id);
 
@@ -349,7 +348,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 		/* création d'un nouvel input */
 
-		var liste_input_carte = document.createElement("li");
+		var liste_input_carte = document.createElement("div");
 			$(liste_input_carte).addClass("input-group input-group-sm my-1")
 			liste_input_carte.id = id_li_input;
 
@@ -601,11 +600,10 @@ $(document).ready(function(){
             	{
             		$('#test').html('Erreur ajout tâche');
             	}
-                
-         
             },
             'text'
          );
+        creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
      });
 
 });	

@@ -27,6 +27,8 @@
 			else{
 				$this->model_projet = new model_projet();
 				$mes_listes = $this->model_projet->mes_listes();
+				$mes_taches = $this->model_projet->mes_taches();
+				$mes_taches_modal = $this->model_projet->mes_taches();
 				require_once './Views/viewProjet.php';
 			}
 			
