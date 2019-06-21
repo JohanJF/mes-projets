@@ -79,114 +79,45 @@
 	<div id="test"></div>
 	<main class="container-fluid" id="zone">
 		<div class="row" id="ma_base">
-<!--
-			<article class="col my-3">
-				<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
-				  <div class="card-body">
-			    	<h5 class="card-title text-white">Ma table</h5>
-			    	<div class="card-text my-2">
-				    	<ul class="list-group">
-				    	  <a class="tache" href="#maTache1" data-toggle="modal" >
-							  <li class="list-group-item tache_detail border border-dark">
-							  	<h6>Tâche 1</h6>						  	
-							  	<small>Faire les courses</small>
-							  </li>
-						  </a>
--->
-					  	<!--MODAL DEBUT -->
-<!--							<div class="modal fade" id="maTache1" tabindex="-1" role="dialog" aria-hidden="true">
-							  <div class="modal-dialog modal-dialog-centered" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title">Tâche 1</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							        <div class="form-group">
-							        	<div class="container">
-							        		<div class="row">
-							        			<div class="col">
-							        				<small class="col">Faire les courses</small>
-							        				<button class="btn btn-info btn-sm">modifier</button>
-							        				<button class="btn btn-danger btn-sm">supprimer</button>
-							        			</div>								        				
-							        		</div>
-							        	</div>
-									  <label for="comment">A faire:</label>
-									  <textarea class="form-control" rows="5" id="comment"></textarea>
-									</div>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-							        <button type="button" class="btn btn-primary">Sauvegarder</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
--->							<!--FIN-->
-<!--						  <li class="list-group-item">
-						  	<h6>Tache 2</h6>
-						  	<small>mon texte 2</small>
-						  </li>
-						  <li class="list-group-item">
-						  	<h6>Tache 3</h6>
-						  	<small>mon texte 3</small>
-						  </li>
-						 <li class="list-group-item">
-						  	<div class="input-group input-group-sm">
-							  <input type="text" class="form-control" placeholder="Tache" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-							  <div class="input-group-append">
-							    <button class="btn btn-outline-secondary" type="button">Créer</button>
-							  </div>
-							</div>
-						  </li>
-						</ul>	
-				    </div>
-				    <button href="#" class="btn btn-modifier card-link">Modifier</button>
-				    <button href="#" class="btn btn-supprimer card-link">Supprimer</button>
-				  </div>
-				</section>
-			</article>
--->
+
 			<!-- ARTICLE PRESENTE DANS BDD -->
 			<?php 
-				foreach($mes_listes as $mes_listes):
+				foreach($mes_listes as $key => $value):
 			?>
-				<article class="col my-3" draggable="true" id="<?=$mes_listes['id_list']?>">
+				<article class="col my-3 ma_listeid" draggable="true" id="<?=$value[0]?>">
 					<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
 						<div class="card-body">
-							<h5 class="card-title text-white">
-								<span id="titre-<?=$mes_listes['id_list']?>"><?= $mes_listes['title'] ?></span>
-							</h5>
-						<div class="card-text my-2">
-							<ul class="list-group" id="ma_liste-<?=$mes_listes['id_list']?>">
-								<div class="" id="li-<?=$mes_listes['id_list']?>">
-									<?php
-										$i = 0; 
-										foreach($mes_taches as $mes_taches):
-									 ?>
-										<a class="tache" data-toggle="modal" href="#ma_liste-<?=$mes_taches['id_task']?>-<?=$i?>" id="#ma_liste-<?= $mes_taches['id_task'] ?>">
-											<li class="list-group-item tache_detail border border-dark my-1">
-												<h6><?= $mes_taches['title'] ?></h6>
-											</li>
-										</a>
-									<?php
-										$i++; 
-										endforeach;
-									 ?>
-									<div class="input-group input-group-sm">
-										<input id="titre_tache-<?=$mes_listes['id_list']?>" type="text" class="form-control" placeholder="Ajouter tâche">
-										<div class="input-group-append">
-											<button type="button" class="btn btn-outline-grey" id="add_task<?=$mes_listes['id_list']?>">Créer</button>
+								<h5 class="card-title text-white">
+									<span class="titre_liste_ref" id="titre-<?=$value[0]?>"><?= $value[1] ?></span>
+								</h5>
+								<div class="card-text my-2">
+									<ul class="list-group" id="ma_liste-<?=$value[0]?>">
+										<div class="" id="li-<?=$value[0]?>">
+											<?php if (isset($value[3])): ?>
+											<?php
+												 
+												foreach($value[3] as $mes_taches):
+											 ?>
+												<a class="tache" data-toggle="modal" id="#ma_liste-<?= $value[0] ?>">
+													<li class="list-group-item tache_detail border border-dark my-1">
+														<h6><?=$mes_taches['title']?></h6>
+													</li>
+												</a>
+											<?php
+												endforeach;
+											 ?>
+											<?php endif ?>
+											<div class="input-group input-group-sm">
+												<input id="titre_tache-<?=$value[0]?>" type="text" class="form-control" placeholder="Ajouter tâche">
+												<div class="input-group-append">
+													<button type="button" class="btn btn-outline-grey button_creer_tache">Créer</button>
+												</div>
+											</div>
 										</div>
-									</div>
+									</ul>
 								</div>
-							</ul>
-						</div>
-						<button class="btn btn-modifier card-link" href="#">Modifier</button>
-						<button class="btn btn-supprimer card-link" href="#">Supprimer</button>
+								<button class="btn btn-modifier card-link" href="#">Modifier</button>
+								<button class="btn btn-supprimer card-link" href="#">Supprimer</button>
 						</div>
 					</section>
 				</article>
@@ -213,17 +144,15 @@
 			</article>
 			<!-- ARTICLE CREATION -->
 
+			<!-- EMPLACEMENT FENETRES MODALES -->
+
 			<span id="fenetre_modal">
-				<?php 
-					$i = 0;
-					foreach($mes_taches_modal as $mes_taches_modal):
-				 ?>
-					<div id="ma_liste-<?=$mes_taches_modal['id_task']?>-<?=$i?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ma_liste-<?=$mes_taches_modal['id_task']?>-<?=$i?>Label" aria-hidden="true" style="display: none;">
+					<div id="ma_tache" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ma_tacheLabel" aria-hidden="true" style="display: none;">
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content bg-grey">
 								<div class="modal-header container">
-									<h3 class="modal-title text-dark"><?=$mes_taches_modal['title']?></h3>
-									<small class="badge badge-pill badge-info"><?=$mes_listes['title']?></small>
+									<h3 class="modal-title text-dark titre_tache_modal"></h3>
+									<small class="badge badge-pill badge-info titre_liste_modal"> </small>
 									<small>
 										<input type="image" src="./src/img/modifier_small.png">
 										<input class="close" type="image" src="./src/img/supprimer_small.png" onclick="supprimer_tache()" data-dismiss="modal" aria-label="close">
@@ -249,11 +178,10 @@
 							</div>
 						</div>
 					</div>
-				<?php 
-					$i++;
-					endforeach;
-				 ?>
-			</span>		
+			</span>	
+
+			<!-- EMPLACEMENT FENETRES MODALES -->
+
 		</div>
 	</main>
 	

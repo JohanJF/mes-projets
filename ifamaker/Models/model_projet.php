@@ -10,17 +10,35 @@ class model_projet extends Model
 				SELECT * 
 				FROM list WHERE id_board_foreign = ' . $_GET['id']);
 
-		return $mes_listes;
-	}
+		$mes_listes->setFetchMode(PDO::FETCH_ASSOC);
 
-	public function mes_taches()
-	{
-		$mes_taches = $this->select_req('
+		$tab = [];
+
+
+		foreach ($mes_listes as $row) 
+		{
+			$liste = [];
+			$liste[0]= $row['id_list'];
+			$liste[1]= $row['title'];
+			$liste[2]= $row['id_board_foreign'];
+
+			$mes_taches = $this->select_req('
 				SELECT * 
-				FROM task WHERE id_list_foreign = 1');
+				FROM task WHERE id_list_foreign ='.$liste[0]);
+			$mes_taches->setFetchMode(PDO::FETCH_ASSOC);
 
-		return $mes_taches;
+			foreach ($mes_taches as $row2) 
+			{
+				$liste[3][] = $row2;
+			}
+			
+			$tab[] = $liste;
+		}
+
+		
+		return $tab;
 	}
+
 }
 
  ?>

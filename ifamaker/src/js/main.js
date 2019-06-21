@@ -1,5 +1,5 @@
 /* déclaration de l'id unique de ma table */
-
+/*
 var id_table = 0; // id unique pour chaque table
 var updated = false; // variable servant à la modification du titre de la table
 
@@ -10,7 +10,7 @@ function creer_table()
 
 	/* création de mes noeuds constituant une table */
 
-	var mon_article = document.createElement("article");
+/*	var mon_article = document.createElement("article");
 		$(mon_article).addClass("col my-3").attr("draggable","true");
 		mon_article.id = id_table; // incrémentation de l'id unique de ma table
 
@@ -72,7 +72,7 @@ function creer_table()
 
 		/* on imbrique le tout */
 
-		mon_article.append(ma_section);
+/*		mon_article.append(ma_section);
 		ma_section.append(div_carte_body);
 		div_carte_body.append(titre_carte);
 		titre_carte.append(span_titre_carte);
@@ -91,7 +91,7 @@ function creer_table()
 		bouton_carte_supprimer.append("Supprimer");
 
 		/* on ajoute le contenu entier dans la div "ma_base" */
-		$("#ma_base").append(mon_article);
+//		$("#ma_base").append(mon_article);
 
 
 		//----------------------    ETAPE 2    -----------------------------------------------
@@ -99,7 +99,7 @@ function creer_table()
 
 		/* On supprime la table qui nou permet de créer une nouvelle table */
 
-		supprimer_table('nouvelle_table');  
+/*		supprimer_table('nouvelle_table');  
 
 
 		//----------------------    ETAPE 3    -----------------------------------------------
@@ -107,7 +107,7 @@ function creer_table()
 
 		/* on crée à la suite une nouvelle table permettant la creation d'une table */
 
-		var mon_article_creation = document.createElement('article');
+/*		var mon_article_creation = document.createElement('article');
 			$(mon_article_creation).addClass('col my-3');
 			mon_article_creation.id = 'nouvelle_table';
 
@@ -137,7 +137,7 @@ function creer_table()
 			$(button_creation).attr("type","button").addClass("btn btn-outline-grey").attr("id","add_list"+id_table);
 
 		/* imbrication */
-		mon_article_creation.append(section_creation);
+/*		mon_article_creation.append(section_creation);
 		section_creation.append(div_card_creation);
 		div_card_creation.append(titre_creation);
 		titre_creation.append("Ajouter une table");
@@ -148,7 +148,7 @@ function creer_table()
 		button_creation.append("Créer");
 
 		/* On ajoute le tout imbriqué dans la div "ma_base" à la suite */	
-		$("#ma_base").append(mon_article_creation);
+/*		$("#ma_base").append(mon_article_creation);
 
 		ma_tache = 0;
 		id_table++;	// incrémentation de l'id unique de la table
@@ -166,16 +166,16 @@ function supprimer_table(id_table)
 
 /* création d'une tache dans une liste */
 
-var id_tache_increment = 0; // id unique pour chaque tâche
+//var id_tache_increment = 0; // id unique pour chaque tâche
 
-function creer_tache(id_liste,id_input,id_li_input,titre_table)
+/*function creer_tache(id_liste,id_input,id_li_input,titre_table)
 {
 
 	//----------------------    ETAPE 1    -----------------------------------------------
 
 	/* création de la tache visible dans table */
 
-	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
+/*	id_tache = id_liste + '-' + id_tache_increment; // id unique pour chaque tâche li (ex : ma_liste-0-0) en utilisant id de la liste
 
 	var lien_modal = document.createElement('a');
 		$(lien_modal).addClass("tache").attr("data-toggle","modal");
@@ -211,7 +211,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 	// modal header
 
-		var modal_fade = document.createElement('div');
+/*		var modal_fade = document.createElement('div');
 			modal_fade.id = id_tache;
 			$(modal_fade).addClass("modal fade").attr("tabindex","-1").attr("role","dialog").attr("aria-hidden","true").attr("aria-labelledby",id_tache+"Label");
 
@@ -282,7 +282,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 			button_supprimer_modal.className = 'btn btn-danger btn-sm';
 		var button_supprimer_modal_text = document.createTextNode('supprimer'); //texte */
 
-		var label = document.createElement('label');
+/*		var label = document.createElement('label');
 			$(label).addClass('text-left text-grey').attr("for","comment");
 
 		var textarea = document.createElement('textarea');
@@ -322,7 +322,7 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 		button_modifier_modal.appendChild(button_modifier_modal_text);
 		col_modal.appendChild(button_supprimer_modal);
 		button_supprimer_modal.appendChild(button_supprimer_modal_text); */
-		form_group_modal.append(label);
+/*		form_group_modal.append(label);
 		label.append("Ajouter détails");
 		form_group_modal.append(textarea);
 		modal_content.append(modal_footer);
@@ -341,14 +341,14 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 
 		/* supprimer input liée à la liste */
 
-		supprimer_input(id_li_input);
+//		supprimer_input(id_li_input);
 
 
 		//----------------------    ETAPE 4    -----------------------------------------------
 
 		/* création d'un nouvel input */
 
-		var liste_input_carte = document.createElement("div");
+/*		var liste_input_carte = document.createElement("div");
 			$(liste_input_carte).addClass("input-group input-group-sm my-1")
 			liste_input_carte.id = id_li_input;
 
@@ -375,13 +375,13 @@ function creer_tache(id_liste,id_input,id_li_input,titre_table)
 	//-------------------------------------------------------------------------------------------
 
 	
-	/*// nombre de li dans une liste 
+	// nombre de li dans une liste 
 
 	var nb_tache = document.getElementById(id_liste).getElementsByTagName('li');
 
 	id_tache_increment++; // incrémentation de id_tache
 
-	console.log(lien_modal.href);*/
+	console.log(lien_modal.href);
 }
 
 
@@ -558,7 +558,7 @@ $(document).ready(function(){
             	console.log(data);
             	if (data == "Success") 
             	{
-					$('#test').html('Ajout liste');
+					window.location.reload();
             	}
             	else
             	{
@@ -569,47 +569,13 @@ $(document).ready(function(){
             },
             'text'
          );
-        creer_table();
      });
 
 });	
 
 
-/* Ajouter tache dans BDD *//*
-$(document).ready(function(){
-
- 	$("#zone").on("click", "#add_task1", function(e){
-
-    	e.preventDefault();
-
-    	
-
-        $.post(
-            'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
-            {
-                task : $('input[id^="titre_tache-"]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-            },
- 
-            function(data){
-            	console.log(data);
-            	if (data == "Success") 
-            	{
-					$('#test').html('Ajout tâche');
-            	}
-            	else
-            	{
-            		$('#test').html('Erreur ajout tâche');
-            	}
-            },
-            'text'
-         );
-        creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
-     });
-
-});	
-*/
-
-$(document).ready(function(){
+$('.button_creer_tache').on('click', creer_tache);
+/*$(document).ready(function(){
 
  	$('button[id^="add_task"]').on("click", this, function(e){
 
@@ -617,27 +583,115 @@ $(document).ready(function(){
 
     	
 
-        $.post(
-            'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
-            {
-                task : $('input[id^="titre_tache-"]').val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-            },
- 
-            function(data){
-            	console.log(data);
-            	if (data == "Success") 
-            	{
-					$('#test').html('Ajout tâche');
-            	}
-            	else
-            	{
-            		$('#test').html('Erreur ajout tâche');
-            	}
-            },
-            'text'
-         );
-        creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
+        
+       // creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
      });
 
-});	
+});	*/
 
+function creer_tache()
+{
+	$.post(
+        'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
+        {
+            task : $(this).parent().prev().val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+            id_list : $(this).parents('.ma_listeid').attr('id')
+        },
+
+        function(data){
+        	console.log(data);
+        	if (data == "Success") 
+        	{
+				window.location.reload();
+        	}
+        	else
+        	{
+        		$('#test').html('Erreur ajout tâche');
+        	}
+        },
+        'text'
+     );
+}
+
+$('.tache').on('click', open_modal);
+
+function open_modal()
+{
+	console.log();
+	title_modal = $(this).children('li').find('h6').text();
+	title_liste_modal = $(this).parents('.card-body').find('.titre_liste_ref').text();
+	$('.titre_tache_modal').text(title_modal);
+	$('.titre_liste_modal').text(title_liste_modal);
+	$('#ma_tache').modal('show');
+}
+
+$('.btn-supprimer').on('click', supprimer_tache);
+
+function supprimer_tache()
+{
+	console.log($(this).parents('.ma_listeid').attr('id'));
+	/*$.post(
+        'src/AJAX/delete_task.php', // Un script PHP que l'on va créer juste après
+        {
+            id_list : $(this).parents('.ma_listeid').attr('id')
+        },
+
+        function(data){
+        	console.log(data);
+        	if (data == "Success") 
+        	{
+				window.location.reload();
+        	}
+        	else
+        	{
+        		$('#test').html('Erreur ajout tâche');
+        	}
+        },
+        'text'
+     );*/
+}
+
+$('.btn-modifier').on('click', modifier_tache);
+
+function modifier_tache()
+{
+	$(this).attr('disabled','true');
+	console.log($(this).parents('.card-body').find('.titre_liste_ref'));
+	let titre_list = $(this).parents('.card-body').find('.titre_liste_ref').text();
+	let id_list = $(this).parents('.ma_listeid').attr('id');
+	$(this).parents('.card-body').find('.titre_liste_ref').html('<div class="input-group input-group-sm"><input type="text" placeholder="Modifier titre liste" class="form-control modif_titre" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_titre">Créer</button></div></div>');
+	$('.modif_titre').val(titre_list);	
+	$('.submit_modif_titre').on('click',modif)
+	
+}
+
+
+
+function modif()
+{
+
+			/*$.post(
+		        'src/AJAX/update_task.php', // Un script PHP que l'on va créer juste après
+		        {
+		            id_list : $(this).parents('.ma_listeid').attr('id')
+		        },
+
+		        function(data){
+		        	console.log(data);
+		        	if (data == "Success") 
+		        	{
+						window.location.reload();
+		        	}
+		        	else
+		        	{
+		        		$('#test').html('Erreur ajout tâche');
+		        	}
+		        },
+		        'text'
+	     	);
+*/
+			$(this).parents('.card-body').find('.btn-modifier').removeAttr("disabled");
+	 		let titre_modif = $('.modif_titre').val();
+	 		$(this).parents('.card-body').find('.titre_liste_ref').html("<h5 class='card-title text-white'><span class='titre_liste_ref' id='titre-<?=$value[0]?>'>"+titre_modif+"</span></h5>")
+
+}
