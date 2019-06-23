@@ -573,21 +573,8 @@ $(document).ready(function(){
 
 });	
 
-
+/* Insère la tâche dans la BDD */
 $('.button_creer_tache').on('click', creer_tache);
-/*$(document).ready(function(){
-
- 	$('button[id^="add_task"]').on("click", this, function(e){
-
-    	e.preventDefault();
-
-    	
-
-        
-       // creer_tache($('ul')[0].id,$('input')[1].id,$('div')[12].id,$('span')[1].id);
-     });
-
-});	*/
 
 function creer_tache()
 {
@@ -613,6 +600,8 @@ function creer_tache()
      );
 }
 
+/* Récupère les informations dans une fenêtre modale */
+
 $('.tache').on('click', open_modal);
 
 function open_modal()
@@ -625,13 +614,15 @@ function open_modal()
 	$('#ma_tache').modal('show');
 }
 
-$('.btn-supprimer').on('click', supprimer_tache);
+/* Permet la suppression d'une tâche */
 
-function supprimer_tache()
+$('.btn-supprimer').on('click', supprimer_liste);
+
+function supprimer_liste()
 {
 	console.log($(this).parents('.ma_listeid').attr('id'));
-	/*$.post(
-        'src/AJAX/delete_task.php', // Un script PHP que l'on va créer juste après
+	$.post(
+        'src/AJAX/delete_list.php', // Un script PHP que l'on va créer juste après
         {
             id_list : $(this).parents('.ma_listeid').attr('id')
         },
@@ -648,8 +639,10 @@ function supprimer_tache()
         	}
         },
         'text'
-     );*/
+     );
 }
+
+/* Permet de modifier le titre de la liste */
 
 $('.btn-modifier').on('click', modifier_tache);
 
@@ -669,11 +662,11 @@ function modifier_tache()
 
 function modif()
 {
-
-			/*$.post(
+			$.post(
 		        'src/AJAX/update_task.php', // Un script PHP que l'on va créer juste après
 		        {
-		            id_list : $(this).parents('.ma_listeid').attr('id')
+		            id_list : $(this).parents('.ma_listeid').attr('id'),
+		            titre_liste : $('.modif_titre').val()
 		        },
 
 		        function(data){
@@ -689,7 +682,7 @@ function modif()
 		        },
 		        'text'
 	     	);
-*/
+
 			$(this).parents('.card-body').find('.btn-modifier').removeAttr("disabled");
 	 		let titre_modif = $('.modif_titre').val();
 	 		$(this).parents('.card-body').find('.titre_liste_ref').html("<h5 class='card-title text-white'><span class='titre_liste_ref' id='titre-<?=$value[0]?>'>"+titre_modif+"</span></h5>")

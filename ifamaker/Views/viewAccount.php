@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="container col-10 border border-IFA  my-3">
+		<div class="container col-10 border border-IFA  my-3" style="max-height: 50vh; overflow-y: auto; text-overflow: nowrap;">
 			<table class="table" style="height: auto">
 			  <tbody>
 			  	<div class="container">
