@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * injecte le titre et l'id étrangère de la liste dans la BDD
+     * supprimer une liste présente dans la BDD en fonction de son ID
      */
      
      try 

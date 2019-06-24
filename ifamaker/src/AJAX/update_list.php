@@ -1,22 +1,22 @@
 <?php
 
     /**
-     * Modifie une tâche précise dans la BDD en fonction de son ID
+     * Modifie une liste précise en fonction de son ID
      */
      
      try 
     {
-         if( isset($_POST['id_task']))
+         if( isset($_POST['id_list']))
          {
-            $id_task = $_POST['id_task'];
-            $title = $_POST['task_title'];
+            $id_list = $_POST['id_list'];
+            $title = $_POST['titre_liste'];
             $conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $result = $conn->prepare('UPDATE task SET title = :title  WHERE id_task = :id_task');
+            $result = $conn->prepare('UPDATE list SET title = :title  WHERE id_list = :id_list');
             $result->execute(
                     array(
                         'title' => $title,
-                        'id_task' => $id_task 
+                        'id_list' => $id_list 
                     )
             );
             echo 'Success';
