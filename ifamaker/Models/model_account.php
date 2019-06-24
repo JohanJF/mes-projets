@@ -5,31 +5,19 @@
 
 		
 		
-		public function user_info($user_id)
+		public function user_info()
 		{
 				
 
 			//----- Paramètre différent en fonction de la requête
 
-			if (isset($_POST['user_1'])) 
+			if (isset($_POST['modif_info_user'])) 
 			{
-				$this->update($_POST['modifier_info_user'],'user_1');
-			}
-			else if (isset($_POST['user_2'])) 
-			{
-				$this->update($_POST['modifier_info_user'],'user_2');
-			}
-			else if (isset($_POST['user_3'])) 
-			{
-				$this->update($_POST['modifier_info_user'],'user_3');
-			}
-			else if (isset($_POST['user_4'])) 
-			{
-				$this->update($_POST['modifier_info_user'],'user_4');
-			}
-			else if (isset($_POST['user_5'])) 
-			{
-				$this->update($_POST['modifier_info_user'],'user_5');
+				$this->update($_POST['modifier_info_user0'],'name');
+				$this->update($_POST['modifier_info_user1'],'firstname');
+				$this->update($_POST['modifier_info_user2'],'address');
+				$this->update($_POST['modifier_info_user3'],'mail');
+				$this->update($_POST['modifier_info_user4'],'password');
 			}
 
 			if (isset($_POST['supprimer_compte'])) 
@@ -45,46 +33,22 @@
 				FROM user
 				WHERE user_id = ?
 
-			', [$user_id]);
+			', [$_GET['user']]);
 
 			return $result->fetch();
 		}
 
 		/* Fonction permettant de modifier les données de l'user */
 
-		function update($requete,$click)
+		function update($requete,$tuple)
 		{
 
 			$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
 			$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-			switch ($click) 
-			{
-				case 'user_1':
-					$result = $connexion->prepare('UPDATE user SET name = ? WHERE user_id = ?');
-					break;
-				case 'user_2':
-					$result = $connexion->prepare('UPDATE user SET firstname = ? WHERE user_id = ?');
-					break;
-				case 'user_3':
-					$result = $connexion->prepare('UPDATE user SET address = ? WHERE user_id = ?');
-					break;
-				case 'user_4':
-					$result = $connexion->prepare('UPDATE user SET mail = ? WHERE user_id = ?');
-					break;
-				case 'user_5':
-					$result = $connexion->prepare('UPDATE user SET password = ? WHERE user_id = ?');
-					break;
-				
-				default:
-					# code...
-					break;
-			}
-
-
+			$result = $connexion->prepare('UPDATE user SET '.$tuple.' = ? WHERE user_id = ?');
 			$result->execute(array(
 				$requete,
-				$_SESSION['user_id']
+				$_GET['user']
 			));
 
 		}
