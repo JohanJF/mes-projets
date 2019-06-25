@@ -18,6 +18,10 @@
 			{
 				$this->login();
 			}
+			else if (isset($_GET['login']))
+			{
+				$this->confirm();
+			}
 			else
 				$this->welcome();
 		} 
@@ -37,6 +41,7 @@
 				{
 					$insert_user = '';
 					$connexion = '';
+					$confirm_mail ='';
 					require_once './Views/viewHome.php';
 				}
 			}
@@ -45,8 +50,27 @@
 		public function register() 
 		{	
 			$connexion = '';
+			$confirm_mail ='';
 			$this->model_user = new model_user();
 			$insert_user = $this->model_user->insert_user();
+
+			$this->model_user = new model_user();
+			$this->model_user->mail();
+
+			require_once './Views/viewHome.php';
+		}
+
+		public function confirm() 
+		{	
+			$connexion = '';
+			$insert_user = '';
+			$this->model_user = new model_user();
+			$confirm_mail = $this->model_user->confirm_mail();	
+			if (isset($_POST['submit_connexion'])) 
+			{
+				$this->login();
+				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/index.php?rqt=perso&user='.$_SESSION['user_id']);
+			}	
 
 			require_once './Views/viewHome.php';
 		}
@@ -54,6 +78,7 @@
 		public function login()
 		{
 			$insert_user = '';
+			$confirm_mail ='';
 			$this->model_user = new model_user();
 			$connexion = $this->model_user->connexion_user($_POST['email_connexion'],$_POST['mdp_connexion'],false);
 

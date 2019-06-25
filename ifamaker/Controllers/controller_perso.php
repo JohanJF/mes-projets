@@ -28,8 +28,11 @@
 			{
 				/* Affichage taableaux */
 				$this->model_perso = new model_perso();
-				$tableau = $this->model_perso->insert_tableau_perso();
-				$mes_tableaux = $this->model_perso->mes_tableaux_perso();
+				$this->model_perso->insert_tableau_perso();
+				$mes_tableaux_perso = $this->model_perso->mes_tableaux_perso();
+
+				$this->model_perso->insert_tableau_collab();
+				$mes_tableaux_collab = $this->model_perso->mes_tableaux_collab();
 				require_once './Views/viewPerso.php';
 			}
 		}

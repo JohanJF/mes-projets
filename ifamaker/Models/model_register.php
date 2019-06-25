@@ -1,9 +1,11 @@
 <?php 
-
-class model_register extends Model
-{
-
 	
-}
+
+	class model_register extends Model
+	{
+
+		
+		
+	}
 
  ?>

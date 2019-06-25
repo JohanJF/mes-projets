@@ -8,8 +8,9 @@
 	<div class="row jumbotron bg-section border border-dark" style="max-height: 75vh;">
 		<div class="col">
 			<nav class="container">
+				<h3 class="text-center"><b>Tableaux</b></h3>
 					<div class="nav nav-tabs row" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active col text-center nav-title" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><b>Tableaux</b></a>
+						<a class="nav-item nav-link active col text-center nav-title" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><b>Personnel</b></a>
 						<a class="nav-item nav-link col text-center nav-title" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Collaboratif</b></a>
 				  </div>
 			</nav>
@@ -39,12 +40,12 @@
 					<div class="container">
 						<div class="row justify-content-between" style="max-height: 40vh; overflow-y: auto; text-overflow: nowrap;">
 							<?php 
-								foreach($mes_tableaux as $mes_tableaux):
+								foreach($mes_tableaux_perso as $mes_tableaux_perso):
 							?>
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
 									  <div class="card-body">
-									    <h5 class="card-title"><?= $mes_tableaux['title'] ?></h5>
-									    <a href="?rqt=projet&id=<?= $mes_tableaux['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									    <h5 class="card-title"><?= $mes_tableaux_perso['title'] ?></h5>
+									    <a href="?rqt=projet&id=<?= $mes_tableaux_perso['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
 									  </div>
 									</div>
 							<?php
@@ -78,6 +79,23 @@
 								</div>
 							</form>
 						</div>
+					</div>
+
+					<div class="container">
+						<div class="row justify-content-between" style="max-height: 40vh; overflow-y: auto; text-overflow: nowrap;">
+							<?php 
+								foreach($mes_tableaux_collab as $mes_tableaux_collab):
+							?>
+									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+									  <div class="card-body">
+									    <h5 class="card-title"><?= $mes_tableaux_collab['title'] ?></h5>
+									    <a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									  </div>
+									</div>
+							<?php
+								endforeach;
+							 ?>
+						</div>							
 					</div>
 
 					<!-- COLLABORATIF -->

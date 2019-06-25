@@ -33,6 +33,7 @@ class Model {
 		$address = $_POST['adresse_inscription'];
 		$mail = $_POST['email_inscription'];
 		$password = $_POST['mdp_inscription'];
+		$confirm = 'inactif';
 
 		$res = $this->getBDD()->prepare($query);
 		$res->execute(
@@ -41,7 +42,8 @@ class Model {
 					'firstname' => $firstname,
 					'address' => $address,
 					'mail' => $mail,
-					'password' => $password
+					'password' => $password,
+					'confirm' => $confirm
 				)
 		);
 

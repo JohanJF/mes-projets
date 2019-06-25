@@ -11,22 +11,24 @@
 				<div class="row my-3">
 					<section class="col-6">
 						<div class="bg-section jumbotron shadow">
+							<h3>Organisez vous de mieux en mieux avec Ifa-Maker</h3>
 							<p>
 								Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans.
 							</p>
 						</div>
 					</section>
 					<section class="col-6 text-center">
-						<img class="shadow p-1 bg-white rounded" src="./src/img/co_work.jpg">
+						<img class="shadow p-1 bg-white rounded" src="./src/img/work.jpg">
 					</section>
 				</div>
 				<hr>
 				<div class="row my-3">
 					<section class="col-6 text-center">
-						<img class="shadow p-1 bg-white rounded" src="./src/img/work.jpg">
+						<img class="shadow p-1 bg-white rounded" src="./src/img/co_work.jpg">
 					</section>
 					<section class="col-6">
 						<div class="bg-section jumbotron shadow">
+							<h3>Que vous soyez seul ou à plusieur !</h3>
 							<p>
 								Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans.
 							</p>
@@ -67,7 +69,8 @@
 						</div>
 					</div>			
 				</form>
-				<?= $insert_user ?>		
+				<?= $insert_user ?>	
+				<?=$confirm_mail?>	
 			<!-- FIN -->
 
 				<div class="row">
