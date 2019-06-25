@@ -50,11 +50,11 @@
 			$mail->Port = 587;
 
 			//Info du mail
-			$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','johan JF');
+			$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','IfaMaker');
 			$mail->addAddress($_POST['email_inscription']);
 
 			$mail->isHTML(true);
-			$mail->Subject = "Testing PHP Mail";
+			$mail->Subject = "Confirmation mail ";
 			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".$_POST['email_inscription']."'>ici</a>";
 
 			return $mail->send();
