@@ -39,6 +39,25 @@ class model_projet extends Model
 		return $tab;
 	}
 
+	public function verif_type()
+	{
+		$type = $this->select_req('
+				SELECT type
+				FROM board
+				WHERE id_board = ' . $_GET['id']
+			);
+
+		$type->setFetchMode(PDO::FETCH_ASSOC);
+
+		foreach ($type as $row) 
+		{
+			if ($row['type'] == 'collaboratif') 
+			{
+				return $row['type'];
+			}
+		}
+	}
+
 }
 
  ?>

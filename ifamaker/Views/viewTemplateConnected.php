@@ -53,7 +53,7 @@
 		            </a>
 		         </article>
 				<div class="col-9 px-3 text-center">
-					<a href="?rqt=projet&user=<?=$_SESSION['user_id']?>"><img src="./src/img/logo.png" /></a>
+					<img src="./src/img/logo.png" />
 				</div>
 
 				<div class="col-2 text-right container">

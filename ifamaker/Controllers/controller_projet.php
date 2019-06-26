@@ -27,6 +27,8 @@
 			else{
 				$this->model_projet = new model_projet();
 				$mes_listes = $this->model_projet->mes_listes();
+				
+				$type = $this->model_projet->verif_type();
 				require_once './Views/viewProjet.php';
 			}
 			
