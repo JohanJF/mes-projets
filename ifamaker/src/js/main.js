@@ -302,3 +302,19 @@ function modif_task()
 	 		$(this).parents().find('.titre_tache_modal').html('<h3 class="modal-title text-dark titre_tache_modal">'+titre_modif+'</h3>');
 
 }
+
+$(document).ready(function(){
+
+  $('.pop1').popover({
+  	html : true,
+  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn">valider</button></div></div>'
+  });
+});
+
+$(document).ready(function(){
+
+  $('.pop2').popover({
+  	html : true,
+  	content : '<p>Notif 1</p>'
+  });
+});

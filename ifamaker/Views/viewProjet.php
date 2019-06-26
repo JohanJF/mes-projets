@@ -52,7 +52,13 @@
 		              <img src="./src/img/menu.png"/>
 		            </a>
 		         </article>
-				<div class="col-9 px-3 text-center">
+		         <article class="col-1">
+		            <img src="./src/img/collaborateur.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
+		         </article>
+		         <article class="col-1">
+		            <img src="./src/img/notification.png" class="pop2" data-container="body" data-toggle="popover" title="Notifications" data-placement="bottom" data-content="" />
+		         </article>
+				<div class="col-7 px-3 d-flex justify-content-center">
 					<a href="?rqt=projet&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
 				</div>
 
