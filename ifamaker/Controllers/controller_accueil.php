@@ -62,17 +62,25 @@
 
 		public function confirm() 
 		{	
-			$connexion = '';
-			$insert_user = '';
-			$this->model_user = new model_user();
-			$confirm_mail = $this->model_user->confirm_mail();	
-			if (isset($_POST['submit_connexion'])) 
+			if ($this->verif_register() == $_GET['login'])	
 			{
-				$this->login();
-				header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/index.php?rqt=perso&user='.$_SESSION['user_id']);
-			}	
+				$connexion = '';
+				$insert_user = '';
+				$this->model_user = new model_user();
+				$confirm_mail = $this->model_user->confirm_mail();	
+				if (isset($_POST['submit_connexion'])) 
+				{
+					$this->login();
+					header('Refresh: 1; URL=http://localhost/mes-projets/ifamaker/index.php?rqt=perso&user='.$_SESSION['user_id']);
+				}	
 
-			require_once './Views/viewHome.php';
+				require_once './Views/viewHome.php';
+			}
+			else
+			{
+				throw new Exception("Erreur");
+			}
+				
 		}
 
 		public function login()
@@ -84,6 +92,13 @@
 
 			require_once './Views/viewHome.php';
 		}
+
+		public function verif_register()
+		{
+			$this->model_user = new model_user();
+			return $this->model_user->verif_token();
+		}
+			
 	}
 
 

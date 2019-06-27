@@ -20,8 +20,8 @@
 				// verifie si syntaxe correspond à un email
 
 				$result = $this->insert_req('
-					INSERT INTO user(name,firstname,address,mail,password,confirmation) 
-					VALUES (:name, :firstname, :address, :mail, :password, :confirm)
+					INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
+					VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
 					');
 
 				/* message info utilisateur */
@@ -55,7 +55,7 @@
 
 			$mail->isHTML(true);
 			$mail->Subject = "Confirmation mail ";
-			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".$_POST['email_inscription']."'>ici</a>";
+			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".sha1($_POST['email_inscription'])."'>ici</a>";
 
 			return $mail->send();
 	 
@@ -66,11 +66,11 @@
 
 			$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $result = $conn->prepare('UPDATE user SET confirmation = :confirm  WHERE mail = :mail');
+            $result = $conn->prepare('UPDATE user SET confirmation = :confirm  WHERE token = :token');
             $result->execute(
                     array(
                         'confirm' => 'actif',
-                        'mail' => $_GET['login']                    
+                        'token' => $_GET['login']                    
                     )
             );
 
@@ -89,7 +89,7 @@
 
 			while ($row = $result->fetch()) 
 			{
-				if ($mail == $row['mail'] && $password == $row['password'] && 'actif' == $row['confirmation']) 
+				if ($mail == $row['mail'] && sha1($password) == $row['password'] && 'actif' == $row['confirmation']) 
 				{	
 					if(session_status() == PHP_SESSION_NONE)
 					{
@@ -113,6 +113,25 @@
 			{
 				return "<p class='badge badge-danger'>connexion échoué</p>";
 				
+			}
+		}
+
+		public function verif_token()
+		{ 
+
+			/* vérifie l'identité de l'utilisateur */
+
+			$result = $this->select_req("
+				SELECT *
+				FROM user
+				WHERE token = '" . $_GET['login'] . "'"
+			);
+
+			$result->setFetchMode(PDO::FETCH_ASSOC);
+
+			foreach ($result as $row) 
+			{
+				return $row['token']; 
 			}
 		}
 

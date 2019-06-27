@@ -40,7 +40,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">Mot de passe</th>
-				      <td id="user_5"><?= $information['password'] ?></td>
+				      <td id="user_5">***********</td>
 				    </tr>
 				  </tbody>
 				</table>

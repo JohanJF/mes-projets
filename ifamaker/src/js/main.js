@@ -42,6 +42,8 @@ function modifier_info()
 
 	}
 
+	//$(input).attr("value",nb[nb.length-1].innerHTML);
+
 	if (!btn_clicked) 
 	{
 		$('.btn-danger').hide();
@@ -52,6 +54,7 @@ function modifier_info()
 		$('.btn-danger').show();
 		$('.btn-success').hide();
 	}
+
 }
 
 
@@ -303,11 +306,12 @@ function modif_task()
 
 }
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 
   $('.pop1').popover({
   	html : true,
-  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn">valider</button></div></div>'
+  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn" id="btn_pop1">valider</button></div></div>'
+  
   });
 });
 
@@ -318,3 +322,13 @@ $(document).ready(function(){
   	content : '<p>Notif 1</p>'
   });
 });
+
+buton_ajout_collab = $('script').('#btn_pop1');
+console.log(buton_ajout_collab);
+buton_ajout_collab.on('click', ajouter_collab);
+
+function ajouter_collab()
+{
+	console.log(1);
+
+}*/
