@@ -17,7 +17,7 @@
 				$this->update($_POST['modifier_info_user1'],'firstname');
 				$this->update($_POST['modifier_info_user2'],'address');
 				$this->update($_POST['modifier_info_user3'],'mail');
-				$this->update($_POST['modifier_info_user4'],'password');
+				$this->update(sha1($_POST['modifier_info_user4']),'password');
 			}
 
 			if (isset($_POST['supprimer_compte'])) 

@@ -42,7 +42,7 @@ function modifier_info()
 
 	}
 
-	//$(input).attr("value",nb[nb.length-1].innerHTML);
+	$(input).attr("value","").attr("placeholder","Nouveau mot de passe");
 
 	if (!btn_clicked) 
 	{
@@ -81,7 +81,6 @@ function $_GET(param) {
 $(document).ready(function(){
 
  	$("#zone").on("click", "#add_list", function(e){
- 		//$(".add_table").click(function(e){
 
     	e.preventDefault();
 
@@ -306,13 +305,16 @@ function modif_task()
 
 }
 
-/*$(document).ready(function(){
+$(document).ready(function(){
 
   $('.pop1').popover({
   	html : true,
-  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn" id="btn_pop1">valider</button></div></div>'
-  
+  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn" id="btn_pop1">valider</button></div></div>',
   });
+});
+
+$(".pop1").on('shown.bs.popover', function(){
+	console.log($('#btn_pop1'));
 });
 
 $(document).ready(function(){
@@ -322,6 +324,8 @@ $(document).ready(function(){
   	content : '<p>Notif 1</p>'
   });
 });
+
+/*
 
 buton_ajout_collab = $('script').('#btn_pop1');
 console.log(buton_ajout_collab);
