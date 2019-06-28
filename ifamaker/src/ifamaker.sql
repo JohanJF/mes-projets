@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 26 juin 2019 à 12:56
+-- Généré le :  ven. 28 juin 2019 à 13:50
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -34,17 +34,15 @@ CREATE TABLE IF NOT EXISTS `board` (
   `title` text NOT NULL,
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id_board`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `board`
 --
 
 INSERT INTO `board` (`id_board`, `title`, `type`) VALUES
-(1, 'tableau 1', 'personnel'),
-(2, 'tableau 2', 'personnel'),
-(3, 'test', 'personnel'),
-(4, 'tableau collab 1', 'collaboratif');
+(1, 'tableau collab 1', 'collaboratif'),
+(2, 'tableau perso 1', 'personnel');
 
 -- --------------------------------------------------------
 
@@ -65,10 +63,8 @@ CREATE TABLE IF NOT EXISTS `board_user` (
 --
 
 INSERT INTO `board_user` (`id_user_foreign`, `id_board_foreign`) VALUES
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 4);
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -83,14 +79,14 @@ CREATE TABLE IF NOT EXISTS `list` (
   `id_board_foreign` int(11) NOT NULL,
   PRIMARY KEY (`id_list`),
   KEY `id_board_foreign` (`id_board_foreign`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `list`
 --
 
 INSERT INTO `list` (`id_list`, `title`, `id_board_foreign`) VALUES
-(2, 'liste 2', 1);
+(1, 'list 1', 1);
 
 -- --------------------------------------------------------
 
@@ -108,6 +104,13 @@ CREATE TABLE IF NOT EXISTS `task` (
   KEY `id_list_foreign` (`id_list_foreign`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `task`
+--
+
+INSERT INTO `task` (`id_task`, `title`, `description`, `id_list_foreign`) VALUES
+(1, 'task 1', 'test', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -123,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mail` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `confirmation` varchar(100) DEFAULT NULL,
+  `token` text NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -130,9 +134,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`user_id`, `name`, `firstname`, `address`, `mail`, `password`, `confirmation`) VALUES
-(1, 'JF', 'Johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'mada', 'actif'),
-(2, 'test', 'test', '4 rue test', 'test@gmail.com', 'test', 'actif');
+INSERT INTO `user` (`user_id`, `name`, `firstname`, `address`, `mail`, `password`, `confirmation`, `token`) VALUES
+(1, 'JF', 'johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', 'e2a7d3f97342a924024f5312ab22f8a4ecf0d10d'),
+(2, 'test', 'test', 'test', 'test@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'actif', '8eaa75578e5aea8097a88c766f5b98170be1f242');
 
 --
 -- Contraintes pour les tables déchargées

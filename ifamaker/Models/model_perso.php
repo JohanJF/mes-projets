@@ -44,7 +44,7 @@ class model_perso extends Model
 				SELECT * 
 				FROM board
 				INNER JOIN board_user ON id_board = id_board_foreign
-				WHERE type = "personnel" AND id_user_foreign = ' . $_GET['user']
+				WHERE type = "personnel" AND id_user_foreign = ' . $_SESSION['user_id']
 			);
 
 		return $mes_tableaux;
@@ -92,7 +92,7 @@ class model_perso extends Model
 				SELECT * 
 				FROM board
 				INNER JOIN board_user ON id_board = id_board_foreign
-				WHERE type = "collaboratif" AND id_user_foreign = ' . $_GET['user']
+				WHERE type = "collaboratif" AND id_user_foreign = ' . $_SESSION['user_id']
 			);
 
 		return $mes_tableaux;

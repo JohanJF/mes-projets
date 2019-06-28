@@ -28,6 +28,8 @@
 				$this->model_projet = new model_projet();
 				$mes_listes = $this->model_projet->mes_listes();
 				
+				$board = $this->model_projet->board_title();
+
 				$type = $this->model_projet->verif_type();
 				require_once './Views/viewProjet.php';
 			}

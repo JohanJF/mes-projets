@@ -309,12 +309,40 @@ $(document).ready(function(){
 
   $('.pop1').popover({
   	html : true,
-  	content : '<div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn" id="btn_pop1">valider</button></div></div>',
+  	content : '<div class="input-group input-group-sm"><input type="email" class="form-control" id="mail_collab" placeholder="Entrez mail collaborateur"><div class="input-group-append"><button type="button" class="btn" id="btn_pop1">valider</button></div></div><span id="msg_ajout_collab"></span>',
   });
 });
 
 $(".pop1").on('shown.bs.popover', function(){
-	console.log($('#btn_pop1'));
+
+	$('#btn_pop1').on('click', ajouter_collab);
+
+	function ajouter_collab()
+	{
+
+		$.post(
+	        'src/AJAX/add_collab.php', // Un script PHP que l'on va créer juste après
+	        {
+	            mail_collab : $('#mail_collab').val(),
+	            id_board : $_GET('id')
+	        },
+
+	        function(data){
+	        	console.log(data);
+	        	if (data == "Success") 
+	        	{
+	        		$('#mail_collab').val('');
+					$('#msg_ajout_collab').attr('class','text-success').text('Invitation envoyée !');
+	        	}
+	        	else
+	        	{
+	        		$('#msg_ajout_collab').attr('class','text-danger').text('Entrez un email valide !');
+	        	}
+	        },
+	        'text'
+	 	);
+	}
+
 });
 
 $(document).ready(function(){
@@ -325,14 +353,3 @@ $(document).ready(function(){
   });
 });
 
-/*
-
-buton_ajout_collab = $('script').('#btn_pop1');
-console.log(buton_ajout_collab);
-buton_ajout_collab.on('click', ajouter_collab);
-
-function ajouter_collab()
-{
-	console.log(1);
-
-}*/

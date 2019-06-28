@@ -39,6 +39,15 @@ class model_projet extends Model
 		return $tab;
 	}
 
+	public function board_title()
+	{
+		$board = $this->select_req('
+				SELECT * 
+				FROM board WHERE id_board = ' . $_GET['id']);
+
+		return $board->fetch();
+	}
+
 	public function verif_type()
 	{
 		$type = $this->select_req('

@@ -47,37 +47,16 @@
 	      <!-- TITRE & DESCRIPTION -->
 
 	        <section class="container-fluid">
-	        	<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
-	        	<?php if ( $type == 'collaboratif') :?>
 
-		        	<article class="col-1">
-			            <a href="#accordeon" data-toggle="collapse" data-target="#accordeon" aria-expanded="true">
-			              <img src="./src/img/menu.png"/>
-			            </a>
-			         </article>
-			         <article class="col-1">
-			            <img src="./src/img/collaborateur.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
-			         </article>
-			         <article class="col-1">
-			            <img src="./src/img/notification.png" class="pop2" data-container="body" data-toggle="popover" title="Notifications" data-placement="bottom" data-content="" />
-			         </article>
-					 <div class="col-7 px-3 d-flex justify-content-center">
-						<img src="./src/img/logo.png" />
-					 </div>
+				<article class="col-1">
+		            <a href="#accordeon" data-toggle="collapse" data-target="#accordeon" aria-expanded="true">
+		              <img src="./src/img/menu.png"/>
+		            </a>
+		         </article>
 
-				<?php else :?>
-
-        			<article class="col-1">
-			            <a href="#accordeon" data-toggle="collapse" data-target="#accordeon" aria-expanded="true">
-			              <img src="./src/img/menu.png"/>
-			            </a>
-			         </article>
-
-					 <div class="col-9 px-3 d-flex justify-content-center">
-						<a href="?rqt=projet&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
-					 </div>
-
-        		<?php endif; ?>
+				 <div class="col-9 px-3 d-flex justify-content-center">
+					<a href="?rqt=projet&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
+				 </div>      		
 
 				<div class="col-2 text-right container">
 					<div class="row">
@@ -96,6 +75,27 @@
 
 		<!-- HEADER -->
 	</header>
+
+	<nav class="container-fluid bg-secondary">
+		<div class="row py-2">
+			<div class="col text-left">
+				<span class="badge badge-light"><?=$board['title']?></span>
+			</div>
+
+			<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
+	        <?php if ( $type == 'collaboratif') :?>
+
+				<article class="col-1">
+		            <img src="./src/img/collabo.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
+		        </article
+		        >
+		        <article class="col-1">
+		            <img src="./src/img/notif.png" class="pop2" data-container="body" data-toggle="popover" title="Notifications" data-placement="bottom" data-content="" />
+		        </article>
+		     <?php endif; ?>
+
+		</div>
+	</nav>
 
 <!-- MAIN -->
 
@@ -207,8 +207,6 @@
 		</div>
 	</main>
 	
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
