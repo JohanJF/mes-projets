@@ -26,26 +26,14 @@
 
 			$mail->isHTML(true);
 			$mail->Subject = "Vous avez été invité dans un tableau collaboratif";
-			$mail->Body = "Vous avez été invité à rejoindre le tableau collaboratif ";
+			$mail->Body = 'Vous avez été invité à rejoindre le tableau collaboratif "'. $_POST['title_board'] . '" <br> Pour rejoindre cliquez <a href="http://localhost/mes-projets/ifamaker/index.php?rqt=register&tableau='.$_POST['id_board'].'">ici</a>';
 
 			$mail->send();
 	}
 
 	if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
 	{
-	    /*$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	    $result = $conn->prepare('
-	    						  SELECT *
-	    						  FROM '
-	    						);
-
-		$result->setFetchMode(PDO::FETCH_ASSOC);
-
-		foreach ($result as $row) 
-		{
-		}
-		*/
+	    
 		envoi_mail();
 
 		echo "Success";

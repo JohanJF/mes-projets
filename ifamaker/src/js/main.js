@@ -324,6 +324,7 @@ $(".pop1").on('shown.bs.popover', function(){
 	        'src/AJAX/add_collab.php', // Un script PHP que l'on va créer juste après
 	        {
 	            mail_collab : $('#mail_collab').val(),
+	            title_board : $('.badge-light').html(),
 	            id_board : $_GET('id')
 	        },
 

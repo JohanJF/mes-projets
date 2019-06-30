@@ -12,7 +12,16 @@
 			
 			if (isset($_POST['submit_inscription']))
 			{
-				$this->register();
+				if (isset($_GET['tableau'])) 
+				{
+					$this->register_invitation();
+				}
+				else
+				{
+					//$this->register();
+					echo 1;
+				}
+				
 			}
 			else if (isset($_POST['submit_connexion'])) 
 			{
@@ -98,6 +107,20 @@
 			$this->model_user = new model_user();
 			return $this->model_user->verif_token();
 		}
+
+		public function register_invitation()
+		{
+			$connexion = '';
+			$confirm_mail ='';
+			$this->model_user = new model_user();
+			$insert_user = $this->model_user->register_collab();
+
+			$this->model_user = new model_user();
+			$this->model_user->mail();
+
+			require_once './Views/viewHome.php';
+		}
+
 			
 	}
 

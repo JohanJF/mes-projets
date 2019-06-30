@@ -49,7 +49,11 @@
 					</div>
 				</div>
 
+			<?php if (isset($_GET['tableau'])) :?>
+				<form class="row" action="?rqt=accueil&tableau=<?=$_GET['tableau']?>" method="POST">
+			<?php else : ?>
 				<form class="row" action="?rqt=accueil" method="POST">
+				<?php endif; ?>
 					<div class="container">
 						<div class="row">
 							<div class="col text-center form-group">

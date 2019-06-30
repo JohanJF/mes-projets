@@ -135,6 +135,60 @@
 			}
 		}
 
+		public function register_collab()
+		{
+
+			/* Inscription d'un utilisateur dans la BDD */
+
+			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL)) 
+			{
+				// verifie si syntaxe correspond à un email
+
+				$name = $_POST['nom_inscription'];
+				$firstname = $_POST['prenom_inscription'];
+				$address = $_POST['adresse_inscription'];
+				$mail = $_POST['email_inscription'];
+				$password = sha1($_POST['mdp_inscription']);
+				$confirm = 'inactif';
+				$token = sha1($mail);
+
+				$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+	            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	            $result = $conn->prepare('
+		            	INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
+						VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
+	            	');
+	            $result->execute(
+	                                 array(
+	                                    'name' => $name,
+										'firstname' => $firstname,
+										'address' => $address,
+										'mail' => $mail,
+										'password' => $password,
+										'confirm' => $confirm,
+										'token' => $token
+	                                )
+	                            );
+	             $id_user = $conn->lastInsertId();
+
+	            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign) VALUES (:id_user,:id_board)');
+	            $result2->execute(
+	                                 array(
+	                                    'id_user' => $id_user,
+	                                    'id_board' => $_GET['tableau']
+	                                )
+	                            );
+
+				/* message info utilisateur */
+
+				return "<p class='col badge badge-warning'>confirmez votre addresse mail pour vous inscrire</p>";
+			}
+			else
+			{
+				return "<p class='col badge badge-danger'>Veuillez entrez un email valide</p>";
+			}
+		}
+
 	}
 
 

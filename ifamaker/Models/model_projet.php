@@ -8,7 +8,10 @@ class model_projet extends Model
 	{
 		$mes_listes = $this->select_req('
 				SELECT * 
-				FROM list WHERE id_board_foreign = ' . $_GET['id']);
+				FROM list
+				INNER JOIN board_user ON list.id_board_foreign = board_user.id_board_foreign
+				WHERE board_user.id_board_foreign = ' . $_GET['id'] . ' AND id_user_foreign = ' . $_SESSION['user_id'] 
+		);
 
 		$mes_listes->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -43,7 +46,10 @@ class model_projet extends Model
 	{
 		$board = $this->select_req('
 				SELECT * 
-				FROM board WHERE id_board = ' . $_GET['id']);
+				FROM board 
+				INNER JOIN board_user ON id_board = board_user.id_board_foreign
+				WHERE id_board = ' . $_GET['id'] . ' AND id_user_foreign = ' . $_SESSION['user_id'] 
+		);
 
 		return $board->fetch();
 	}

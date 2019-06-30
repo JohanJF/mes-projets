@@ -33,7 +33,7 @@
 				FROM user
 				WHERE user_id = ?
 
-			', [$_GET['user']]);
+			', [$_SESSION['user_id']]);
 
 			return $result->fetch();
 		}
@@ -48,7 +48,7 @@
 			$result = $connexion->prepare('UPDATE user SET '.$tuple.' = ? WHERE user_id = ?');
 			$result->execute(array(
 				$requete,
-				$_GET['user']
+				$_SESSION['user_id']
 			));
 
 		}
