@@ -18,8 +18,7 @@
 				}
 				else
 				{
-					//$this->register();
-					echo 1;
+					$this->register();
 				}
 				
 			}

@@ -13,6 +13,18 @@
 		public function insert_user()
 		{
 
+			$result = $this->select_req("
+				SELECT mail
+				FROM user
+				");
+
+			while ($row = $result->fetch()) 
+			{
+				if ($_POST['email_inscription'] == $row['mail']) 
+				{
+					return "<p class='col badge badge-danger'>Cette adresse email a déjà été utilisé</p>";
+				}
+			}
 			/* Inscription d'un utilisateur dans la BDD */
 
 			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL)) 
@@ -137,6 +149,18 @@
 
 		public function register_collab()
 		{
+			$result = $this->select_req("
+				SELECT mail
+				FROM user
+				");
+
+			while ($row = $result->fetch()) 
+			{
+				if ($_POST['email_inscription'] == $row['mail']) 
+				{
+					return "<p class='col badge badge-danger'>Cette adresse email a déjà été utilisé</p>";
+				}
+			}
 
 			/* Inscription d'un utilisateur dans la BDD */
 
