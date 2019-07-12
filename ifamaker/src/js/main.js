@@ -1,4 +1,9 @@
 
+if ($('.alerte').html() == 0) 
+{
+	$('.alerte').hide();
+}
+
 /* Crée un élément "input texte" afin de modifier les informations personnelles de l'user */
 
 var display = false;
@@ -42,7 +47,7 @@ function modifier_info()
 
 	}
 
-	$(input).attr("value","").attr("placeholder","Nouveau mot de passe");
+	$(input).attr("value","").attr("placeholder","Nouveau mot de passe").removeAttr('required');
 
 	if (!btn_clicked) 
 	{
@@ -87,9 +92,9 @@ $(document).ready(function(){
     	
 
         $.post(
-            'src/AJAX/add_list.php', // Un script PHP que l'on va créer juste après
+            'src/AJAX/add_list.php', 
             {
-                success : $("#titre_table").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                success : $("#titre_table").val(),
                 id : $_GET('id')
             },
  
@@ -99,18 +104,34 @@ $(document).ready(function(){
             	{
 					window.location.reload();
             	}
-            	else
-            	{
-            		$('#test').html('Erreur ajout liste');
-            	}
-                
          
             },
-            'text'
          );
      });
 
 });	
+
+/* Efface un tableau */
+$('.btn_board').on('click', delete_board);
+
+function delete_board()
+{
+	$.post(
+        'src/AJAX/delete_board.php', 
+        { 
+            id_board : $(this).attr('id')
+        },
+
+        function(data){
+        	console.log(data);
+        	if (data == "Success") 
+        	{
+				window.location.reload();
+        	}
+        },
+        'text'
+     );
+}
 
 /* Insère la tâche dans la BDD */
 $('.button_creer_tache').on('click', creer_tache);
@@ -118,9 +139,9 @@ $('.button_creer_tache').on('click', creer_tache);
 function creer_tache()
 {
 	$.post(
-        'src/AJAX/add_task.php', // Un script PHP que l'on va créer juste après
+        'src/AJAX/add_task.php', 
         {
-            task : $(this).parent().prev().val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+            task : $(this).parent().prev().val(),  
             id_list : $(this).parents('.ma_listeid').attr('id')
         },
 
@@ -130,12 +151,8 @@ function creer_tache()
         	{
 				window.location.reload();
         	}
-        	else
-        	{
-        		$('#test').html('Erreur ajout tâche');
-        	}
+        	
         },
-        'text'
      );
 }
 
@@ -165,7 +182,7 @@ function supprimer_liste()
 {
 	console.log($(this).parents('.ma_listeid').attr('id'));
 	$.post(
-        'src/AJAX/delete_list.php', // Un script PHP que l'on va créer juste après
+        'src/AJAX/delete_list.php', 
         {
             id_list : $(this).parents('.ma_listeid').attr('id')
         },
@@ -206,7 +223,7 @@ function modifier_liste()
 function modif()
 {
 			$.post(
-		        'src/AJAX/update_list.php', // Un script PHP que l'on va créer juste après
+		        'src/AJAX/update_list.php', 
 		        {
 		            id_list : $(this).parents('.ma_listeid').attr('id'),
 		            titre_liste : $('.modif_titre').val()
@@ -240,7 +257,7 @@ function delete_task()
 {
 	console.log($(this).parents().find('.titre_tache_modal').attr('id'));
 	$.post(
-        'src/AJAX/delete_task.php', // Un script PHP que l'on va créer juste après
+        'src/AJAX/delete_task.php', 
         {
             id_task : $(this).parents().find('.titre_tache_modal').attr('id')
         },
@@ -279,7 +296,7 @@ function modif_task()
 {
 	console.log($(this).parents().find('.titre_tache_modal').attr('id'));
 			$.post(
-		        'src/AJAX/update_task.php', // Un script PHP que l'on va créer juste après
+		        'src/AJAX/update_task.php', 
 		        {
 		            id_task : $(this).parents().find('.titre_tache_modal').attr('id'),
 		            task_title : $('.modif_tache').val()
@@ -305,6 +322,8 @@ function modif_task()
 
 }
 
+/* Pop-up de l'icone collaboration */
+
 $(document).ready(function(){
 
   $('.pop1').popover({
@@ -315,13 +334,15 @@ $(document).ready(function(){
 
 $(".pop1").on('shown.bs.popover', function(){
 
+ 	// Envoie un mail pour rejoindre le tableau collaboratif
+
 	$('#btn_pop1').on('click', ajouter_collab);
 
 	function ajouter_collab()
 	{
 
 		$.post(
-	        'src/AJAX/add_collab.php', // Un script PHP que l'on va créer juste après
+	        'src/AJAX/add_collab.php', 
 	        {
 	            mail_collab : $('#mail_collab').val(),
 	            title_board : $('.badge-light').html(),
@@ -348,9 +369,25 @@ $(".pop1").on('shown.bs.popover', function(){
 
 $(document).ready(function(){
 
-  $('.pop2').popover({
-  	html : true,
-  	content : '<p>Notif 1</p>'
-  });
+  $('.pop2').popover(
+	{
+	  	html : true,
+	  	content : function() {
+	          var elementId = $(this).attr("data-popover-content");
+	          return $(elementId).html();
+	    }
+	});
+});
+
+$(".pop2").on('shown.bs.popover', function(){
+
+	$('.table-striped').children().find('tr').hover(function() {
+
+    $(this).addClass("bg bg-secondary text-white");
+  }, function() {
+    $(this).removeClass("bg bg-secondary text-white");
+  }
+  	);
+
 });
 

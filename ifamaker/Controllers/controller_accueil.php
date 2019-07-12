@@ -14,20 +14,24 @@
 			{
 				if (isset($_GET['tableau'])) 
 				{
+					/* inscription après invitation tableau collaborateur */
 					$this->register_invitation();
 				}
 				else
 				{
+					/* inscription basique */
 					$this->register();
 				}
 				
 			}
 			else if (isset($_POST['submit_connexion'])) 
 			{
+				/* connection basique */
 				$this->login();
 			}
 			else if (isset($_GET['login']))
 			{
+				/* méthode confirmation mail */
 				$this->confirm();
 			}
 			else
@@ -60,10 +64,10 @@
 			$connexion = '';
 			$confirm_mail ='';
 			$this->model_user = new model_user();
-			$insert_user = $this->model_user->insert_user();
+			$insert_user = $this->model_user->insert_user(); // insert utilisateur inactif dans BDD
 
 			$this->model_user = new model_user();
-			$this->model_user->mail();
+			$this->model_user->mail(); // envoi mail de confirmation
 
 			require_once './Views/viewHome.php';
 		}
@@ -75,7 +79,7 @@
 				$connexion = '';
 				$insert_user = '';
 				$this->model_user = new model_user();
-				$confirm_mail = $this->model_user->confirm_mail();	
+				$confirm_mail = $this->model_user->confirm_mail(); // rend actif utilisateur inactif apres mail vérifié	
 				if (isset($_POST['submit_connexion'])) 
 				{
 					$this->login();
@@ -104,7 +108,7 @@
 		public function verif_register()
 		{
 			$this->model_user = new model_user();
-			return $this->model_user->verif_token();
+			return $this->model_user->verif_token(); // verifie le token (URL 'login' = BDD 'token')
 		}
 
 		public function register_invitation()
@@ -112,10 +116,10 @@
 			$connexion = '';
 			$confirm_mail ='';
 			$this->model_user = new model_user();
-			$insert_user = $this->model_user->register_collab();
+			$insert_user = $this->model_user->register_collab(); // inscription d'un nouvel user via mail tableau collaboratif
 
 			$this->model_user = new model_user();
-			$this->model_user->mail();
+			$this->model_user->mail(); // envoi mail de confirmation
 
 			require_once './Views/viewHome.php';
 		}

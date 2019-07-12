@@ -17,7 +17,11 @@
 				$this->update($_POST['modifier_info_user1'],'firstname');
 				$this->update($_POST['modifier_info_user2'],'address');
 				$this->update($_POST['modifier_info_user3'],'mail');
-				$this->update(sha1($_POST['modifier_info_user4']),'password');
+				if (!empty($_POST['modifier_info_user4'])) 
+				{
+					$this->update(sha1($_POST['modifier_info_user4']),'password');
+				}
+				
 			}
 
 			if (isset($_POST['supprimer_compte'])) 
@@ -61,7 +65,24 @@
 				$_SESSION['user_id']
 			));
 		}
+
+		public function nb_notif()
+		{
+			$activation = $this->select_req('
+					SELECT COUNT(activation)
+					FROM board_user
+					WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = ' . 0
+				);
+
+			$activation->setFetchMode(PDO::FETCH_ASSOC);
+
+			foreach ($activation as $row) 
+			{
+				return $row['COUNT(activation)'];		
+			}
 		
+		}
+
 	}
 
  ?>

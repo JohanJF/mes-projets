@@ -78,21 +78,50 @@
 
 	<nav class="container-fluid bg-secondary">
 		<div class="row py-2">
-			<div class="col text-left">
+			<div class="col-2 text-left">
 				<span class="badge badge-light"><?=$board['title']?></span>
 			</div>
 
+		<?php if ( $type == 'collaboratif') :?>
+			<div class="col-8 text-center">
+				<span class="text-white">Collaborateurs :</span>
+				<?php 
+					foreach ($collaborateurs as $value => $firstname):
+				 ?>
+					<span class="badge badge-warning"><?=$firstname?></span>
+				<?php 
+					endforeach;
+				 ?>
+			</div>
+		<?php endif;?>
+
 			<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
+			<div class="col-2 text-center container">
+				<div class="row">
 	        <?php if ( $type == 'collaboratif') :?>
 
-				<article class="col-1">
+				<article class="col">
 		            <img src="./src/img/collabo.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
 		        </article
 		        >
-		        <article class="col-1">
-		            <img src="./src/img/notif.png" class="pop2" data-container="body" data-toggle="popover" title="Notifications" data-placement="bottom" data-content="" />
+		        <article class="col">
+		            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification" />
+		            <sup>
+		            	<span class="badge badge-pill badge-danger alerte"><?= $_SESSION['nb_notif'] ?></span>
+		            </sup>
 		        </article>
+		        <div id="notification" style="display:none">
+			        <table class="table table-striped">
+			        	<tbody>
+			        		<tr class="notif">
+			        			<td>Vous avez été invité à rejoindre le tableau</td>
+			        		</tr>
+			        	</tbody>
+			        </table>
+		        </div>  
 		     <?php endif; ?>
+		     	</div>
+		 	</div>
 
 		</div>
 	</nav>
@@ -149,23 +178,6 @@
 			?>
 			<!-- ARTICLE PRESENTE DANS BDD -->
 
-			<!-- ARTICLE CREATION -->
-			<article class="col my-3" id="nouvelle_table">
-				<section class="card rounded-top" style="width: 16rem;">
-				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
-			    	<h5 class="card-title text-white">Ajouter une table</h5>
-			    	<div class="card-text my-2">
-			    	 	<form class="input-group input-group-sm">
-		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" onkeypress="if (event.keyCode == 13) creer_table()" />
-							  <div class="input-group-append">
-							    <button type="button" class="btn btn-outline-grey" id="add_list">Créer</button>
-							  </div>
-						</form>
-				    </div>
-				  </div>
-				</section>
-			</article>
-			<!-- ARTICLE CREATION -->
 			<!-- EMPLACEMENT FENETRES MODALES -->
 
 			<span id="fenetre_modal">
@@ -204,12 +216,35 @@
 
 			<!-- EMPLACEMENT FENETRES MODALES -->
 
+			<!-- ARTICLE CREATION -->
+			<article class="col my-3" id="nouvelle_table">
+				<section class="card rounded-top" style="width: 16rem;">
+				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
+			    	<h5 class="card-title text-white">Ajouter une table</h5>
+			    	<div class="card-text my-2">
+			    	 	<form class="input-group input-group-sm">
+		    	 			 <input type="text" class="form-control" placeholder="Titre" id="titre_table" />
+							  <div class="input-group-append">
+							    <button type="button" class="btn btn-outline-grey" id="add_list">Créer</button>
+							  </div>
+						</form>
+				    </div>
+				  </div>
+				</section>
+			</article>
+			<!-- ARTICLE CREATION -->
+
 		</div>
 	</main>
+
+	<div id="test"></div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
+	<?php if ( $type == 'collaboratif') :?>
+		<script type="text/javascript" src="./src/js/synchronisation.js"></script>
+	 <?php endif; ?>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

@@ -21,7 +21,6 @@
 	<link rel="stylesheet" type="text/css" href="./src/css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/style.css">
 	<script type="text/javascript" src="./src/js/jquery-3.4.1.js"></script>
-	<script type="text/javascript" src="./src/js/main.js"></script>
 </head>
 <body id="body-connected" class="bg-grey">
 	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
@@ -73,6 +72,28 @@
 
 		<!-- HEADER -->
 	</header>
+
+	<nav class="container-fluid bg-secondary">
+		<div class="row py-2">
+			<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
+	        <article class="col text-right">
+	            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification" />
+	            <sup>
+	            	<span class="badge badge-pill badge-danger alerte"><?= $_SESSION['nb_notif'] ?></span>
+	            </sup>
+	        </article>
+	        <div id="notification" style="display:none">
+		        <table class="table table-striped">
+		        	<tbody>
+		        		<tr class="notif">
+		        			<td>Vous avez été invité à rejoindre le tableau</td>
+		        		</tr>
+		        	</tbody>
+		        </table> 
+		    </div>
+		</div>
+	</nav>
+
 	<?= $content ?>
 	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA">
 		<!-- FOOTER -->
@@ -84,8 +105,9 @@
 		<!-- FOOTER -->
 	</footer>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

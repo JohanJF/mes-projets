@@ -25,9 +25,11 @@
 			} 
 			else
 			{
-				/* Redirection si user non connecté */
+				/* modification informations user */
 				$this->model_account = new model_account();
 				$information = $this->model_account->user_info($_SESSION['user_id']);
+
+				$_SESSION['nb_notif'] = $this->model_account->nb_notif(); // récupération nb notifications
 				require_once './Views/viewAccount.php';
 			}
 			

@@ -30,7 +30,7 @@
 								 <div class="input-group mb-3">
 								  <input type="text" class="form-control" placeholder="Nom tableau" name="tableau_perso">
 								  <div class="input-group-append">
-								    <input type="submit" class=" btn" name="submit_tab_perso" />
+								    <input type="submit" class=" btn" value="valider" name="submit_tab_perso" />
 								  </div>
 								</div>
 							</form>
@@ -45,7 +45,12 @@
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
 									  <div class="card-body">
 									    <h5 class="card-title"><?= $mes_tableaux_perso['title'] ?></h5>
-									    <a href="?rqt=projet&id=<?= $mes_tableaux_perso['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									    <div class="container">
+									    	<div class="row">
+									    		<a href="?rqt=projet&id=<?= $mes_tableaux_perso['id_board'] ?>" class="col btn btn-sm btn-outline-success">Consulter</a>
+									    		<button id="<?= $mes_tableaux_perso['id_board'] ?>" class="col btn btn-sm btn-outline-danger btn_board">Supprimer</button>
+									    	</div>
+									    </div>
 									  </div>
 									</div>
 							<?php
@@ -74,7 +79,7 @@
 								 <div class="input-group mb-3">
 								  <input type="text" class="form-control" placeholder="Nom tableau" name="tableau_collab">
 								  <div class="input-group-append">
-								    <input type="submit" class=" btn" name="submit_tab_collab" />
+								    <input type="submit" class=" btn" value="valider" name="submit_tab_collab" />
 								  </div>
 								</div>
 							</form>
@@ -89,7 +94,12 @@
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
 									  <div class="card-body">
 									    <h5 class="card-title"><?= $mes_tableaux_collab['title'] ?></h5>
-									    <a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									    <div class="container">
+									    	<div class="row">
+									    		<a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									    		<button id="<?= $mes_tableaux_collab['id_board'] ?>" class="col btn btn-sm btn-outline-danger btn_board">Supprimer</button>
+									  		</div>
+									  	</div>
 									  </div>
 									</div>
 							<?php

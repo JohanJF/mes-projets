@@ -195,11 +195,12 @@
 	                            );
 	             $id_user = $conn->lastInsertId();
 
-	            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign) VALUES (:id_user,:id_board)');
+	            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation) VALUES (:id_user,:id_board,:activation)');
 	            $result2->execute(
 	                                 array(
 	                                    'id_user' => $id_user,
-	                                    'id_board' => $_GET['tableau']
+	                                    'id_board' => $_GET['tableau'],
+	                                    'activation' => 1
 	                                )
 	                            );
 

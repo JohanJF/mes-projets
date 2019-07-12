@@ -73,6 +73,46 @@ class model_projet extends Model
 		}
 	}
 
+	public function collaborateurs()
+	{
+		$type = $this->select_req('
+				SELECT *
+				FROM user
+				INNER JOIN board_user ON user_id = id_user_foreign
+				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 1'
+			);
+
+		$type->setFetchMode(PDO::FETCH_ASSOC);
+
+		$tab = [];
+
+		foreach ($type as $row) 
+		{			
+			$tab[] = $row['firstname'];
+		}
+
+		
+		return $tab;
+	}
+
+	public function nb_notif()
+	{
+		/* Récupère le nb de notifications */
+		$activation = $this->select_req('
+				SELECT COUNT(activation)
+				FROM board_user
+				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0'
+			);
+
+		$activation->setFetchMode(PDO::FETCH_ASSOC);
+
+		foreach ($activation as $row) 
+		{
+			return $row['COUNT(activation)'];		
+		}
+	
+	}
+
 }
 
  ?>

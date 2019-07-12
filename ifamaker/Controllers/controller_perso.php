@@ -26,13 +26,15 @@
 			} 
 			else
 			{
-				/* Affichage taableaux */
+				/* Affichage tableaux */
 				$this->model_perso = new model_perso();
 				$this->model_perso->insert_tableau_perso();
 				$mes_tableaux_perso = $this->model_perso->mes_tableaux_perso();
 
 				$this->model_perso->insert_tableau_collab();
 				$mes_tableaux_collab = $this->model_perso->mes_tableaux_collab();
+
+				$_SESSION['nb_notif'] = $this->model_perso->nb_notif(); // récupération nb notifications
 				require_once './Views/viewPerso.php';
 			}
 		}

@@ -27,11 +27,12 @@ class model_perso extends Model
 			    $id_board = $row['id_board'];
 			}
 
-			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign) VALUES (:id_user,:id_board)");
+			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign,activation) VALUES (:id_user,:id_board,:activation)");
 			$res->execute(
 				array(
 						'id_user' => $_GET['user'],
-						'id_board'=> $id_board
+						'id_board'=> $id_board,
+						'activation' => 1
 					)
 			);
 		}
@@ -75,11 +76,13 @@ class model_perso extends Model
 			    $id_board = $row['id_board'];
 			}
 
-			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign) VALUES (:id_user,:id_board)");
+			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign,administrateur,activation) VALUES (:id_user,:id_board,:admin,:activation)");
 			$res->execute(
 				array(
 						'id_user' => $_GET['user'],
-						'id_board'=> $id_board
+						'id_board'=> $id_board,
+						'admin'=> 'admin',
+						'activation' => 1
 					)
 			);
 		}
@@ -92,10 +95,28 @@ class model_perso extends Model
 				SELECT * 
 				FROM board
 				INNER JOIN board_user ON id_board = id_board_foreign
-				WHERE type = "collaboratif" AND id_user_foreign = ' . $_SESSION['user_id']
+				WHERE type = "collaboratif" AND id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 1 '
 			);
 
 		return $mes_tableaux;
+	}
+
+	public function nb_notif()
+	{
+		/* Récupère le nb de notifications */
+		$activation = $this->select_req('
+				SELECT COUNT(activation)
+				FROM board_user
+				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = ' . 0
+			);
+
+		$activation->setFetchMode(PDO::FETCH_ASSOC);
+
+		foreach ($activation as $row) 
+		{
+			return $row['COUNT(activation)'];		
+		}
+	
 	}
 }
 
