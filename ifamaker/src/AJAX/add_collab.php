@@ -7,11 +7,28 @@
 	require_once '../PHPMailer/src/PHPMailer.php';
 	require_once '../PHPMailer/src/SMTP.php';
 
-	function envoi_mail()
+	function envoi_mail($conn)
 	{
 		/* envoi un mail d'invitation dans un tableau collaboratif */
-		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$mail_exist = $conn->prepare('
+				SELECT * 
+				FROM board_user
+				INNER JOIN user ON id_user_foreign = user_id
+				WHERE mail = "'. $_POST['mail_collab'] .'" AND id_board_foreign = '. $_POST['id_board']
+			);
+
+		$mail_exist->execute();
+		$mail_exist->setFetchMode(PDO::FETCH_ASSOC);
+
+		foreach ($mail_exist as $row) 
+		{
+			if ($row['mail'] == $_POST['mail_collab'] && $row['id_board_foreign'] == $_POST['id_board'] ) 
+			{
+				return 'Error';
+			}
+		}
+		
 		$type = $conn->prepare('
 				SELECT *
 				FROM user'
@@ -58,14 +75,20 @@
 		$mail->Body = 'Vous avez été invité à rejoindre le tableau collaboratif "'. $_POST['title_board'] . '" <br><br> Pour s\'inscrire et rejoindre ce tableau, cliquez <a href="http://localhost/mes-projets/ifamaker/index.php?rqt=register&tableau='.$_POST['id_board'].'">ici</a> <br><br>Si vous possédez déjà un compte, connectez-vous <a href="http://localhost/mes-projets/ifamaker/index.php">ici</a> et consultez vos notifications';
 
 		$mail->send();
+
+		return 'Success';
 	}
 
 	if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
 	{
-	    
-		envoi_mail();
+	 	
+		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		echo "Success";
+		if (envoi_mail($conn) == 'Success') 
+			echo 'Success';
+		else
+			echo 'Error';
 		
 	}
 	else

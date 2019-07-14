@@ -83,6 +83,19 @@
 		
 		}
 
+		public function invit_notif()
+		{
+			/* Affiche le nom des tableaux auquel user à été invité dans les notifications */
+			$activation = $this->select_req('
+					SELECT *
+					FROM board
+					INNER JOIN board_user ON id_board = id_board_foreign 
+					WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0'
+				);
+
+			return $activation;
+		}
+
 	}
 
  ?>

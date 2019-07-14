@@ -379,13 +379,15 @@ $(document).ready(function(){
 	});
 });
 
+
+// changement background hover notifications
 $(".pop2").on('shown.bs.popover', function(){
 
 	$('.table-striped').children().find('tr').hover(function() {
 
-    $(this).addClass("bg bg-secondary text-white");
+    $(this).addClass("bg bg-secondary");
   }, function() {
-    $(this).removeClass("bg bg-secondary text-white");
+    $(this).removeClass("bg bg-secondary");
   }
   	);
 

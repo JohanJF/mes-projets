@@ -35,6 +35,7 @@
 				$mes_tableaux_collab = $this->model_perso->mes_tableaux_collab();
 
 				$_SESSION['nb_notif'] = $this->model_perso->nb_notif(); // récupération nb notifications
+				$ma_notif = $this->model_perso->invit_notif(); // contenu popover notifications
 				require_once './Views/viewPerso.php';
 			}
 		}

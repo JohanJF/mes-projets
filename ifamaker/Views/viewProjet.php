@@ -113,9 +113,16 @@
 		        <div id="notification" style="display:none">
 			        <table class="table table-striped">
 			        	<tbody>
-			        		<tr class="notif">
-			        			<td>Vous avez été invité à rejoindre le tableau</td>
-			        		</tr>
+			        		<?php foreach ($ma_notif as $ma_notif) : ?>
+					        		<tr class="notif">
+					        			<td>
+					        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>" style="text-decoration: none; color: black;">
+					        					Vous avez été invité à rejoindre le tableau collaboratif "<?= $ma_notif['title'] ?>"
+					        				</a>
+					        			</td>    
+					        		</tr>
+					        	</a>
+			        		<?php endforeach; ?>
 			        	</tbody>
 			        </table>
 		        </div>  

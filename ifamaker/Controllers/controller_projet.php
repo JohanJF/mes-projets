@@ -36,6 +36,7 @@
 				$collaborateurs = $this->model_projet->collaborateurs(); // recupération nom de collaborateurs dans un tableau
 
 				$_SESSION['nb_notif'] = $this->model_projet->nb_notif(); // nb notifications
+				$ma_notif = $this->model_projet->invit_notif(); // contenu popover notifications
 				require_once './Views/viewProjet.php';
 			}
 			

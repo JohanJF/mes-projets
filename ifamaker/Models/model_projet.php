@@ -48,7 +48,7 @@ class model_projet extends Model
 				SELECT * 
 				FROM board 
 				INNER JOIN board_user ON id_board = board_user.id_board_foreign
-				WHERE id_board = ' . $_GET['id'] . ' AND id_user_foreign = ' . $_SESSION['user_id'] 
+				WHERE id_board = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id'] 
 		);
 
 		return $board->fetch();
@@ -79,7 +79,7 @@ class model_projet extends Model
 				SELECT *
 				FROM user
 				INNER JOIN board_user ON user_id = id_user_foreign
-				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 1'
+				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id']
 			);
 
 		$type->setFetchMode(PDO::FETCH_ASSOC);
@@ -113,6 +113,21 @@ class model_projet extends Model
 	
 	}
 
+	public function invit_notif()
+	{
+		/* methode qui recupère le nom du tableau où l'user est invité */
+		$activation = $this->select_req('
+				SELECT *
+				FROM board
+				INNER JOIN board_user ON id_board = id_board_foreign 
+				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0'
+			);
+
+		$activation->setFetchMode(PDO::FETCH_ASSOC);
+
+		return $activation;
+	}
+
 }
 
- ?>
+?>
