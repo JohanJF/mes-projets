@@ -76,13 +76,14 @@ class model_perso extends Model
 			    $id_board = $row['id_board'];
 			}
 
-			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign,administrateur,activation) VALUES (:id_user,:id_board,:admin,:activation)");
+			$res = $connexion->prepare("INSERT INTO board_user(id_user_foreign,id_board_foreign,administrateur,activation,consult) VALUES (:id_user,:id_board,:admin,:activation,:consult)");
 			$res->execute(
 				array(
 						'id_user' => $_GET['user'],
 						'id_board'=> $id_board,
 						'admin'=> 'admin',
-						'activation' => 1
+						'activation' => 1,
+						'consult' => 'consulted'
 					)
 			);
 		}
@@ -107,7 +108,7 @@ class model_perso extends Model
 		$activation = $this->select_req('
 				SELECT COUNT(activation)
 				FROM board_user
-				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = ' . 0
+				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0 AND consult = "not consulted"'
 			);
 
 		$activation->setFetchMode(PDO::FETCH_ASSOC);

@@ -383,6 +383,13 @@ $(document).ready(function(){
 // changement background hover notifications
 $(".pop2").on('shown.bs.popover', function(){
 
+	$.post(
+	        'src/AJAX/consulted.php',
+	        {
+	        	user_actif : user_actif
+	        }
+	 	);
+
 	$('.table-striped').children().find('tr').hover(function() {
 
     $(this).addClass("bg bg-secondary");
@@ -392,4 +399,5 @@ $(".pop2").on('shown.bs.popover', function(){
   	);
 
 });
+
 

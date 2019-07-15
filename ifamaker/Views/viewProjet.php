@@ -12,6 +12,7 @@
 		session_destroy(); // ferme la session
 		header('Location: #');
 	}
+
  ?>
 
 <!DOCTYPE html>
@@ -85,13 +86,9 @@
 		<?php if ( $type == 'collaboratif') :?>
 			<div class="col-8 text-center">
 				<span class="text-white">Collaborateurs :</span>
-				<?php 
-					foreach ($collaborateurs as $value => $firstname):
-				 ?>
-					<span class="badge badge-warning"><?=$firstname?></span>
-				<?php 
-					endforeach;
-				 ?>
+				<?php foreach ($collaborateurs as $collaborateurs): ?>
+					<span class="badge badge-warning"><?=$collaborateurs['firstname']?></span>
+				<?php endforeach; ?>
 			</div>
 		<?php endif;?>
 
@@ -116,7 +113,7 @@
 			        		<?php foreach ($ma_notif as $ma_notif) : ?>
 					        		<tr class="notif">
 					        			<td>
-					        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>" style="text-decoration: none; color: black;">
+					        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>&token=<?=$ma_notif['token']?>" style="text-decoration: none; color: black;">
 					        					Vous avez été invité à rejoindre le tableau collaboratif "<?= $ma_notif['title'] ?>"
 					        				</a>
 					        			</td>    
@@ -244,8 +241,9 @@
 		</div>
 	</main>
 
-	<div id="test"></div>
-	
+	<script type="text/javascript">
+		var user_actif = "<?php echo $_SESSION['user_id']; ?>";
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>

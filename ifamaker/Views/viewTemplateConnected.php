@@ -89,7 +89,7 @@
 		        			
 				        		<tr class="notif">
 				        			<td>
-				        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>" style="text-decoration: none; color: black;">
+				        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>&token=<?=$ma_notif['token']?>" style="text-decoration: none; color: black;">
 				        					Vous avez été invité à rejoindre le tableau collaboratif "<?= $ma_notif['title'] ?>"
 				        				</a>
 				        			</td>    
@@ -113,6 +113,9 @@
 		<!-- FOOTER -->
 	</footer>
 
+	<script type="text/javascript">
+		var user_actif = "<?php echo $_SESSION['user_id']; ?>";
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
 	<script type="text/javascript" src="./src/js/main.js"></script>

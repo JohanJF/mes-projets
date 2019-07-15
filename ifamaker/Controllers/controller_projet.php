@@ -27,6 +27,12 @@
 			else
 			{
 				$this->model_projet = new model_projet();
+
+				if (isset($_GET['token'])) 
+				{
+					$this->model_projet->join_tab();
+				}
+
 				$mes_listes = $this->model_projet->mes_listes();
 				
 				$board = $this->model_projet->board_title(); // recupère titre du tableau 

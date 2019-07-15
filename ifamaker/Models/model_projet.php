@@ -10,7 +10,7 @@ class model_projet extends Model
 				SELECT * 
 				FROM list
 				INNER JOIN board_user ON list.id_board_foreign = board_user.id_board_foreign
-				WHERE board_user.id_board_foreign = ' . $_GET['id'] . ' AND id_user_foreign = ' . $_SESSION['user_id'] 
+				WHERE board_user.id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id'] 
 		);
 
 		$mes_listes->setFetchMode(PDO::FETCH_ASSOC);
@@ -79,20 +79,12 @@ class model_projet extends Model
 				SELECT *
 				FROM user
 				INNER JOIN board_user ON user_id = id_user_foreign
-				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id']
+				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 '
 			);
 
 		$type->setFetchMode(PDO::FETCH_ASSOC);
-
-		$tab = [];
-
-		foreach ($type as $row) 
-		{			
-			$tab[] = $row['firstname'];
-		}
-
 		
-		return $tab;
+		return $type;
 	}
 
 	public function nb_notif()
@@ -120,12 +112,47 @@ class model_projet extends Model
 				SELECT *
 				FROM board
 				INNER JOIN board_user ON id_board = id_board_foreign 
-				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0'
+				WHERE id_user_foreign = ' . $_SESSION['user_id'] . ' AND activation = 0 AND consult = "not consulted"'
 			);
 
 		$activation->setFetchMode(PDO::FETCH_ASSOC);
 
 		return $activation;
+	}
+
+	public function join_tab()
+	{
+		/* methode qui permet d'accepter un tableau collaboratif via popover notifications */
+		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	    $token_exist = $this->select_req('
+				SELECT * 
+				FROM board_user
+				WHERE id_board_foreign = ' . $_GET['id'] . ' AND activation = 0 AND id_user_foreign = ' . $_SESSION['user_id'] 
+		);
+
+		$token_exist->setFetchMode(PDO::FETCH_ASSOC);
+
+		foreach ($token_exist as $row) 
+		{
+			if ($_GET['token'] == $row['token']) 
+			{
+				$join = $conn->prepare('
+					UPDATE board_user 
+					SET activation = 1 
+					WHERE id_board_foreign = :board AND activation = 0 AND id_user_foreign = :user' 
+				);
+
+				$join->execute(
+			                array(
+			                    'board' => $_GET['id'],
+			                    'user' => $_SESSION['user_id'] 
+			                )
+		        );
+			}
+		}
+		
 	}
 
 }
