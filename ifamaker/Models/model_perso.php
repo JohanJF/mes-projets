@@ -132,6 +132,7 @@ class model_perso extends Model
 
 		return $activation;
 	}
+
 }
 
  ?>

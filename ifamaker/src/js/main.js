@@ -156,7 +156,54 @@ function creer_tache()
      );
 }
 
-/* Récupère les informations dans une fenêtre modale */
+/* récupère les informations d'un tableau dans une fenètre modale */
+$('.modifier_tab').on('click', open_modal_viewPerso);
+
+function open_modal_viewPerso()
+{
+	let title_modal = $(this).parent().parent().children().find('h5').text();
+	let id_tableau_modal = $(this).parent().parent().children().find('h5').attr('id');
+		id_tableau_modal = id_tableau_modal.split('-');
+
+	$.post(
+        'src/AJAX/administration.php', 
+        {  
+            id_tableau : id_tableau_modal[1]
+        },
+
+        function(data)
+        {
+        	let mes_collaborateurs = data.split('-'); // insère le select des utilisateurs présent dans un tableau collaboratif dans un tableau en javascript
+
+        	for (var i = 0; i < mes_collaborateurs.length-1; i++)
+			{
+				let tr = document.createElement('tr');
+				let td = document.createElement('td');
+				var span = document.createElement('span');
+					span.className = 'close';
+					span.setAttribute('alt','Supprimer le collaborateur');
+					span.setAttribute('title','Supprimer le collaborateur');
+
+				
+				let text = document.createTextNode('x');
+				tr.append(td);
+				span.append(text);
+				td.append(mes_collaborateurs[i],span);
+			  	$('#modal_body_viewPerso').append(tr);
+			}
+        }
+     );
+	$('.modal_titre_viewPerso').text(title_modal);
+	$('#modal_viewPerso').modal('show');
+}
+
+/* vide le modal du tableau */
+$('#modal_viewPerso').on('hidden.bs.modal', function (e) {
+  $('#modal_viewPerso').find('tr').html("");
+})
+
+
+/* Récupère les informations d'une tâche dans une fenêtre modale */
 
 $('.tache').on('click', open_modal);
 
@@ -177,7 +224,7 @@ function open_modal()
 /* Permet la suppression d'une tâche */
 
 $('.btn-supprimer').on('click', supprimer_liste);
-
+ 
 function supprimer_liste()
 {
 	console.log($(this).parents('.ma_listeid').attr('id'));

@@ -43,8 +43,11 @@
 								foreach($mes_tableaux_perso as $mes_tableaux_perso):
 							?>
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+										<small class="pt-2 d-flex justify-content-end">
+											<input class="text-right" type="image" src="./src/img/modifier_small.png">
+										</small>
 									  <div class="card-body">
-									    <h5 class="card-title"><?= $mes_tableaux_perso['title'] ?></h5>
+									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_perso['id_board'] ?>"><?= $mes_tableaux_perso['title'] ?></h5>
 									    <div class="container">
 									    	<div class="row">
 									    		<a href="?rqt=projet&id=<?= $mes_tableaux_perso['id_board'] ?>" class="col btn btn-sm btn-outline-success">Consulter</a>
@@ -92,8 +95,13 @@
 								foreach($mes_tableaux_collab as $mes_tableaux_collab):
 							?>
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+										<small class="pt-2 d-flex justify-content-end">
+											<input class="modifier_tab text-right" type="image" src="./src/img/modifier_small.png">
+										</small>
 									  <div class="card-body">
-									    <h5 class="card-title"><?= $mes_tableaux_collab['title'] ?></h5>
+									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_collab['id_board'] ?>">
+									    	<?= $mes_tableaux_collab['title'] ?>
+									    </h5>
 									    <div class="container">
 									    	<div class="row">
 									    		<a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
@@ -116,6 +124,33 @@
 				<!--CONTENU ARTICLE-->
 
 </div>
+
+<!-- EMPLACEMENT FENETRES MODALES -->
+
+			<span id="fenetre_modal_viewPerso">
+					<div class="modal fade" id="modal_viewPerso" tabindex="-1" role="dialog" aria-labelledby="viewPersoTitle" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered" role="document">
+					    <div class="modal-content bg-grey">
+					      <div class="modal-header">
+					        <h5 class="modal-title modal_titre_viewPerso" id="exampleModalLongTitle"></h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <table class="table">
+							  <tbody id="modal_body_viewPerso">	
+							  </tbody>
+							</table>
+					      </div>
+					      <div class="modal-footer">
+							<button class="btn btn-sauvegarder" type="button" data-dismiss="modal">Fermer</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+			</span>	
+
+			<!-- EMPLACEMENT FENETRES MODALES -->
 <?php
 	$content = ob_get_clean(); 
 	require('viewTemplateConnected.php'); 

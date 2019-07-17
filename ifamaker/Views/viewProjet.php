@@ -195,11 +195,8 @@
 										<input class="modifier_tache" type="image" src="./src/img/modifier_small.png">
 										<input class="close delete_task" type="image" src="./src/img/supprimer_small.png" data-dismiss="modal" aria-label="close">
 									</small>
-									<button class="close" type="button" data-dismiss="modal" aria-label="close">
-										<span aria-hidden="true">
-											
-										</span>
-									</button>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							        </button>
 								</div>
 								<div class="modal-body">
 									<div class="form-group">
