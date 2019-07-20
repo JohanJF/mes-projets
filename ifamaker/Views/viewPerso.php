@@ -113,7 +113,6 @@
 							<?php
 								endforeach;
 							 ?>
-							 <p>Hello world</p>
 						</div>							
 					</div>
 
