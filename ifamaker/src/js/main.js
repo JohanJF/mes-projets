@@ -126,7 +126,7 @@ function delete_board()
         	console.log(data);
         	if (data == "Success") 
         	{
-				window.location.reload();
+				document.location.href="http://localhost/mes-projets/ifamaker/index.php";
         	}
         },
         'text'
@@ -193,6 +193,7 @@ function open_modal_viewPerso()
 			}
         }
      );
+	$('.modal_titre_viewPerso').attr('id','titre_tab_'+id_tableau_modal[1]);
 	$('.modal_titre_viewPerso').text(title_modal);
 	$('#modal_viewPerso').modal('show');
 }
@@ -201,6 +202,103 @@ function open_modal_viewPerso()
 $('#modal_viewPerso').on('hidden.bs.modal', function (e) {
   $('#modal_viewPerso').find('tr').html("");
 })
+
+/* Permet de modifier le titre d'un tableau */
+
+$('.modifier_titre_tab').on('click', update_tableau);
+
+function update_tableau()
+{
+	$(this).attr('disabled','true');
+	let id_tableau = $('.modal_titre_viewPerso').attr('id');
+	let id = id_tableau.split('_');
+	let titre_tableau = $('.modal_titre_viewPerso').text();
+	$(this).parents().find('.modal_titre_viewPerso').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[2]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau">Modifier</button></div></div>');
+	$('.modif_titre_tab').val(titre_tableau);
+	$('.submit_modif_tableau').on('click',modif_tableau);
+}
+
+function modif_tableau()
+{
+	let id_tableau = $('.modif_titre_tab').attr('id');
+	let id = id_tableau.split('_');
+	console.log(id);
+	console.log($(this).parents().find('.titre_tache_modal').attr('id'));
+			$.post(
+		        'src/AJAX/update_tableau.php', 
+		        {
+		            id_table : id[2],
+		            table_title : $('.modif_titre_tab').val()
+		        },
+
+		        function(data){
+		        	console.log(data);
+		        	if (data == "Success") 
+		        	{
+						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
+		        	}
+		        	else
+		        	{
+		        		$('#test').html('Erreur ajout tâche');
+		        	}
+		        },
+		        'text'
+	     	);
+
+			/*$(this).parents().find('.titre_tache_modal').removeAttr("disabled");
+	 		let titre_modif = $('.modif_tache').val();
+	 		$(this).parents().find('.titre_tache_modal').html('<h3 class="modal-title text-dark titre_tache_modal">'+titre_modif+'</h3>');*/
+
+}
+
+//////////////////////////////////////////////////////////////////
+
+$('.modifier_titre_tab_Perso').on('click', update_tableau_perso);
+
+function update_tableau_perso()
+{
+	$(this).attr('disabled','true');
+	let titre_tableau_perso = $(this).parent().parent().children().find('h5').text();
+	let id_tableau_perso = $(this).parent().parent().children().find('h5').attr('id');
+	let	id = id_tableau_perso.split('-');
+	$(this).parent().parent().children().find('h5').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[2]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau_perso">Modifier</button></div></div>');
+	$('.modif_titre_tab').val(titre_tableau_perso);
+	//$('.submit_modif_tableau_perso').on('click',modif_tableau_perso);
+}
+
+function modif_tableau_perso()
+{
+	let id_tableau = $('.modif_titre_tab').attr('id');
+	let id = id_tableau.split('_');
+	console.log(id);
+	console.log($(this).parents().find('.titre_tache_modal').attr('id'));
+			$.post(
+		        'src/AJAX/update_tableau.php', 
+		        {
+		            id_table : id[2],
+		            table_title : $('.modif_titre_tab').val()
+		        },
+
+		        function(data){
+		        	console.log(data);
+		        	if (data == "Success") 
+		        	{
+						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
+		        	}
+		        	else
+		        	{
+		        		$('#test').html('Erreur ajout tâche');
+		        	}
+		        },
+		        'text'
+	     	);
+
+			/*$(this).parents().find('.titre_tache_modal').removeAttr("disabled");
+	 		let titre_modif = $('.modif_tache').val();
+	 		$(this).parents().find('.titre_tache_modal').html('<h3 class="modal-title text-dark titre_tache_modal">'+titre_modif+'</h3>');*/
+
+}
+
 
 
 /* Récupère les informations d'une tâche dans une fenêtre modale */

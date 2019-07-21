@@ -44,7 +44,7 @@
 							?>
 									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
 										<small class="pt-2 d-flex justify-content-end">
-											<input class="text-right" type="image" src="./src/img/modifier_small.png">
+											<input class="modifier_titre_tab_Perso text-right" type="image" src="./src/img/modifier_small.png">
 										</small>
 									  <div class="card-body">
 									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_perso['id_board'] ?>"><?= $mes_tableaux_perso['title'] ?></h5>
@@ -99,9 +99,7 @@
 											<input class="modifier_tab text-right" type="image" src="./src/img/modifier_small.png">
 										</small>
 									  <div class="card-body">
-									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_collab['id_board'] ?>">
-									    	<?= $mes_tableaux_collab['title'] ?>
-									    </h5>
+									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_collab['id_board'] ?>"><?= $mes_tableaux_collab['title'] ?></h5>
 									    <div class="container">
 									    	<div class="row">
 									    		<a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
@@ -132,9 +130,10 @@
 					  <div class="modal-dialog modal-dialog-centered" role="document">
 					    <div class="modal-content bg-grey">
 					      <div class="modal-header">
-					        <h5 class="modal-title modal_titre_viewPerso" id="exampleModalLongTitle"></h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					        </button>
+					        <h5 class="modal-title modal_titre_viewPerso"></h5>
+					        <small class="pt-2 d-flex justify-content-end">
+								<input class="modifier_titre_tab text-right" type="image" src="./src/img/modifier_small.png">
+							</small>
 					      </div>
 					      <div class="modal-body">
 					        <table class="table">
