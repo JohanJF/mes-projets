@@ -50,7 +50,7 @@
 		public function mail()
 		{
 
-			$mail = new PHPMailer();
+			/*$mail = new PHPMailer();
 
 			//Config
 			$mail->isSMTP();
@@ -63,6 +63,25 @@
 
 			//Info du mail
 			$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','IfaMaker');
+			$mail->addAddress($_POST['email_inscription']);
+
+			$mail->isHTML(true);
+			$mail->Subject = "Confirmation mail ";
+			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".sha1($_POST['email_inscription'])."'>ici</a>";*/
+
+			$mail = new PHPMailer();
+
+			//Config
+			$mail->isSMTP();
+			$mail->Host = 'smtp.gmail.com';
+			$mail->SMTPAuth = true;
+			$mail->Username = 'johanjeanfrancois@gmail.com';
+			$mail->Password = 'Madinina972';
+			$mail->SMTPSecure = 'ssl';
+			$mail->Port = 465;
+
+			//Info du mail
+			$mail->setFrom('johanjeanfrancois@gmail.com','IfaMaker');
 			$mail->addAddress($_POST['email_inscription']);
 
 			$mail->isHTML(true);
