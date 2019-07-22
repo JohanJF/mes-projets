@@ -250,7 +250,7 @@ $('.modifier_titre_tab').on('click', update_tableau);
 function update_tableau()
 {
 	$(this).attr('disabled','true');
-	let id_tableau = $('.modal_titre_viewPerso');
+	let id_tableau = $('.modal_titre_viewPerso').attr('id');
 	let id = id_tableau.split('_');
 	let titre_tableau = $('.modal_titre_viewPerso').text();
 	$(this).parents().find('.modal_titre_viewPerso').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[2]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau">Modifier</button></div></div>');
