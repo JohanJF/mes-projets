@@ -107,26 +107,31 @@
 	}
 
 	/////////////////////////////////////////////////////////////////////
-
-	if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
-	{
-	 	
-		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-		if (verification($conn) == 'Success')
+	try 
+    {
+		if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
 		{
-			envoi_mail($conn); 
-			echo 'Success';
-		}	
+		 	
+			$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+			if (verification($conn) == 'Success')
+			{
+				envoi_mail($conn); 
+				echo 'Success';
+			}	
+			else
+				echo 'Error';
+			
+		}
 		else
+		{
 			echo 'Error';
-		
-	}
-	else
-	{
-		echo 'Error';
-	}
+		}
+	} catch (PDOException $e) 
+        {
+            echo "Une erreur s'est produite";
+        }
 
 
  ?>

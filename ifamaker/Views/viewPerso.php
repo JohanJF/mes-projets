@@ -76,7 +76,7 @@
 								<h5>Créer un tableau collaboratif</h5>
 							</article>
 							<article class="col-12">
-								<label>Créez un tableau où vous et votre team pourrait consulter et modifier</label>
+								<label>Créez un tableau où vous et vos collaborateurs pourraient consulter et modifier</label>
 							</article>
 							<form class="col-12 text-center" action="?rqt=perso&user=<?=$_SESSION['user_id']?>" method="POST">
 								 <div class="input-group mb-3">

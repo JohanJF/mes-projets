@@ -51,18 +51,18 @@
 		              <img src="./src/img/menu.png"/>
 		            </a>
 		         </article>
-				<div class="col-9 px-3 text-center">
+				<div class="col-8 px-3 text-center">
 					<img src="./src/img/logo.png" />
 				</div>
 
-				<div class="col-2 text-right container">
+				<div class="col-3 text-right container">
 					<div class="row">
 						<div class="col">
 							<span class="border rounded-circle px-2 py-3">Photo</span>
 						</div>
-					<form action="#" method="POST" class="col">
-						<input class="btn btn-outline-danger btn-sm" type="submit" name="deconnexion" value="Déconnexion" />
-					</form>
+						<form action="#" method="POST" class="col">
+							<input class="btn btn-outline-danger btn-sm" type="submit" name="deconnexion" value="Déconnexion" />
+						</form>
 					</div>
 				</div>
 

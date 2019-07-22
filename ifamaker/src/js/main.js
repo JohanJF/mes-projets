@@ -156,7 +156,7 @@ function creer_tache()
      );
 }
 
-/* récupère les informations d'un tableau dans une fenètre modale */
+/* récupère les informations d'un tableau collaboratif dans une fenètre modale */
 $('.modifier_tab').on('click', open_modal_viewPerso);
 
 function open_modal_viewPerso()
@@ -173,29 +173,69 @@ function open_modal_viewPerso()
 
         function(data)
         {
-        	let mes_collaborateurs = data.split('-'); // insère le select des utilisateurs présent dans un tableau collaboratif dans un tableau en javascript
+        	console.log(data);
 
-        	for (var i = 0; i < mes_collaborateurs.length-1; i++)
+        	let firstname = data['firstname'];
+        	let administrateur = data['admin'];
+
+        	let tr_head = document.createElement('tr');
+			let th = document.createElement('th');
+			$('#modal_body_viewPerso').parent().append(tr_head);
+			tr_head.append(th);
+			th.append(administrateur);
+
+        	for(var test in firstname)
 			{
 				let tr = document.createElement('tr');
 				let td = document.createElement('td');
 				var span = document.createElement('span');
-					span.className = 'close';
+					span.className = 'close delete_collab_'+firstname[test];
 					span.setAttribute('alt','Supprimer le collaborateur');
 					span.setAttribute('title','Supprimer le collaborateur');
-
 				
 				let text = document.createTextNode('x');
 				tr.append(td);
 				span.append(text);
-				td.append(mes_collaborateurs[i],span);
+				td.append(test,span);
 			  	$('#modal_body_viewPerso').append(tr);
 			}
-        }
+			$('.close').on('click', delete_collab);
+        },
+        'json'
+        
      );
 	$('.modal_titre_viewPerso').attr('id','titre_tab_'+id_tableau_modal[1]);
 	$('.modal_titre_viewPerso').text(title_modal);
 	$('#modal_viewPerso').modal('show');
+}
+
+function delete_collab()
+{
+	console.log(this);
+	let id_collab = $(this).attr('class').split('_');
+	let id_tableau = $(this).parents().find('#modal_viewPerso').children().find('.modal_titre_viewPerso').attr('id').split('_');
+	console.log(id_collab[2]);
+	console.log(id_tableau[2]);
+	$.post(
+		        'src/AJAX/delete_collab.php', 
+		        {
+		            id_collab : id_collab[2],
+		            id_board : id_tableau[2]
+		        },
+
+		        function(data){
+		        	console.log(data);
+		        	if (data == "Success") 
+		        	{
+						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
+		        	}
+		        	else
+		        	{
+		        		$('#test').html('Erreur ajout tâche');
+		        	}
+		        },
+		        'text'
+	     	);
 }
 
 /* vide le modal du tableau */
@@ -203,14 +243,14 @@ $('#modal_viewPerso').on('hidden.bs.modal', function (e) {
   $('#modal_viewPerso').find('tr').html("");
 })
 
-/* Permet de modifier le titre d'un tableau */
+/* Permet de modifier le titre d'un tableau collaboratif */
 
 $('.modifier_titre_tab').on('click', update_tableau);
 
 function update_tableau()
 {
 	$(this).attr('disabled','true');
-	let id_tableau = $('.modal_titre_viewPerso').attr('id');
+	let id_tableau = $('.modal_titre_viewPerso');
 	let id = id_tableau.split('_');
 	let titre_tableau = $('.modal_titre_viewPerso').text();
 	$(this).parents().find('.modal_titre_viewPerso').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[2]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau">Modifier</button></div></div>');
@@ -252,6 +292,7 @@ function modif_tableau()
 }
 
 //////////////////////////////////////////////////////////////////
+/* Modifie le titre d'un tableau personnel */
 
 $('.modifier_titre_tab_Perso').on('click', update_tableau_perso);
 
@@ -261,22 +302,20 @@ function update_tableau_perso()
 	let titre_tableau_perso = $(this).parent().parent().children().find('h5').text();
 	let id_tableau_perso = $(this).parent().parent().children().find('h5').attr('id');
 	let	id = id_tableau_perso.split('-');
-	$(this).parent().parent().children().find('h5').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[2]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau_perso">Modifier</button></div></div>');
+	$(this).parent().parent().children().find('h5').html('<div class="input-group input-group-sm"><input id="modif_tableau_'+id[1]+'" type="text" placeholder="Modifier titre tableau" class="form-control modif_titre_tab" /><div class="input-group-append"><button type="button" class="btn btn-outline-grey button_creer_tache submit_modif_tableau_perso">Modifier</button></div></div>');
 	$('.modif_titre_tab').val(titre_tableau_perso);
-	//$('.submit_modif_tableau_perso').on('click',modif_tableau_perso);
+	$('.submit_modif_tableau_perso').on('click',modif_tableau_perso);
 }
 
 function modif_tableau_perso()
 {
-	let id_tableau = $('.modif_titre_tab').attr('id');
+	let id_tableau = $(this).parent().parent().find('input').attr('id');
 	let id = id_tableau.split('_');
-	console.log(id);
-	console.log($(this).parents().find('.titre_tache_modal').attr('id'));
 			$.post(
 		        'src/AJAX/update_tableau.php', 
 		        {
 		            id_table : id[2],
-		            table_title : $('.modif_titre_tab').val()
+		            table_title : $(this).parent().parent().find('input').val()
 		        },
 
 		        function(data){

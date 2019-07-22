@@ -18,7 +18,7 @@ function refresh()
 			}
 			else
 			{
-				console.log(data);
+				
 			}
 		}
 	);

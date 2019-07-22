@@ -55,11 +55,11 @@
 		            </a>
 		         </article>
 
-				 <div class="col-9 px-3 d-flex justify-content-center">
+				 <div class="col-8 px-3 d-flex justify-content-center">
 					<a href="?rqt=projet&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
 				 </div>      		
 
-				<div class="col-2 text-right container">
+				<div class="col-3 text-right container">
 					<div class="row">
 						<div class="col">
 							<span class="border rounded-circle px-2 py-3">Photo</span>
