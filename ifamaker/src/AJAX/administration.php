@@ -6,45 +6,73 @@
 
 		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $result = $conn->prepare('
-            				SELECT *
-            				FROM board_user
-            				INNER JOIN user ON id_user_foreign = user_id
-            				WHERE id_board_foreign = :board AND administrateur IS NULL 
-            			');
-            $result->execute(
-                                 array(
-                                    'board' => $_POST['id_tableau']
-                                )
-                            );
 
-            $result->setFetchMode(PDO::FETCH_ASSOC);
-
-            foreach ($result as $result) 
-            {
-            	$new['firstname'][$result['firstname']] = $result['user_id'] ;
-            }
-
-            ////////////////////////////////////////////////////////
-
-            $result2 = $conn->prepare('
+            $admin = $conn->prepare('
                             SELECT *
                             FROM board_user
                             INNER JOIN user ON id_user_foreign = user_id
                             WHERE id_board_foreign = :board AND administrateur = "admin"
                         ');
-            $result2->execute(
+            $admin->execute(
                                  array(
                                     'board' => $_POST['id_tableau']
                                 )
                             );
 
-            $result2->setFetchMode(PDO::FETCH_ASSOC);
+            $admin->setFetchMode(PDO::FETCH_ASSOC);
 
-            foreach ($result2 as $result) 
+            foreach ($admin as $admin) 
             {
-                $new['admin'] = $result['firstname'];
+                $new['admin'][] = $admin['firstname'];
+                $new['admin'][] = $admin['user_id'];
             }
+
+            ////////////////////////////////////////////////////////
+
+            $user_actif = $conn->prepare('
+                            SELECT *
+                            FROM board_user
+                            INNER JOIN user ON id_user_foreign = user_id
+                            WHERE id_board_foreign = :board AND id_user_foreign = :user
+                        ');
+            $user_actif->execute(
+                                 array(
+                                    'board' => $_POST['id_tableau'],
+                                    'user' => $_POST['user']
+                                )
+                            );
+
+            $user_actif->setFetchMode(PDO::FETCH_ASSOC);
+
+            foreach ($user_actif as $user_actif) 
+            {
+                $new['user'][] = $user_actif['firstname'];
+                $new['user'][] = $user_actif['user_id'];
+            }
+
+            ////////////////////////////////////////////////////////
+
+            $collaborateurs = $conn->prepare('
+                            SELECT *
+                            FROM board_user
+                            INNER JOIN user ON id_user_foreign = user_id
+                            WHERE id_board_foreign = :board AND administrateur IS NULL AND id_user_foreign != :user
+                        ');
+            $collaborateurs->execute(
+                                 array(
+                                    'board' => $_POST['id_tableau'],
+                                    'user' => $_POST['user']
+                                )
+                            );
+
+            $collaborateurs->setFetchMode(PDO::FETCH_ASSOC);
+
+            foreach ($collaborateurs as $collaborateurs) 
+            {
+                $new['firstname'][$collaborateurs['firstname']] = $collaborateurs['user_id'] ;
+            }
+
+            
 
 
             echo json_encode($new);

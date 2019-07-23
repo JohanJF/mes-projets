@@ -168,7 +168,8 @@ function open_modal_viewPerso()
 	$.post(
         'src/AJAX/administration.php', 
         {  
-            id_tableau : id_tableau_modal[1]
+            id_tableau : id_tableau_modal[1],
+            user : $_GET('user')
         },
 
         function(data)
@@ -176,30 +177,44 @@ function open_modal_viewPerso()
         	console.log(data);
 
         	let firstname = data['firstname'];
-        	let administrateur = data['admin'];
+        	let administrateur = data['admin'][0];
+        	console.log(data['admin']['firstname'])
+        	let user_actif = data['user'][0];
+			
+        	let tr_admin = document.createElement('tr');
+			let th_admin = document.createElement('th');
+			let tr_user_actif = document.createElement('tr');
+			let th_user_actif = document.createElement('th');
+				th_user_actif.className = 'text-success';
 
-        	let tr_head = document.createElement('tr');
-			let th = document.createElement('th');
-			$('#modal_body_viewPerso').parent().append(tr_head);
-			tr_head.append(th);
-			th.append(administrateur);
+			$('#modal_body_viewPerso').parent().append(tr_admin,tr_user_actif);
+			tr_admin.append(th_admin);
+			tr_user_actif.append(th_user_actif);
+			th_admin.append('Admin : ',administrateur);
+			th_user_actif.append(user_actif);
 
-        	for(var test in firstname)
+        	for(var collaborateur in firstname)
 			{
 				let tr = document.createElement('tr');
 				let td = document.createElement('td');
 				var span = document.createElement('span');
-					span.className = 'close delete_collab_'+firstname[test];
+					span.className = 'close delete_collab_'+firstname[collaborateur];
 					span.setAttribute('alt','Supprimer le collaborateur');
 					span.setAttribute('title','Supprimer le collaborateur');
 				
 				let text = document.createTextNode('x');
 				tr.append(td);
 				span.append(text);
-				td.append(test,span);
+				td.append(collaborateur,span);
 			  	$('#modal_body_viewPerso').append(tr);
 			}
 			$('.close').on('click', delete_collab);
+
+			if (data['admin'][1] != data['user'][1]) 
+			{
+				$('.modifier_titre_tab').hide();
+				$('.close').hide();
+			}
         },
         'json'
         
