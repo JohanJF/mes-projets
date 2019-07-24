@@ -1,8 +1,8 @@
 <?php 
-
+    /* Affiche les collaborateurs, l'utilisateur en cours et l'administrateur d'un tableau */
 	try {
 
-        $new = [];
+        $tab = []; // crée un tableau
 
 		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -23,8 +23,8 @@
 
             foreach ($admin as $admin) 
             {
-                $new['admin'][] = $admin['firstname'];
-                $new['admin'][] = $admin['user_id'];
+                $tab['admin'][] = $admin['firstname']; // stocke le prenom de l'administrateur dans tableau associatif json
+                $tab['admin'][] = $admin['user_id']; //stocke l'id unique de l'administrateur
             }
 
             ////////////////////////////////////////////////////////
@@ -46,8 +46,8 @@
 
             foreach ($user_actif as $user_actif) 
             {
-                $new['user'][] = $user_actif['firstname'];
-                $new['user'][] = $user_actif['user_id'];
+                $tab['user'][] = $user_actif['firstname']; //stocke le prenom de l'utilisateur connecté
+                $tab['user'][] = $user_actif['user_id']; //stocke l'id de l'utilisateur connecté
             }
 
             ////////////////////////////////////////////////////////
@@ -69,13 +69,13 @@
 
             foreach ($collaborateurs as $collaborateurs) 
             {
-                $new['firstname'][$collaborateurs['firstname']] = $collaborateurs['user_id'] ;
+                $tab['firstname'][$collaborateurs['firstname']] = $collaborateurs['user_id'] ; //stocke les prenoms de tout les collaborateur sauf admin et utilisateur connecté
             }
 
             
 
 
-            echo json_encode($new);
+            echo json_encode($tab);
 
 		
 	} catch (Exception $e) {

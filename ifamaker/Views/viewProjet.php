@@ -93,15 +93,36 @@
 		<?php endif;?>
 
 			<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
-			<div class="col-2 text-center container">
-				<div class="row">
 	        <?php if ( $type == 'collaboratif') :?>
-
-				<article class="col">
-		            <img src="./src/img/collabo.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
-		        </article
-		        >
-		        <article class="col">
+		        <div class="col-2 text-center container">
+					<div class="row">
+						<article class="col">
+				            <img src="./src/img/collabo.png" class="pop1" data-container="body" data-toggle="popover" title="Ajoutez un collaborateur" data-placement="bottom" data-content="" />
+				        </article
+				        >
+				        <article class="col">
+				            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification" />
+				            <sup>
+				            	<span class="badge badge-pill badge-danger alerte"><?= $_SESSION['nb_notif'] ?></span>
+				            </sup>
+				        </article>
+				        <div id="notification" style="display:none">
+					        <table class="table table-striped">
+					        	<tbody>
+					        		<?php foreach ($ma_notif as $ma_notif) : ?>
+							        		<tr class="notif">
+							        			<td>
+							        				<a href="http://localhost/mes-projets/ifamaker/index.php?rqt=projet&id=<?= $ma_notif['id_board'] ?>&token=<?=$ma_notif['token']?>" style="text-decoration: none; color: black;">
+							        					Vous avez été invité à rejoindre le tableau collaboratif "<?= $ma_notif['title'] ?>"
+							        				</a>
+							        			</td>    
+							        		</tr>
+					        		<?php endforeach; ?>
+					        	</tbody>
+					        </table>
+				        </div>
+		     <?php else : ?>
+		     	<article class="col text-right">
 		            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification" />
 		            <sup>
 		            	<span class="badge badge-pill badge-danger alerte"><?= $_SESSION['nb_notif'] ?></span>
@@ -118,7 +139,6 @@
 					        				</a>
 					        			</td>    
 					        		</tr>
-					        	</a>
 			        		<?php endforeach; ?>
 			        	</tbody>
 			        </table>
@@ -151,12 +171,12 @@
 										<div class="" id="li-<?=$value[0]?>">
 											<?php if (isset($value[3])): ?>
 											<?php
-												 
 												foreach($value[3] as $mes_taches):
 											 ?>
 												<a class="tache" data-toggle="modal" id="#ma_tache-<?= $mes_taches['id_task'] ?>">
 													<li class="list-group-item tache_detail border border-dark my-1">
 														<h6><?=$mes_taches['title']?></h6>
+														<small class="text-grey"><?=$mes_taches['details']?></small>
 													</li>
 												</a>
 											<?php
@@ -201,6 +221,7 @@
 								<div class="modal-body">
 									<div class="form-group">
 										<div class="container">
+											<p id="mon_detail"></p>
 											<label class="text-left text-grey" for="comment">Ajouter détails</label>
 											<textarea class="form-control border border-dark" rows="5" id="comment"></textarea>
 										</div>
@@ -208,7 +229,7 @@
 								</div>
 								<div class="modal-footer">
 									<button class="btn btn-grey" type="button" data-dismiss="modal">Annuler</button>
-									<button class="btn btn-sauvegarder" type="button">Sauvegarder</button>
+									<button class="btn btn-sauvegarder" id="add_details" type="button">Sauvegarder</button>
 								</div>
 							</div>
 						</div>

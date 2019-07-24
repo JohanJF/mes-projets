@@ -244,10 +244,6 @@ function delete_collab()
 		        	{
 						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
 		        	}
-		        	else
-		        	{
-		        		$('#test').html('Erreur ajout tâche');
-		        	}
 		        },
 		        'text'
 	     	);
@@ -292,10 +288,6 @@ function modif_tableau()
 		        	{
 						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
 		        	}
-		        	else
-		        	{
-		        		$('#test').html('Erreur ajout tâche');
-		        	}
 		        },
 		        'text'
 	     	);
@@ -339,10 +331,6 @@ function modif_tableau_perso()
 		        	{
 						document.location.href="http://localhost/mes-projets/ifamaker/index.php";
 		        	}
-		        	else
-		        	{
-		        		$('#test').html('Erreur ajout tâche');
-		        	}
 		        },
 		        'text'
 	     	);
@@ -367,10 +355,35 @@ function open_modal()
 	console.log(id_tache_modal[1]);
 	title_modal = $(this).children('li').find('h6').text();
 	title_liste_modal = $(this).parents('.card-body').find('.titre_liste_ref').text();
+	let details = $(this).children('li').find('small').text();
 	$('.titre_tache_modal').text(title_modal);
 	$('.titre_liste_modal').text(title_liste_modal);
 	$('.titre_tache_modal').attr('id',id_tache_modal[1]);
+	$('#mon_detail').text(details);
 	$('#ma_tache').modal('show');
+	$('#add_details').on('click',add_details); // ajoute details d'une tache
+}
+
+/* ajoute details d'une tache */
+
+function add_details()
+{
+	$.post(
+        'src/AJAX/add_details.php', 
+        {
+            id_task : $('.titre_tache_modal').attr('id'),
+            details : $('#comment').val()
+        },
+
+        function(data){
+        	console.log(data);
+        	if (data == "Success") 
+        	{
+				window.location.reload();
+        	}
+        },
+        'text'
+     );
 }
 
 /* Permet la suppression d'une tâche */
@@ -391,10 +404,6 @@ function supprimer_liste()
         	if (data == "Success") 
         	{
 				window.location.reload();
-        	}
-        	else
-        	{
-        		$('#test').html('Erreur ajout tâche');
         	}
         },
         'text'
@@ -434,10 +443,6 @@ function modif()
 		        	{
 						window.location.reload();
 		        	}
-		        	else
-		        	{
-		        		$('#test').html('Erreur ajout tâche');
-		        	}
 		        },
 		        'text'
 	     	);
@@ -466,10 +471,6 @@ function delete_task()
         	if (data == "Success") 
         	{
 				window.location.reload();
-        	}
-        	else
-        	{
-        		$('#test').html('Erreur ajout tâche');
         	}
         },
         'text'
@@ -506,10 +507,6 @@ function modif_task()
 		        	if (data == "Success") 
 		        	{
 						window.location.reload();
-		        	}
-		        	else
-		        	{
-		        		$('#test').html('Erreur ajout tâche');
 		        	}
 		        },
 		        'text'
@@ -599,4 +596,14 @@ $(".pop2").on('shown.bs.popover', function(){
 
 });
 
+/*  limite nombre de caractère apercu détails
 
+$('li').find('small').each(function(mes_details) 
+{
+	if ($( this ).text().length > 15) 
+		$( this ).text($( this ).text().substr(0,15)+'...');
+	else
+		$( this ).text();
+});
+
+*/
