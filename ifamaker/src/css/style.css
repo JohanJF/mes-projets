@@ -13,9 +13,9 @@ html, body {
 main {
 	height: 100%;
 }
-main>.row {
+/*main>.row {
 	height: 100%;
-}
+}*/
 
 /* content center (index) */
 #aside {

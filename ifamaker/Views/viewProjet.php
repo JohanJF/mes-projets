@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="./src/css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./src/css/style.css">
 	<script type="text/javascript" src="./src/js/jquery-3.4.1.js"></script>
-</head>
+  </head>
 <body id="body-connected" class="bg-grey">
 	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
 		<!-- HEADER -->
@@ -155,20 +155,21 @@
 	<div id="test"></div>
 	<main class="container-fluid" id="zone">
 		<div class="row" id="ma_base">
+			<div class="col my-3 d-flex flex-wrap ma_zone">
 
 			<!-- ARTICLE PRESENTE DANS BDD -->
 			<?php 
 				foreach($mes_listes as $key => $value):
 			?>
-				<article class="col my-3 ma_listeid" draggable="true" id="<?=$value[0]?>">
-					<section class="card bg-grey-darkskin border border-IFA" style="width: 16rem;">
+				<!--<article class="col my-3 ma_listeid" id="<?=$value[0]?>">-->
+					<section class="card m-2 card-liste bg-grey-darkskin border border-IFA ma_listeid" id="<?=$value[0]?>" style="width: 16rem;">
 						<div class="card-body">
 								<h5 class="card-title text-white">
 									<span class="titre_liste_ref" id="titre-<?=$value[0]?>"><?= $value[1] ?></span>
 								</h5>
 								<div class="card-text my-2">
 									<ul class="list-group" id="ma_liste-<?=$value[0]?>">
-										<div class="" id="li-<?=$value[0]?>">
+										<div class="groupe_tache" id="li-<?=$value[0]?>">
 											<?php if (isset($value[3])): ?>
 											<?php
 												foreach($value[3] as $mes_taches):
@@ -196,7 +197,7 @@
 								<button class="btn btn-supprimer card-link" href="#">Supprimer</button>
 						</div>
 					</section>
-				</article>
+				
 			<?php
 				endforeach;
 			?>
@@ -239,7 +240,6 @@
 			<!-- EMPLACEMENT FENETRES MODALES -->
 
 			<!-- ARTICLE CREATION -->
-			<article class="col my-3" id="nouvelle_table">
 				<section class="card rounded-top" style="width: 16rem;">
 				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
 			    	<h5 class="card-title text-white">Ajouter une table</h5>
@@ -253,9 +253,8 @@
 				    </div>
 				  </div>
 				</section>
-			</article>
 			<!-- ARTICLE CREATION -->
-
+			</article>
 		</div>
 	</main>
 
@@ -263,6 +262,11 @@
 		var user_actif = "<?php echo $_SESSION['user_id']; ?>";
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+  		src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  		crossorigin="anonymous">
+  	</script>
 	<script type="text/javascript" src="./src/js/main.js"></script>
 	<script type="text/javascript" src="./src/js/drag_drop.js"></script>
 	<?php if ( $type == 'collaboratif') :?>
