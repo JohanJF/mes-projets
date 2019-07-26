@@ -152,7 +152,6 @@
 
 <!-- MAIN -->
 
-	<div id="test"></div>
 	<main class="container-fluid" id="zone">
 		<div class="row" id="ma_base">
 			<div class="col my-3 d-flex flex-wrap ma_zone">

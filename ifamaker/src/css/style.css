@@ -13,9 +13,14 @@ html, body {
 main {
 	height: 100%;
 }
+
 /*main>.row {
 	height: 100%;
 }*/
+
+.login {
+  height: 100%;
+}
 
 /* content center (index) */
 #aside {
@@ -37,7 +42,6 @@ main {
 
 .bg-section {
   background-color: #C0C0C0;
-  padding: 20px 40px;
 }
 /* ------------------- */
 
