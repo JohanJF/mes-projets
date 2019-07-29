@@ -154,14 +154,14 @@
 
 	<main class="container-fluid" id="zone">
 		<div class="row" id="ma_base">
-			<div class="col my-3 d-flex flex-wrap ma_zone">
+			<ul class="col my-3 d-flex flex-wrap align-items-start ma_zone">
 
 			<!-- ARTICLE PRESENTE DANS BDD -->
 			<?php 
 				foreach($mes_listes as $key => $value):
 			?>
 				<!--<article class="col my-3 ma_listeid" id="<?=$value[0]?>">-->
-					<section class="card m-2 card-liste bg-grey-darkskin border border-IFA ma_listeid" id="<?=$value[0]?>" style="width: 16rem;">
+					<li class="card m-2 card-liste bg-grey-darkskin border border-IFA ma_listeid" id="<?=$value[0]?>" style="width: 16rem;">
 						<div class="card-body">
 								<h5 class="card-title text-white">
 									<span class="titre_liste_ref" id="titre-<?=$value[0]?>"><?= $value[1] ?></span>
@@ -169,33 +169,32 @@
 								<div class="card-text my-2">
 									<ul class="list-group" id="ma_liste-<?=$value[0]?>">
 										<div class="groupe_tache" id="li-<?=$value[0]?>">
+											<span class="p-1"></span>
 											<?php if (isset($value[3])): ?>
 											<?php
 												foreach($value[3] as $mes_taches):
 											 ?>
-												<a class="tache" data-toggle="modal" id="#ma_tache-<?= $mes_taches['id_task'] ?>">
-													<li class="list-group-item tache_detail border border-dark my-1">
+													<li class="list-group-item tache_detail border border-dark my-1 tache" id="#ma_tache-<?= $mes_taches['id_task'] ?>">
 														<h6><?=$mes_taches['title']?></h6>
 														<small class="text-grey"><?=$mes_taches['details']?></small>
 													</li>
-												</a>
 											<?php
 												endforeach;
 											 ?>
 											<?php endif ?>
-											<div class="input-group input-group-sm">
-												<input id="titre_tache-<?=$value[0]?>" type="text" class="form-control" placeholder="Ajouter tâche">
-												<div class="input-group-append">
-													<button type="button" class="btn btn-outline-grey button_creer_tache">Créer</button>
-												</div>
+										</div>	
+										<li class="input-group input-group-sm">
+											<input id="titre_tache-<?=$value[0]?>" type="text" class="form-control" placeholder="Ajouter tâche">
+											<div class="input-group-append">
+												<button type="button" class="btn btn-outline-grey button_creer_tache">Créer</button>
 											</div>
-										</div>
+										</li>
 									</ul>
 								</div>
 								<button class="btn btn-modifier card-link" href="#">Modifier</button>
 								<button class="btn btn-supprimer card-link" href="#">Supprimer</button>
 						</div>
-					</section>
+					</li>
 				
 			<?php
 				endforeach;
@@ -239,7 +238,7 @@
 			<!-- EMPLACEMENT FENETRES MODALES -->
 
 			<!-- ARTICLE CREATION -->
-				<section class="card rounded-top" style="width: 16rem;">
+				<li class="card rounded-top" style="width: 16rem;" >
 				  <div class="card-body bg-grey-darkskin border border-IFA rounded-top">
 			    	<h5 class="card-title text-white">Ajouter une table</h5>
 			    	<div class="card-text my-2">
@@ -251,9 +250,9 @@
 						</form>
 				    </div>
 				  </div>
-				</section>
+				</li>
 			<!-- ARTICLE CREATION -->
-			</article>
+			</ul>
 		</div>
 	</main>
 
