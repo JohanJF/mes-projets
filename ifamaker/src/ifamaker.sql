@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 24 juil. 2019 à 14:52
+-- Généré le :  mar. 30 juil. 2019 à 14:38
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -82,16 +82,10 @@ CREATE TABLE IF NOT EXISTS `list` (
   `id_list` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `id_board_foreign` int(11) NOT NULL,
+  `position` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_list`),
   KEY `id_board_foreign` (`id_board_foreign`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `list`
---
-
-INSERT INTO `list` (`id_list`, `title`, `id_board_foreign`) VALUES
-(2, 'ingredients', 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -105,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `title` text NOT NULL,
   `details` text,
   `id_list_foreign` int(11) NOT NULL,
+  `position` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_task`),
   KEY `id_list_foreign` (`id_list_foreign`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

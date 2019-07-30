@@ -10,7 +10,7 @@ class model_projet extends Model
 				SELECT * 
 				FROM list
 				INNER JOIN board_user ON list.id_board_foreign = board_user.id_board_foreign
-				WHERE board_user.id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id'] 
+				WHERE board_user.id_board_foreign = ' . $_GET['id'] . ' AND activation = 1 AND id_user_foreign = ' . $_SESSION['user_id'] . ' ORDER BY position ASC' 
 		);
 
 		$mes_listes->setFetchMode(PDO::FETCH_ASSOC);
