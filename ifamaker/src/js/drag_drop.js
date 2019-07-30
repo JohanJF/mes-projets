@@ -14,7 +14,7 @@ function $_GET(param) {
 	return vars;
 }
 
-$('.ma_zone').sortable({
+/*$('.ma_zone').sortable({
 	items : $('.card-liste'),
 	connectWith : $('.card-liste'),
 	revert : true,
@@ -51,6 +51,47 @@ $('.ma_zone').sortable({
             }, 2000);
         });
     }
+})*/
+
+$('.ma_zone').sortable({
+	items : $('.card-liste'),
+	connectWith : $('.card-liste'),
+	revert : true,
+	cursor : "move",
+	placeholder : 'bg_PlaceHolder',
+	forcePlaceholderSize : true,
+	start: function(event, ui) {
+        // Create a temporary attribute on the element with the old index
+        $(this).attr('data-currentindex', ui.item.index());
+        console.log($(this).attr('data-currentindex'));
+    }/*,
+    update: function(event, ui) {
+        let user_id = $('#user_id').val();
+        let current_position = $(this).attr('data-currentindex');
+        let desired_position = ui.item.index();
+
+        // Reset the current index
+        $(this).removeAttr('data-currentindex');
+
+        // Post to the server to handle the changes
+        $.ajax({
+            type: "POST",
+            url: "/url-to-handle-database-updates/",
+            data: {
+                desired_position: desired_position,
+                current_position: current_position,
+                user_id: user_id
+            },
+            beforeSend: function() {
+                // Disable dragging
+                $('.todos').sortable('disable');
+            },
+            success: function(html) {
+                // Re-enable dragging
+                $('.todos').sortable('enable');
+            }
+        });
+    }*/
 })
 
 $('.groupe_tache').sortable({
