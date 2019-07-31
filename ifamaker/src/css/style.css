@@ -13,7 +13,6 @@ html, body {
 main {
 	height: 100%;
 }
-
 /*main>.row {
 	height: 100%;
 }*/
@@ -73,6 +72,15 @@ a.header_nav {
   border-left: 2px solid white;
   height: 500px;
 }
+
+ul {
+  list-style: none;
+}
+
+.bg_PlaceHolder {
+  background-color: #FF7A00;
+  opacity: 0.55;
+} 
 
 
 /* loading connexion */

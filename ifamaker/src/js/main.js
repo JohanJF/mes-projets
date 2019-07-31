@@ -345,7 +345,7 @@ function modif_tableau_perso()
 
 /* Récupère les informations d'une tâche dans une fenêtre modale */
 
-$('.tache').on('click', open_modal);
+$('.tache').on('dblclick', open_modal);
 
 function open_modal()
 {
@@ -353,9 +353,9 @@ function open_modal()
 	let id_tache_modal = $(this).attr('id');
 	id_tache_modal = id_tache_modal.split('-');
 	console.log(id_tache_modal[1]);
-	title_modal = $(this).children('li').find('h6').text();
+	title_modal = $(this).find('h6').text();
 	title_liste_modal = $(this).parents('.card-body').find('.titre_liste_ref').text();
-	let details = $(this).children('li').find('small').text();
+	let details = $(this).find('small').text();
 	$('.titre_tache_modal').text(title_modal);
 	$('.titre_liste_modal').text(title_liste_modal);
 	$('.titre_tache_modal').attr('id',id_tache_modal[1]);
