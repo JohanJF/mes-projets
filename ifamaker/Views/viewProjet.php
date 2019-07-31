@@ -253,7 +253,6 @@
 				  </div>
 				</section>
 			<!-- ARTICLE CREATION -->
-			</article>
 		</div>
 	</main>
 
