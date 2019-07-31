@@ -61,8 +61,8 @@ function updateDataDrag($current_position,$desired_position,$id_sticker,$id_list
 			$query->execute(array('desired_position'=>$desired_position,'id_liste'=>$id_liste));
 
 				//on assigne la position désiré à la liste que l'on déplace
-			$query= $connexion->prepare("UPDATE list SET position = :desired_position WHERE id_list = :id");
-			$query->execute(array('desired_position'=>$desired_position,'id'=>$id_sticker));
+			$query= $connexion->prepare("UPDATE list SET position = :desired_position WHERE id_list_foreign= :id_task");
+			$query->execute(array('desired_position'=>$desired_position,'id_task'=>$id_sticker));
 
 				//on peut maintenant affecter l'ancienne position de notre liste à celle que l'on a mis à 0
 			$query= $connexion->prepare("UPDATE list SET position = :current_position WHERE position = 0 AND id_list = :id_liste");
@@ -76,7 +76,7 @@ try
 	$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    updateDataDrag($_GET['current_position'],$_GET['desired_position'],$_GET['id'],null,null,$connexion);
+    updateDataDrag($_GET['current_position'],$_GET['desired_position'],$_GET['id'],$_GET['id_liste_final'],$_GET['id_liste_depart'],$connexion);
     
 } catch (Exception $e) {
    echo $e->getMessage();

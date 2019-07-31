@@ -37,17 +37,18 @@ $('.ma_zone').sortable({
         console.log('position desirée : ' + desired_position);
         console.log('position actuelle : ' + current_position);
 
-        /*// Reset the current index
+        // Reset the current index
         $(this).removeAttr('data-currentindex');
 
         // Post to the server to handle the changes
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "./src/AJAX/drag_list.php",
             data: {
                 desired_position: desired_position,
                 current_position: current_position,
-                id: id
+                id: id,
+                id_board: $_GET('id')
             },
             beforeSend: function() {
                 // Disable dragging
@@ -58,7 +59,7 @@ $('.ma_zone').sortable({
                 $('.ma_zone').sortable('enable');
                 console.log(html);
             }
-        });*/
+        });
     }
 })
 
@@ -76,6 +77,7 @@ $('.groupe_tache').sortable({
         $(this).attr('data-currentindex', ui.item.index()); // implémente dans un attribut la position de la tache
     },
     stop: function(event, ui) {
+    	let id_liste_depart = $(this).attr('data-currentindexParent'); 
         let id_task = ui.item.attr('id'); 
          	id_task = id_task.split('-'); // transforme l'id de la tache en tableau
         let id_liste = ui.item.parent().attr('id'); 
@@ -89,17 +91,19 @@ $('.groupe_tache').sortable({
         console.log('position desirée : ' + desired_position);
         console.log('position actuelle : ' + current_position);
 
-       /* // Reset the current index
+       // Reset the current index
         $(this).removeAttr('data-currentindex');
 
         // Post to the server to handle the changes
         $.ajax({
-            type: "POST",
-            url: "./src/AJAX/drag_list.php",
+            type: "GET",
+            url: "./src/AJAX/drag_task.php",
             data: {
                 desired_position: desired_position,
                 current_position: current_position,
-                id: id
+                id: id_task[1],
+                id_liste_depart: id_liste_depart,
+                id_liste_final: id_liste[1]
             },
             beforeSend: function() {
                 // Disable dragging
@@ -110,7 +114,7 @@ $('.groupe_tache').sortable({
                 $('.ma_zone').sortable('enable');
                 console.log(html);
             }
-        });*/
+        });
     }
 })
 

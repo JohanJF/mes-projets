@@ -252,10 +252,7 @@
 				  </div>
 				</li>
 			<!-- ARTICLE CREATION -->
-<<<<<<< HEAD
-=======
 			</ul>
->>>>>>> c1e723d5829ff2af9c5454eec8d8387655b28929
 		</div>
 	</main>
 

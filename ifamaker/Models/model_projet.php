@@ -27,7 +27,7 @@ class model_projet extends Model
 
 			$mes_taches = $this->select_req('
 				SELECT * 
-				FROM task WHERE id_list_foreign ='.$liste[0]);
+				FROM task WHERE id_list_foreign ='.$liste[0]. ' ORDER BY position ASC');
 			$mes_taches->setFetchMode(PDO::FETCH_ASSOC);
 
 			foreach ($mes_taches as $row2) 
