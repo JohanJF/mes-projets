@@ -18,7 +18,7 @@ function updateDataDrag($current_position,$desired_position,$id_sticker,$id_list
 			$query->execute(array('current_position'=>$current_position,'desired_position'=>$desired_position,'id_liste'=>$id_liste));
 
 				//on affecte la sticker_position désiré au sticker
-			$query= $connexion->prepare("UPDATE task SET position = :desired_position WHERE id_sticker = :id_sticker");
+			$query= $connexion->prepare("UPDATE task SET position = :desired_position WHERE id_task = :id_sticker");
 			$query->execute(array('desired_position'=>$desired_position,'id_sticker'=>$id_sticker));
 
 		}
