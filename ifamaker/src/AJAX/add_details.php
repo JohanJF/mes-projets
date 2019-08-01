@@ -1,5 +1,5 @@
 <?php
-
+    include 'connexion.php';
     /**
      * modifie le détails de la tache
      */
@@ -8,9 +8,7 @@
     {
          if( isset($_POST['id_task']))
          {  
-            $conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	            $result = $conn->prepare('
+	            $result = connexion()->prepare('
 	            		UPDATE task
 	            		SET details = :details
 	            		WHERE id_task = :id

@@ -1,13 +1,12 @@
 <?php 
     /* Affiche les collaborateurs, l'utilisateur en cours et l'administrateur d'un tableau */
+    include 'connexion.php';
+    
 	try {
-
+            
         $tab = []; // crée un tableau
 
-		$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $admin = $conn->prepare('
+            $admin = connexion()->prepare('
                             SELECT *
                             FROM board_user
                             INNER JOIN user ON id_user_foreign = user_id
@@ -29,7 +28,7 @@
 
             ////////////////////////////////////////////////////////
 
-            $user_actif = $conn->prepare('
+            $user_actif = connexion()->prepare('
                             SELECT *
                             FROM board_user
                             INNER JOIN user ON id_user_foreign = user_id
@@ -52,7 +51,7 @@
 
             ////////////////////////////////////////////////////////
 
-            $collaborateurs = $conn->prepare('
+            $collaborateurs = connexion()->prepare('
                             SELECT *
                             FROM board_user
                             INNER JOIN user ON id_user_foreign = user_id

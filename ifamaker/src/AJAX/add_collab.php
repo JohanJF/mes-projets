@@ -1,4 +1,6 @@
 <?php 
+	
+	include 'connexion.php';
 
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
@@ -111,13 +113,10 @@
     {
 		if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
 		{
-		 	
-			$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			if (verification($conn) == 'Success')
+			if (verification(connexion()) == 'Success')
 			{
-				envoi_mail($conn); 
+				envoi_mail(connexion()); 
 				echo 'Success';
 			}	
 			else

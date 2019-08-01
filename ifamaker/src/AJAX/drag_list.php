@@ -1,4 +1,5 @@
 <?php 
+	include 'connexion.php';
 
 function updateDataDrag($current_position,$desired_position,$id_liste,$id_board,$connexion)
 {
@@ -49,10 +50,8 @@ function updateDataDrag($current_position,$desired_position,$id_liste,$id_board,
 
 try
 { 
-	$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    updateDataDrag($_GET['current_position'],$_GET['desired_position'],$_GET['id'],$_GET['id_board'],$connexion);
+    updateDataDrag($_GET['current_position'],$_GET['desired_position'],$_GET['id'],$_GET['id_board'],connexion());
     
 } catch (Exception $e) {
    echo $e->getMessage();
