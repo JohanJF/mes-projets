@@ -5,34 +5,67 @@ function updateDataDrag($current_position,$desired_position,$id_sticker,$id_list
 			// Determine if the user is moving the item up or down in the listing
 
 		$move= $id_liste != $idListeStart ? 'slide' : '';
-		if (!isset($idListeStart)) { $move='liste';}
 		$move.= $desired_position > $current_position ? 'down' : 'up';
 		
 
-		if ($move == 'down') {
+		if ($move == 'down') 
+		{
 			
 				//on réduit de 1 toutes les position qui sont entre la position courante et la position désiré
-			$query= $connexion->prepare("UPDATE task SET position = :current_position WHERE position = :desired_position 
-				
-				AND id_list_foreign = :id_liste");
-			$query->execute(array('current_position'=>$current_position,'desired_position'=>$desired_position,'id_liste'=>$id_liste));
+			$query= $connexion->prepare("
+				UPDATE task 
+				SET position = position-1 
+				WHERE position > :current_position AND position <= :desired_position AND id_list_foreign = :id_liste
+			");
+
+			$query->execute(
+				array(
+					'current_position'=>$current_position,
+					'desired_position'=>$desired_position,
+					'id_liste'=>$id_liste
+			));
 
 				//on affecte la sticker_position désiré au sticker
-			$query= $connexion->prepare("UPDATE task SET position = :desired_position WHERE id_task = :id_sticker");
-			$query->execute(array('desired_position'=>$desired_position,'id_sticker'=>$id_sticker));
+			$query= $connexion->prepare("
+				UPDATE task SET position = :desired_position WHERE id_task = :id_sticker
+			");
+
+			$query->execute(
+				array(
+					'desired_position'=>$desired_position,
+					'id_sticker'=>$id_sticker
+				));
 
 		}
 		elseif ($move == 'up') {
 			
 
 				//on réduit de 1 toutes les position qui sont entre la position courante et la position désiré
-			$query= $connexion->prepare("UPDATE task SET position = :current_position WHERE position = :desired_position 
-				AND id_list_foreign = :id_liste");
-			$query->execute(array('current_position'=>$current_position,'desired_position'=>$desired_position,'id_liste'=>$id_liste));
+			$query= $connexion->prepare("
+				UPDATE task 
+				SET position = position+1 
+				WHERE position < :current_position AND position >= :desired_position AND id_list_foreign = :id_liste"
+			);
+
+			$query->execute(
+				array(
+					'current_position'=>$current_position,
+					'desired_position'=>$desired_position,
+					'id_liste'=>$id_liste
+			));
 
 				//on affecte la sticker_position désiré au sticker
-			$query= $connexion->prepare("UPDATE task SET position = :desired_position WHERE id_task = :id_task");
-			$query->execute(array('desired_position'=>$desired_position,'id_task'=>$id_sticker));
+			$query= $connexion->prepare("
+				UPDATE task 
+				SET position = :desired_position 
+				WHERE id_task = :id_task
+			");
+
+			$query->execute(
+				array(
+				'desired_position'=>$desired_position,
+				'id_task'=>$id_sticker
+			));
 		}
 		elseif ($move== 'slidedown' || $move== 'slideup') {
 			
@@ -55,19 +88,6 @@ function updateDataDrag($current_position,$desired_position,$id_sticker,$id_list
 			$query->execute(array('desired_position'=>$desired_position,'id_task'=>$id_sticker));
 		}
 
-		elseif ($move== 'listedown' || $move== 'listeup') {
-				//on met à 0 la postion la liste qui comporte la position désiré et qui se trouve dans le tableau courant afin de la récupére plus loin par ce chiffre
-			$query= $connexion->prepare("UPDATE list SET position = 0 WHERE position = :desired_position AND id_list = :id_liste");
-			$query->execute(array('desired_position'=>$desired_position,'id_liste'=>$id_liste));
-
-				//on assigne la position désiré à la liste que l'on déplace
-			$query= $connexion->prepare("UPDATE list SET position = :desired_position WHERE id_list_foreign= :id_task");
-			$query->execute(array('desired_position'=>$desired_position,'id_task'=>$id_sticker));
-
-				//on peut maintenant affecter l'ancienne position de notre liste à celle que l'on a mis à 0
-			$query= $connexion->prepare("UPDATE list SET position = :current_position WHERE position = 0 AND id_list = :id_liste");
-			$query->execute(array('current_position'=>$current_position,'id_liste'=>$id_liste));
-		}
 		echo $move;
 	}
 
