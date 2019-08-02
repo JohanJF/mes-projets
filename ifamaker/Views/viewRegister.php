@@ -5,7 +5,7 @@
 <main class="container-fluid">
 	<!-- MAIN -->
 	<div class="row login">
-		<article id="content" class="col-9 bg-grey d-flex align-items-center">
+		<article id="content" class="col-lg-9 hidden-sm d-sm-none bg-grey d-lg-flex align-items-center">
 			<div class="container welcome">
 				<div class="row my-3">
 					<section class="col-6">
@@ -37,7 +37,7 @@
 			</div>
 			
 		</article>
-		<aside id="aside" class="col-3 bg-IFA fixed d-flex align-items-center">
+		<aside id="aside" class="col-lg-3 col-sm-12 bg-IFA fixed d-flex align-items-center">
 
 			<!--CONTENU ARTICLE-->
 

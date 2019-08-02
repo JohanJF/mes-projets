@@ -73,11 +73,10 @@
 		<!-- HEADER -->
 	</header>
 
-	<nav class="container-fluid bg-secondary">
-		<div class="row py-2">
+	<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-grey-darkskin">
 			<!--Ajoute 2 bouton (ajouter membre, notification) dans le header si on sélectionne un tableau collaboratif-->
-	        <article class="col text-right">
-	            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification" />
+	        <article class="nav-item ml-auto py-2">
+	            <img src="./src/img/notif.png" class="pop2" data-container="body" data-html="true" data-toggle="popover" title="Notifications" data-placement="bottom" data-popover-content="#notification"/>
 	            <sup>
 	            	<span class="badge badge-pill badge-danger alerte"><?= $_SESSION['nb_notif'] ?></span>
 	            </sup>
@@ -99,11 +98,10 @@
 		        	</tbody>
 		        </table> 
 		    </div>
-		</div>
 	</nav>
 
 	<?= $content ?>
-	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA">
+	<footer id="footer" class="page-footer hidden-sm d-sm-none d-lg-flex justify-content-center fixed-bottom bg-IFA text-white border-top border-IFA">
 		<!-- FOOTER -->
 		  <!-- Copyright -->
 		  <div class="footer-copyright text-center py-3 text-grey">
