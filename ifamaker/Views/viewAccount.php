@@ -49,8 +49,8 @@
 				</div>
 			</form>
 			<div class="row">
-				<form action="connexion.php" method="POST" class="col text-center">
-					<input class="btn btn-danger my-1" type="submit" name="supprimer_compte" value="Supprimer ce compte">
+				<form action="?rqt=accueil" method="POST" class="col text-center">
+					<input class="btn btn-danger my-1" id="delete_my_account" type="submit" name="my_account" value="Supprimer ce compte" data-user="<?= $information['user_id'] ?>" />
 				</form>
 			</div>
 		</div>

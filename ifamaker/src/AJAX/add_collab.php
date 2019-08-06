@@ -9,7 +9,7 @@
 	require_once '../PHPMailer/src/PHPMailer.php';
 	require_once '../PHPMailer/src/SMTP.php';
 
-	function verification($conn)
+	function verification($conn,$mail_collab)
 	{
 		/* envoi un mail d'invitation dans un tableau collaboratif */
 
@@ -17,7 +17,7 @@
 				SELECT * 
 				FROM board_user
 				INNER JOIN user ON id_user_foreign = user_id
-				WHERE mail = "'. $_POST['mail_collab'] .'" AND id_board_foreign = '. $_POST['id_board']
+				WHERE mail = "'. $mail_collab .'" AND id_board_foreign = '. $_POST['id_board']
 			);
 
 		$mail_exist->execute();
@@ -26,7 +26,7 @@
 		/* si mail entrée existe déja dans la BDD */
 		foreach ($mail_exist as $row) 
 		{
-			if ($row['mail'] == $_POST['mail_collab'] && $row['id_board_foreign'] == $_POST['id_board'] ) 
+			if ($row['mail'] == $mail_collab && $row['id_board_foreign'] == $_POST['id_board'] ) 
 			{
 				return 'Error';
 			}
@@ -43,7 +43,7 @@
 		foreach ($type as $row) 
 		{
 			/* ajoute 1 notification si utilisateur déja inscrit */			
-			if ($_POST['mail_collab'] == $row['mail']) 
+			if ($mail_collab == $row['mail']) 
 			{
 	            $result = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation,token,consult) 
 	            						  VALUES (:user,:board,:activation,:token,:consult)'
@@ -60,10 +60,10 @@
 			}
 		}
 
-		return 'Success';
+		return 'YES';
 	}
 
-	function envoi_mail($conn)
+	function envoi_mail($conn,$mail_collab)
 	{
 		/*$mail = new PHPMailer();
 
@@ -78,7 +78,7 @@
 
 		//Info du mail
 		$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','IfaMaker');
-		$mail->addAddress($_POST['mail_collab']);
+		$mail->addAddress($mail_collab);
 
 		$mail->isHTML(true);
 		$mail->Subject = "Vous avez été invité dans un tableau collaboratif";
@@ -93,13 +93,13 @@
 		$mail->Host = 'smtp.gmail.com';
 		$mail->SMTPAuth = true;
 		$mail->Username = 'johanjeanfrancois@gmail.com';
-		$mail->Password = 'Madinina972';
+		$mail->Password = 'Madrasdu972';
 		$mail->SMTPSecure = 'ssl';
 		$mail->Port = 465;
 
 		//Info du mail
 		$mail->setFrom('johanjeanfrancois@gmail.com','IfaMaker');
-		$mail->addAddress($_POST['mail_collab']);
+		$mail->addAddress($mail_collab);
 
 		$mail->isHTML(true);
 		$mail->Subject = "Vous avez été invité dans un tableau collaboratif";
@@ -109,14 +109,18 @@
 	}
 
 	/////////////////////////////////////////////////////////////////////
+	
 	try 
     {
-		if (filter_var($_POST['mail_collab'], FILTER_VALIDATE_EMAIL)) 
+    	$title = $_POST['title_board'];
+    	$mail_collab = $_POST["mail_collab"];
+
+		if (filter_var($mail_collab, FILTER_VALIDATE_EMAIL)) 
 		{
 
-			if (verification(connexion()) == 'Success')
+			if (verification(connexion(),$mail_collab) == 'YES')
 			{
-				envoi_mail(connexion()); 
+				envoi_mail(connexion(),$mail_collab); 
 				echo 'Success';
 			}	
 			else
@@ -131,6 +135,5 @@
         {
             echo "Une erreur s'est produite";
         }
-
 
  ?>

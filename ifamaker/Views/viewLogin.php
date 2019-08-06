@@ -11,7 +11,7 @@
 				<div class="row my-3">
 					<section class="col-6">
 						<div class="bg-section jumbotron shadow">
-							<h3>Organisez vous de mieux en mieux avec Ifa-Maker</h3>
+							<h3>Organisez vous de mieux en mieux avec Ifamemo</h3>
 							<p>
 								Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum;
 							</p>

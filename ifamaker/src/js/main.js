@@ -576,7 +576,7 @@ $(document).ready(function(){
 });
 
 
-// changement background hover notifications
+// pop-over
 $(".pop2").on('shown.bs.popover', function(){
 
 	$.post(
@@ -607,3 +607,30 @@ $('li').find('small').each(function(mes_details)
 });
 
 */
+console.log();
+
+$('#delete_my_account').on('click', delete_account);
+
+function delete_account()
+{
+	let user_id = $(this).attr('data-user');
+
+     if (confirm("Voulez-vous vraiment supprimer ce compte ?"))
+     {
+     	$.post(
+	        'src/AJAX/delete_user.php', 
+	        {
+	            user_id : user_id
+	        },
+
+	        function(data){
+	        	console.log(data);
+	        	if (data == "Success") 
+	        	{
+	        	}
+	        },
+	        'text'
+	     );
+     }
+	
+}
