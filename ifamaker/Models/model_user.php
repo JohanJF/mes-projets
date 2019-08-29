@@ -38,7 +38,7 @@
 
 				/* message info utilisateur */
 
-				return "<p class='col badge badge-warning'>confirmez votre addresse mail pour vous inscrire</p>";
+				return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
 			}
 			else
 			{
@@ -225,7 +225,7 @@
 
 				/* message info utilisateur */
 
-				return "<p class='col badge badge-warning'>confirmez votre addresse mail pour vous inscrire</p>";
+				return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
 			}
 			else
 			{
