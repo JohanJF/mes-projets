@@ -7,7 +7,7 @@
 
 	<div class="row my-4">
 		<div class="col py-5 text-center ">
-			<span class="border border-IFA rounded-circle bg-white px-5 py-5">Photo</span>
+			<!--<span class="border border-IFA rounded-circle bg-white px-5 py-5">Photo</span>-->
 		</div>
 	</div>
 	<div class="row">

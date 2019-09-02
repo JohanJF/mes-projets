@@ -58,7 +58,7 @@
 				<div class="col-3 text-right container">
 					<div class="row">
 						<div class="col">
-							<span class="border rounded-circle px-2 py-3">Photo</span>
+							<!--<span class="border rounded-circle px-2 py-3">Photo</span>-->
 						</div>
 						<form action="#" method="POST" class="col">
 							<input class="btn btn-outline-danger btn-sm" type="submit" name="deconnexion" value="Déconnexion" />

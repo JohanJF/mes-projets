@@ -607,7 +607,6 @@ $('li').find('small').each(function(mes_details)
 });
 
 */
-console.log();
 
 $('#delete_my_account').on('click', delete_account);
 
@@ -627,6 +626,7 @@ function delete_account()
 	        	console.log(data);
 	        	if (data == "Success") 
 	        	{
+	        		window.location.reload();
 	        	}
 	        },
 	        'text'
