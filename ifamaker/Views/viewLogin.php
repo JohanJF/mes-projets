@@ -6,7 +6,7 @@
 <main class="container-fluid">
 	<!-- MAIN -->
 	<div class="row login">
-		<article id="content" class="hidden-sm d-sm-none hidden-md d-md-none col-lg-9 bg-grey d-lg-flex align-items-center">
+		<article id="content" class="content col-9 bg-grey align-items-center">
 			<div class="container welcome">
 				<div class="row my-3">
 					<section class="col-6">
@@ -38,7 +38,7 @@
 			</div>
 			
 		</article>
-		<aside id="aside" class="hidden-sm d-sm-none hidden-md d-md-none col-lg-3 bg-IFA fixed d-lg-flex align-items-center">
+		<aside id="aside" class="col bg-IFA fixed align-items-center">
 
 			<!--CONTENU ARTICLE-->
 
@@ -89,59 +89,6 @@
 			<!--CONTENU ARTICLE-->
 
 		</aside>
-		<?php /* ?>
-		<div class="col-sm-12 hidden-lg d-lg-none bg-IFA d-sm-flex align-items-center">
-
-			<!--CONTENU ARTICLE-->
-
-			<!-- FORMULAIRE -->
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<h3 class="text-center text-white display-1">Connexion</h3>
-					</div>
-				</div>
-
-				<form class="row" action="#" method="POST">
-					<div class="container text-white">
-						<div class="row">
-							<div class="col text-center form-group">
-								<label class="h3">Adresse email</label>
-								<input class="form-control py-4 input-lg" placeholder="e-mail" type="text" name="email_connexion" value="" required>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col text-center form-group">
-								<label class="h3">Mot de passe</label>
-								<input class="form-control py-4 input-lg" placeholder="Mot de passe" type="password" name="mdp_connexion" value="" required>
-							</div>
-						</div>
-						<div class="col text-center form-group">
-							<input class="btn btn-lg btn-grey" type="submit" name="submit_connexion" value="Se connecter">
-						</div>
-					</div>			
-				</form>
-				<?= $insert_user ?>	
-				<?=$confirm_mail?>	
-			<!-- FIN -->
-
-				<div class="row">
-					<div class="col text-center">
-						<?= $connexion ?>
-					</div>	
-				</div>
-
-				<div class="row my-2">
-					<div class="col text-center">
-						<a href="?rqt=register" class="text-IFA h1"><p><u>Pas de compte?</u><b> Créer un compte</b></p></a>
-					</div>	
-				</div>
-			</div>
-
-			<!--CONTENU ARTICLE-->
-
-		</div>
-		<?php */ ?>
 	</div>
 	<!-- MAIN -->
 </main>

@@ -1,11 +1,11 @@
 <?php $title = 'Ifamaker - Tableau de bord'; ?>
 
 <?php ob_start();?>
-<div class="container welcome">
+<div class="container welcome creer_tableau_panel">
 
 				<!--CONTENU ARTICLE-->
 
-	<div class="row jumbotron bg-section border border-dark" style="max-height: 75vh;">
+	<div class="row jumbotron bg-section border border-dark creer_tableau_panel" style="max-height: 75vh;">
 		<div class="col">
 			<nav class="container">
 				<h3 class="text-center"><b>Tableaux</b></h3>
@@ -42,7 +42,7 @@
 							<?php 
 								foreach($mes_tableaux_perso as $mes_tableaux_perso):
 							?>
-									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+									<div class="card col-4 mx-2 mt-2 float-left" style="width: 10rem;">
 										<small class="pt-2 d-flex justify-content-end">
 											<input class="modifier_titre_tab_Perso text-right" type="image" src="./src/img/modifier_small.png">
 										</small>
@@ -94,7 +94,7 @@
 							<?php 
 								foreach($mes_tableaux_collab as $mes_tableaux_collab):
 							?>
-									<div class="card col-3 mx-2 mt-2 float-left" style="width: 10rem;">
+									<div class="card col-4 mx-2 mt-2 float-left" style="width: 10rem;">
 										<small class="pt-2 d-flex justify-content-end">
 											<input class="modifier_tab text-right" type="image" src="./src/img/modifier_small.png">
 										</small>
@@ -102,7 +102,7 @@
 									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_collab['id_board'] ?>"><?= $mes_tableaux_collab['title'] ?></h5>
 									    <div class="container">
 									    	<div class="row">
-									    		<a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="btn btn-outline-success">Consulter</a>
+									    		<a href="?rqt=projet&id=<?= $mes_tableaux_collab['id_board'] ?>" class="col btn btn-sm btn-outline-success">Consulter</a>
 									    		<button id="<?= $mes_tableaux_collab['id_board'] ?>" class="col btn btn-sm btn-outline-danger btn_board">Supprimer</button>
 									  		</div>
 									  	</div>

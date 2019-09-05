@@ -34,10 +34,10 @@
 	          <section id="accordeon" class="col collapse" aria-labelledby="titre1" data-parent="#accordion">
 	            <div class="container-fluid">
 	              <div class="row px-5">
-	                <a href="?rqt=perso&user=<?=$_SESSION['user_id']?>" class="col-6 border-left py-5 header_nav">
+	                <a href="?rqt=perso&user=<?=$_SESSION['user_id']?>" class="col border-left py-5 header_nav">
 	                  <h1 class="text-light">Tableaux - collaboratif</h1>
 	                </a>
-	                <a href="?rqt=account&user=<?=$_SESSION['user_id']?>" class="col-6 border-left py-5 header_nav">
+	                <a href="?rqt=account&user=<?=$_SESSION['user_id']?>" class="col border-left py-5 header_nav">
 		                  <h1 class="text-light">Mon compte</h1>
 	            	</a>
 	              </div>

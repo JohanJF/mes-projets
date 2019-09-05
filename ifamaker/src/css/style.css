@@ -142,3 +142,24 @@ ul {
 }
 
 /* ------------------- */
+
+@media (max-width: 812px) {
+  .content { 
+    display: none; 
+    overflow: scroll;
+  }
+
+  .my_footer { display: none; }
+
+  .creer_tableau_panel, .card-body { 
+    padding: 0;
+    margin: 0;
+   }
+
+   .creer_tableau_panel {
+      border: hidden;
+      background-color: #EEEEEE;
+   }
+
+
+}
