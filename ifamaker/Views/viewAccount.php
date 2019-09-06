@@ -5,13 +5,13 @@
 
 				<!--CONTENU ARTICLE-->
 
-	<div class="row my-4">
-		<div class="col py-5 text-center ">
+	<div class="row my-4 masquer-responsive">
+		<div class="col py-5 text-center">
 			<!--<span class="border border-IFA rounded-circle bg-white px-5 py-5">Photo</span>-->
 		</div>
 	</div>
 	<div class="row">
-		<div class="container col-10 border border-IFA  my-3" style="max-height: 50vh; overflow-y: auto; text-overflow: nowrap;">
+		<div class="container col-10 border border-IFA  my-3 masquer-responsive2" style="max-height: 50vh; overflow-y: auto; text-overflow: nowrap;">
 			<div class="container">
 		  		<div class="row">
 		  			<div class="col my-2 text-right">

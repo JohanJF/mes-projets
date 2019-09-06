@@ -18,7 +18,7 @@
 				<div class="tab-pane fade show active mx-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 					<!-- PERSONNEL -->
 
-					<div class="bg-white border border-dark rounded my-2 container px-5">
+					<div class="bg-white border border-dark rounded my-2 container px-5 panneau-tableau-creer">
 						<div class="row">
 							<article class="col-12 text-center">
 								<h5>Créer un tableau personnel</h5>

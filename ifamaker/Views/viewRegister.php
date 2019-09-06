@@ -107,7 +107,7 @@
 		</aside>
 	</div>
 	<!-- MAIN -->
-</main>-->
+</main>
 
 <?php
 

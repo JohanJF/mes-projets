@@ -31,7 +31,7 @@
 	<script type="text/javascript" src="./src/js/main.js"></script>
 </head>
 <body id="body-not-connected" class="bg-grey">
-	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA">
+	<header id="header" class="container-fluid fixed-top bg-IFA text-white border-bottom border-IFA fixed-relative">
 		<!-- HEADER -->
 		<div class="row">
 			<div class="col text-center">
@@ -41,7 +41,7 @@
 		<!-- HEADER -->
 	</header>
 	<?= $content ?>
-	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA">
+	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA footer-relative">
 		<!-- FOOTER -->
 		  <!-- Copyright -->
 		  <div class="footer-copyright text-center py-3 text-grey">
