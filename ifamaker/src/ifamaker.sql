@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 01 août 2019 à 14:51
--- Version du serveur :  5.7.24
--- Version de PHP :  7.2.14
+-- Généré le :  ven. 06 sep. 2019 à 14:08
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,15 +34,7 @@ CREATE TABLE IF NOT EXISTS `board` (
   `title` text NOT NULL,
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id_board`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `board`
---
-
-INSERT INTO `board` (`id_board`, `title`, `type`) VALUES
-(1, 'tableau personnel 1', 'personnel'),
-(2, 'tableau collab 1', 'collaboratif');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -61,15 +53,6 @@ CREATE TABLE IF NOT EXISTS `board_user` (
   KEY `id_user_foreign` (`id_user_foreign`,`id_board_foreign`),
   KEY `id_board_foreign` (`id_board_foreign`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `board_user`
---
-
-INSERT INTO `board_user` (`id_user_foreign`, `id_board_foreign`, `administrateur`, `activation`, `token`, `consult`) VALUES
-(1, 1, NULL, 1, NULL, 'consulted'),
-(1, 2, 'admin', 1, NULL, 'consulted'),
-(3, 2, NULL, 1, 'da4b9237bacccdf19c0760cab7aec4a8359010b0', 'consulted');
 
 -- --------------------------------------------------------
 
@@ -121,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `confirmation` varchar(100) DEFAULT NULL,
   `token` text NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
@@ -129,8 +112,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`user_id`, `name`, `firstname`, `address`, `mail`, `password`, `confirmation`, `token`) VALUES
 (1, 'JF', 'johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', 'e2a7d3f97342a924024f5312ab22f8a4ecf0d10d'),
-(2, 'test', 'test', 'test', 'test@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'actif', '8eaa75578e5aea8097a88c766f5b98170be1f242'),
-(3, 'JF', 'jojo', '4 rue', 'jojomailjetable@yopmail.com', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', '8eaa75578e5aea8097a88c766f5b98170be1f242');
+(2, 'test', 'test', 'test', 'test@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'actif', '8eaa75578e5aea8097a88c766f5b98170be1f242');
 
 --
 -- Contraintes pour les tables déchargées
