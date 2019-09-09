@@ -41,7 +41,7 @@
 		<!-- HEADER -->
 	</header>
 	<?= $content ?>
-	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA footer-relative">
+	<footer id="footer" class="page-footer fixed-bottom bg-IFA text-white border-top border-IFA fixed-relative">
 		<!-- FOOTER -->
 		  <!-- Copyright -->
 		  <div class="footer-copyright text-center py-3 text-grey">
