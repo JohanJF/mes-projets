@@ -65,26 +65,6 @@
 
 	function envoi_mail($conn,$mail_collab)
 	{
-		/*$mail = new PHPMailer();
-
-		//Config
-		$mail->isSMTP();
-		$mail->Host = 'SSL0.OVH.NET';
-		$mail->SMTPAuth = true;
-		$mail->Username = 'jeanfrancois.johan@stagiairesifa.fr';
-		$mail->Password = '19751224*';
-		$mail->SMTPSecure = 'tls';
-		$mail->Port = 587;
-
-		//Info du mail
-		$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','IfaMaker');
-		$mail->addAddress($mail_collab);
-
-		$mail->isHTML(true);
-		$mail->Subject = "Vous avez été invité dans un tableau collaboratif";
-		$mail->Body = 'Vous avez été invité à rejoindre le tableau collaboratif "'. $_POST['title_board'] . '" <br><br> Pour s\'inscrire et rejoindre ce tableau, cliquez <a href="http://localhost/mes-projets/ifamaker/index.php?rqt=register&tableau='.$_POST['id_board'].'">ici</a> <br><br>Si vous possédez déjà un compte, connectez-vous <a href="http://localhost/mes-projets/ifamaker/index.php">ici</a> et consultez vos notifications';
-
-		$mail->send();*/
 
 		$mail = new PHPMailer();
 
@@ -93,7 +73,7 @@
 		$mail->Host = 'smtp.gmail.com';
 		$mail->SMTPAuth = true;
 		$mail->Username = 'johanjeanfrancois@gmail.com';
-		$mail->Password = 'Madrasdu972';
+		$mail->Password = 'Ed-axx-jojo972';
 		$mail->SMTPSecure = 'ssl';
 		$mail->Port = 465;
 

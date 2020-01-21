@@ -6,12 +6,15 @@
 	require_once './src/PHPMailer/src/Exception.php';
 	require_once './src/PHPMailer/src/PHPMailer.php';
 	require_once './src/PHPMailer/src/SMTP.php';
+	// grab recaptcha library
+	require_once "./src/lib/recaptchalib.php";
 
 	class model_user extends Model
 	{
 
 		public function insert_user()
 		{
+			$response = $this->captcha();
 
 			$result = $this->select_req("
 				SELECT mail
@@ -27,7 +30,7 @@
 			}
 			/* Inscription d'un utilisateur dans la BDD */
 
-			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL)) 
+			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL) && $response != null && $response->success) 
 			{
 				// verifie si syntaxe correspond à un email
 
@@ -49,26 +52,6 @@
 
 		public function mail()
 		{
-
-			/*$mail = new PHPMailer();
-
-			//Config
-			$mail->isSMTP();
-			$mail->Host = 'SSL0.OVH.NET';
-			$mail->SMTPAuth = true;
-			$mail->Username = 'jeanfrancois.johan@stagiairesifa.fr';
-			$mail->Password = '19751224*';
-			$mail->SMTPSecure = 'tls';
-			$mail->Port = 587;
-
-			//Info du mail
-			$mail->setFrom('jeanfrancois.johan@stagiairesifa.fr','IfaMaker');
-			$mail->addAddress($_POST['email_inscription']);
-
-			$mail->isHTML(true);
-			$mail->Subject = "Confirmation mail ";
-			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".sha1($_POST['email_inscription'])."'>ici</a>";*/
-
 			$mail = new PHPMailer();
 
 			//Config
@@ -76,7 +59,7 @@
 			$mail->Host = 'smtp.gmail.com';
 			$mail->SMTPAuth = true;
 			$mail->Username = 'johanjeanfrancois@gmail.com';
-			$mail->Password = 'Madrasdu972';
+			$mail->Password = 'Ed-axx-jojo972';
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port = 465;
 
@@ -111,6 +94,8 @@
 		public function connexion_user($mail,$password,$login_success)
 		{ 
 
+			$response = $this->captcha();
+
 			/* vérifie l'identité de l'utilisateur */
 
 			$result = $this->select_req("
@@ -120,7 +105,7 @@
 
 			while ($row = $result->fetch()) 
 			{
-				if ($mail == $row['mail'] && sha1($password) == $row['password'] && 'actif' == $row['confirmation']) 
+				if ($mail == $row['mail'] && sha1($password) == $row['password'] && 'actif' == $row['confirmation'] && $response != null && $response->success) 
 				{	
 					if(session_status() == PHP_SESSION_NONE)
 					{
@@ -168,6 +153,7 @@
 
 		public function register_collab()
 		{
+			$response = $this->captcha();
 			$result = $this->select_req("
 				SELECT mail
 				FROM user
@@ -185,47 +171,54 @@
 
 			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL)) 
 			{
-				// verifie si syntaxe correspond à un email
+				if ( $response != null && $response->success ) 
+				{
+					// verifie si syntaxe correspond à un email
 
-				$name = $_POST['nom_inscription'];
-				$firstname = $_POST['prenom_inscription'];
-				$address = $_POST['adresse_inscription'];
-				$mail = $_POST['email_inscription'];
-				$password = sha1($_POST['mdp_inscription']);
-				$confirm = 'inactif';
-				$token = sha1($mail);
+					$name = $_POST['nom_inscription'];
+					$firstname = $_POST['prenom_inscription'];
+					$address = $_POST['adresse_inscription'];
+					$mail = $_POST['email_inscription'];
+					$password = sha1($_POST['mdp_inscription']);
+					$confirm = 'inactif';
+					$token = sha1($mail);
 
-				$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
-	            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	            $result = $conn->prepare('
-		            	INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
-						VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
-	            	');
-	            $result->execute(
-	                                 array(
-	                                    'name' => $name,
-										'firstname' => $firstname,
-										'address' => $address,
-										'mail' => $mail,
-										'password' => $password,
-										'confirm' => $confirm,
-										'token' => $token
-	                                )
-	                            );
-	             $id_user = $conn->lastInsertId();
+					$conn = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
+		            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		            $result = $conn->prepare('
+			            	INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
+							VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
+		            	');
+		            $result->execute(
+		                                 array(
+		                                    'name' => $name,
+											'firstname' => $firstname,
+											'address' => $address,
+											'mail' => $mail,
+											'password' => $password,
+											'confirm' => $confirm,
+											'token' => $token
+		                                )
+		                            );
+		             $id_user = $conn->lastInsertId();
 
-	            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation) VALUES (:id_user,:id_board,:activation)');
-	            $result2->execute(
-	                                 array(
-	                                    'id_user' => $id_user,
-	                                    'id_board' => $_GET['tableau'],
-	                                    'activation' => 1
-	                                )
-	                            );
+		            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation) VALUES (:id_user,:id_board,:activation)');
+		            $result2->execute(
+		                                 array(
+		                                    'id_user' => $id_user,
+		                                    'id_board' => $_GET['tableau'],
+		                                    'activation' => 1
+		                                )
+		                            );
 
-				/* message info utilisateur */
+					/* message info utilisateur */
 
-				return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
+					return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
+				}
+				else
+				{
+					return "<p class='col badge badge-warning'>Vérifiez le captcha</p>";
+				}
 			}
 			else
 			{
@@ -233,9 +226,27 @@
 			}
 		}
 
+
+		public function captcha()
+		{
+
+			// your secret key
+			$secret = "6LeDDNEUAAAAAN_-tVzHg4_OnyPJU0Dsy9rcgTKF";
+			 
+			// empty response
+			$response = null;
+			 
+			// check secret key
+			$reCaptcha = new ReCaptcha($secret);
+
+			// if submitted check response
+			if ($_POST["g-recaptcha-response"]) {
+			    $response = $reCaptcha->verifyResponse(
+			        $_SERVER["REMOTE_ADDR"],
+			        $_POST["g-recaptcha-response"]
+			    );
+			}
+			return $response;
+		}
 	}
-
-
-
-
  ?>

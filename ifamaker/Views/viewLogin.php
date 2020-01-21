@@ -64,9 +64,13 @@
 								<input class="form-control" placeholder="Mot de passe" type="password" name="mdp_connexion" value="" required>
 							</div>
 						</div>
-						<div class="col text-center form-group">
-							<input class="btn btn-grey" type="submit" name="submit_connexion" value="Se connecter">
-						</div>
+						<form action="?" method="POST">
+						  <div class="g-recaptcha" data-sitekey="6LeDDNEUAAAAAOAANf8ZG4zwUfhDm_tG_A21JnEb"></div>
+						  <br/>
+						 	<div class="col text-center form-group">
+								<input class="btn btn-grey" type="submit" name="submit_connexion" value="Se connecter">
+							</div>
+						</form>
 					</div>			
 				</form>
 				<?= $insert_user ?>	

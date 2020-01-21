@@ -45,6 +45,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
+						<br>
+						<br>
 						<h3 class="text-center text-white">Créer un compte</h3>
 					</div>
 				</div>
@@ -85,9 +87,13 @@
 								<input class="form-control" placeholder="Mot de passe" type="password" name="mdp_inscription" value="" required>
 							</div>
 						</div>
-						<div class="col text-center form-group">
-							<input class="btn btn-grey" type="submit" name="submit_inscription" value="S'inscrire">
-						</div>
+						<form action="?" method="POST">
+						  <div class="g-recaptcha" data-sitekey="6LeDDNEUAAAAAOAANf8ZG4zwUfhDm_tG_A21JnEb"></div>
+						  <br/>
+						 	<div class="col text-center form-group">
+								<input class="btn btn-grey" type="submit" name="submit_inscription" value="S'inscrire">
+							</div>
+						</form>
 					</div>			
 				</form>			
 				
