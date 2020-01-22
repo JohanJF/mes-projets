@@ -10,7 +10,7 @@
          if( isset($_POST['id_task']))
          {
             $id_task = $_POST['id_task'];
-            $title = $_POST['task_title'];
+            $title = htmlspecialchars($_POST['task_title']);
             $result = connexion()->prepare('UPDATE task SET title = :title  WHERE id_task = :id_task');
             $result->execute(
                     array(

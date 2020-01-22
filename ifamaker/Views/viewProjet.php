@@ -56,7 +56,7 @@
 		         </article>
 
 				 <div class="col-8 px-3 d-flex justify-content-center">
-					<a href="?rqt=projet&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
+					<a href="?rqt=perso&user=<?= $_SESSION['user_id']; ?>"><img src="./src/img/logo.png" /></a>
 				 </div>      		
 
 				<div class="col-3 text-right container">

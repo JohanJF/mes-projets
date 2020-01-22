@@ -30,7 +30,7 @@
     {
          if( isset($_POST['task']))
          {  
-            $title = $_POST['task'];
+            $title = htmlspecialchars($_POST['task']);
             $id_list = $_POST['id_list'];
             $result = connexion()->prepare('INSERT INTO task(title,id_list_foreign,position) VALUES (:title,:id,:position)');
             $result->execute(

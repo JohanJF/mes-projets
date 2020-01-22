@@ -10,7 +10,7 @@
          if( isset($_POST['id_list']))
          {
             $id_list = $_POST['id_list'];
-            $title = $_POST['titre_liste'];
+            $title = htmlspecialchars($_POST['titre_liste']);
             $result = connexion()->prepare('UPDATE list SET title = :title  WHERE id_list = :id_list');
             $result->execute(
                     array(

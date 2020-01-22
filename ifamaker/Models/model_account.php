@@ -7,19 +7,23 @@
 		
 		public function user_info()
 		{
-				
+			$name = htmlspecialchars($_POST['modifier_info_user0']);
+			$firstname = htmlspecialchars($_POST['modifier_info_user1']);
+			$address = htmlspecialchars($_POST['modifier_info_user2']);
+			$mail = htmlspecialchars($_POST['modifier_info_user3']);
+			$password = htmlspecialchars(sha1($_POST['modifier_info_user4']));	
 
 			//----- Paramètre différent en fonction de la requête
 
 			if (isset($_POST['modif_info_user'])) 
 			{
-				$this->update($_POST['modifier_info_user0'],'name');
-				$this->update($_POST['modifier_info_user1'],'firstname');
-				$this->update($_POST['modifier_info_user2'],'address');
-				$this->update($_POST['modifier_info_user3'],'mail');
+				$this->update($name,'name');
+				$this->update($firstname,'firstname');
+				$this->update($address,'address');
+				$this->update($mail,'mail');
 				if (!empty($_POST['modifier_info_user4'])) 
 				{
-					$this->update(sha1($_POST['modifier_info_user4']),'password');
+					$this->update($password,'password');
 				}
 				
 			}

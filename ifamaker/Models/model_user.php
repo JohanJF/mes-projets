@@ -14,6 +14,9 @@
 
 		public function insert_user()
 		{
+
+			$email_inscription = htmlspecialchars($_POST['email_inscription']);
+
 			$response = $this->captcha();
 
 			$result = $this->select_req("
@@ -23,14 +26,14 @@
 
 			while ($row = $result->fetch()) 
 			{
-				if ($_POST['email_inscription'] == $row['mail']) 
+				if ($email_inscription == $row['mail']) 
 				{
 					return "<p class='col badge badge-danger'>Cette adresse email a déjà été utilisé</p>";
 				}
 			}
 			/* Inscription d'un utilisateur dans la BDD */
 
-			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL) && $response != null && $response->success) 
+			if (filter_var($email_inscription, FILTER_VALIDATE_EMAIL) && $response != null && $response->success) 
 			{
 				// verifie si syntaxe correspond à un email
 
@@ -52,6 +55,9 @@
 
 		public function mail()
 		{
+			$email_inscription = htmlspecialchars($_POST['email_inscription']);
+			$mdp_inscription = htmlspecialchars($_POST['mdp_inscription']);
+
 			$mail = new PHPMailer();
 
 			//Config
@@ -65,11 +71,11 @@
 
 			//Info du mail
 			$mail->setFrom('johanjeanfrancois@gmail.com','IfaMaker');
-			$mail->addAddress($_POST['email_inscription']);
+			$mail->addAddress($email_inscription);
 
 			$mail->isHTML(true);
 			$mail->Subject = "Confirmation mail ";
-			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$_POST['email_inscription']."<br/><p>votre mot de passe : </p>".$_POST['mdp_inscription']."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".sha1($_POST['email_inscription'])."'>ici</a>";
+			$mail->Body = "<h3>Récapitulatif de vos informations</h3><br/><p>votre adresse de connexion : </p>".$email_inscription."<br/><p>votre mot de passe : </p>".$mdp_inscription."<br/><br/>Confirmer <a href='http://localhost/mes-projets/ifamaker/index.php?rqt=accueil&login=".sha1($email_inscription)."'>ici</a>";
 
 			return $mail->send();
 	 
@@ -161,7 +167,7 @@
 
 			while ($row = $result->fetch()) 
 			{
-				if ($_POST['email_inscription'] == $row['mail']) 
+				if ($email_inscription == $row['mail']) 
 				{
 					return "<p class='col badge badge-danger'>Cette adresse email a déjà été utilisé</p>";
 				}
@@ -169,17 +175,17 @@
 
 			/* Inscription d'un utilisateur dans la BDD */
 
-			if (filter_var($_POST['email_inscription'], FILTER_VALIDATE_EMAIL)) 
+			if (filter_var($email_inscription, FILTER_VALIDATE_EMAIL)) 
 			{
 				if ( $response != null && $response->success ) 
 				{
 					// verifie si syntaxe correspond à un email
 
-					$name = $_POST['nom_inscription'];
-					$firstname = $_POST['prenom_inscription'];
-					$address = $_POST['adresse_inscription'];
-					$mail = $_POST['email_inscription'];
-					$password = sha1($_POST['mdp_inscription']);
+					$name = htmlspecialchars($_POST['nom_inscription']);
+					$firstname = htmlspecialchars($_POST['prenom_inscription']);
+					$address = htmlspecialchars($_POST['adresse_inscription']);
+					$mail = htmlspecialchars($_POST['email_inscription']);
+					$password = htmlspecialchars(sha1($_POST['mdp_inscription']));
 					$confirm = 'inactif';
 					$token = sha1($mail);
 

@@ -29,7 +29,7 @@
     {
          if( isset($_POST['success']))
          {
-            $title = $_POST['success'];
+            $title = htmlspecialchars($_POST['success']);
             $id = $_POST['id'];
             $result = connexion()->prepare('INSERT INTO list(title,id_board_foreign,position) VALUES (:title,:id,:position)');
             $result->execute(

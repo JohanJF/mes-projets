@@ -93,7 +93,7 @@
 	try 
     {
     	$title = $_POST['title_board'];
-    	$mail_collab = $_POST["mail_collab"];
+    	$mail_collab = htmlspecialchars($_POST["mail_collab"]);
 
 		if (filter_var($mail_collab, FILTER_VALIDATE_EMAIL)) 
 		{

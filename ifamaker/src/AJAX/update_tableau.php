@@ -9,7 +9,7 @@
          if( isset($_POST['id_table']))
          {
             $id_table = $_POST['id_table'];
-            $title = $_POST['table_title'];
+            $title = htmlspecialchars($_POST['table_title']);
             $result = connexion()->prepare('UPDATE board SET title = :title  WHERE id_board = :id_table');
             $result->execute(
                     array(

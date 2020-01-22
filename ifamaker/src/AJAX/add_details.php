@@ -15,7 +15,7 @@
 	            	');
 	            $result->execute(
 	                                 array(
-	                                    'details' => $_POST['details'],
+	                                    'details' => htmlspecialchars($_POST['details']),
 	                                    'id' => $_POST['id_task']
 	                                )
 	                            );

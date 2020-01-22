@@ -9,7 +9,7 @@ class model_perso extends Model
 		if (isset($_POST['submit_tab_perso'])) 
 		{
 			/* insert les tableaux personnels dans la table board BDD */
-			$title = $_POST['tableau_perso'];
+			$title = htmlspecialchars($_POST['tableau_perso']);
 			$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
 			$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			$res = $connexion->prepare("INSERT INTO board(title,type) VALUES (:title,:type)");
@@ -58,7 +58,7 @@ class model_perso extends Model
 		if (isset($_POST['submit_tab_collab'])) 
 		{
 			/* insert les tableaux collaboratifs dans la table board BDD */
-			$title = $_POST['tableau_collab'];
+			$title = htmlspecialchars($_POST['tableau_collab']);
 			$connexion = new PDO("mysql:host=127.0.0.1;dbname=ifamaker","root","");
 			$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			$res = $connexion->prepare("INSERT INTO board(title,type) VALUES (:title,:type)");
