@@ -15,7 +15,7 @@
 			<div class="container">
 		  		<div class="row">
 		  			<div class="col my-2 text-right">
-		  				<input type="image" src="./src/img/modifier.png" onclick="modifier_info()">
+		  				<input type="image" src="./src/img/modifier.png" title="Modifier mes informations" onclick="modifier_info()">
 		  			</div>	
 		  		</div>
 		  	</div>

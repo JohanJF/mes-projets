@@ -211,8 +211,8 @@
 									<h3 class="modal-title text-dark titre_tache_modal"></h3>
 									<small class="badge badge-pill badge-info titre_liste_modal"> </small>
 									<small>
-										<input class="modifier_tache" type="image" src="./src/img/modifier_small.png">
-										<input class="close delete_task" type="image" src="./src/img/supprimer_small.png" data-dismiss="modal" aria-label="close">
+										<input class="modifier_tache" title="Modifier le titre de la tâche" type="image" src="./src/img/modifier_small.png">
+										<input class="close delete_task" title="Supprimer la tâche" type="image" src="./src/img/supprimer_small.png" data-dismiss="modal" aria-label="close">
 									</small>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							        </button>

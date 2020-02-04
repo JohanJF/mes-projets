@@ -44,7 +44,7 @@
 							?>
 									<div class="card col-4 mx-2 mt-2 float-left" style="width: 10rem;">
 										<small class="pt-2 d-flex justify-content-end">
-											<input class="modifier_titre_tab_Perso text-right" type="image" src="./src/img/modifier_small.png">
+											<input class="modifier_titre_tab_Perso text-right" title="Modifier le titre du tableau" type="image" src="./src/img/modifier_small.png">
 										</small>
 									  <div class="card-body">
 									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_perso['id_board'] ?>"><?= $mes_tableaux_perso['title'] ?></h5>
@@ -96,7 +96,7 @@
 							?>
 									<div class="card col-4 mx-2 mt-2 float-left" style="width: 10rem;">
 										<small class="pt-2 d-flex justify-content-end">
-											<input class="modifier_tab text-right" type="image" src="./src/img/modifier_small.png">
+											<input class="modifier_tab text-right" title="Modifier le titre du tableau" type="image" src="./src/img/modifier_small.png">
 										</small>
 									  <div class="card-body">
 									    <h5 class="card-title" id="tableau-<?= $mes_tableaux_collab['id_board'] ?>"><?= $mes_tableaux_collab['title'] ?></h5>
