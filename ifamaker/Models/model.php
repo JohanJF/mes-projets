@@ -28,13 +28,13 @@ class Model {
 	protected function insert_req($query) 
 	{
 		
-		$name = $_POST['nom_inscription'];
-		$firstname = $_POST['prenom_inscription'];
-		$address = $_POST['adresse_inscription'];
-		$mail = $_POST['email_inscription'];
-		$password = sha1($_POST['mdp_inscription']);
+		$name = htmlspecialchars($_POST['nom_inscription']);
+		$firstname = htmlspecialchars($_POST['prenom_inscription']);
+		$address = htmlspecialchars($_POST['adresse_inscription']);
+		$mail = htmlspecialchars($_POST['email_inscription']);
+		$password = htmlspecialchars(sha1($_POST['mdp_inscription']));
 		$confirm = 'inactif';
-		$token = sha1($mail);
+		$token = htmlspecialchars(sha1($mail));
 
 		$res = $this->getBDD()->prepare($query);
 		$res->execute(

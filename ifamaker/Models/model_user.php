@@ -12,6 +12,20 @@
 	class model_user extends Model
 	{
 
+		public function check_mdp_format($mdp)
+		{
+			$majuscule = preg_match('@[A-Z]@', $mdp);
+			$minuscule = preg_match('@[a-z]@', $mdp);
+			$chiffre = preg_match('@[0-9]@', $mdp);
+			
+			if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8)
+			{
+				return false;
+			}
+			else 
+				return true;
+		}
+
 		public function insert_user()
 		{
 
@@ -33,24 +47,37 @@
 			}
 			/* Inscription d'un utilisateur dans la BDD */
 
-			if (filter_var($email_inscription, FILTER_VALIDATE_EMAIL) && $response != null && $response->success) 
+			if ($this->check_mdp_format(htmlspecialchars($_POST['mdp_inscription'])) == true) 
 			{
-				// verifie si syntaxe correspond à un email
+				if ($response != null && $response->success) 
+				{
+					if (filter_var($email_inscription, FILTER_VALIDATE_EMAIL)) 
+					{
+						// verifie si syntaxe correspond à un email
 
-				$result = $this->insert_req('
-					INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
-					VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
-					');
+						$result = $this->insert_req('
+							INSERT INTO user(name,firstname,address,mail,password,confirmation,token) 
+							VALUES (:name, :firstname, :address, :mail, :password, :confirm, :token)
+							');
 
-				/* message info utilisateur */
-
-				return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
+						/* message info utilisateur */
+						$this->mail(); //envoi mail confirmation
+						return "<p class='col badge badge-warning'>confirmez votre adresse mail pour vous inscrire</p>";
+					}
+					else
+					{
+						return "<p class='col badge badge-danger'>Veuillez entrez un email valide</p>";
+					}
+				}
+				else
+				{
+					return "<p class='col badge badge-danger'>Veuillez vérifier le captcha</p>";
+				}
 			}
 			else
 			{
-				return "<p class='col badge badge-danger'>Veuillez entrez un email valide</p>";
+				return "<p class='col badge badge-danger'>Le format de votre mot de passe n'est pas valide</p>";
 			}
-
 		}
 
 		public function mail()
@@ -65,7 +92,7 @@
 			$mail->Host = 'smtp.gmail.com';
 			$mail->SMTPAuth = true;
 			$mail->Username = 'johanjeanfrancois@gmail.com';
-			$mail->Password = 'Ed-axx-jojo972';
+			$mail->Password = 'Ed-axx-jojo97257070';
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port = 465;
 

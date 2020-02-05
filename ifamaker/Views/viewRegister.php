@@ -84,7 +84,7 @@
 						<div class="row">
 							<div class="col text-center form-group">
 								<label class="text-white">Mot de passe</label>
-								<input class="form-control" placeholder="Mot de passe" type="password" name="mdp_inscription" value="" required>
+								<input class="form-control" placeholder="Mot de passe d'au moins 8 lettres et contenant 1 chiffre" title="Entrez un mot de passe d'au moins 8 lettres et contenant des majuscules, minuscules et 1 chiffre" type="password" name="mdp_inscription" value="" required>
 							</div>
 						</div>
 						<form action="?" method="POST">

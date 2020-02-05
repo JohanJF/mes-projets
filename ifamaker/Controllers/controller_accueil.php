@@ -66,8 +66,8 @@
 			$this->model_user = new model_user();
 			$insert_user = $this->model_user->insert_user(); // insert utilisateur inactif dans BDD
 
-			$this->model_user = new model_user();
-			$this->model_user->mail(); // envoi mail de confirmation
+	/*		$this->model_user = new model_user();
+			$this->model_user->mail(); // envoi mail de confirmation*/
 
 			require_once './Views/viewHome.php';
 		}
