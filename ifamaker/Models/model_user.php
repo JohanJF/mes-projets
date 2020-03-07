@@ -186,6 +186,7 @@
 
 		public function register_collab()
 		{
+			$email_inscription = htmlspecialchars($_POST['email_inscription']);
 			$response = $this->captcha();
 			$result = $this->select_req("
 				SELECT mail
@@ -235,11 +236,12 @@
 		                            );
 		             $id_user = $conn->lastInsertId();
 
-		            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation) VALUES (:id_user,:id_board,:activation)');
+		            $result2 = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,administrateur,activation) VALUES (:id_user,:id_board,:administrateur,:activation)');
 		            $result2->execute(
 		                                 array(
 		                                    'id_user' => $id_user,
-		                                    'id_board' => $_GET['tableau'],
+											'id_board' => $_GET['tableau'],
+											'administrateur' => 'visiteur',
 		                                    'activation' => 1
 		                                )
 		                            );

@@ -45,13 +45,14 @@
 			/* ajoute 1 notification si utilisateur déja inscrit */			
 			if ($mail_collab == $row['mail']) 
 			{
-	            $result = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,activation,token,consult) 
-	            						  VALUES (:user,:board,:activation,:token,:consult)'
+	            $result = $conn->prepare('INSERT INTO board_user(id_user_foreign,id_board_foreign,administrateur,activation,token,consult) 
+	            						  VALUES (:user,:board,:administrateur,:activation,:token,:consult)'
 	            						);
 	            $result->execute(
 	                                 array(
 	                                 	'user' => $row['user_id'],
-	                                 	'board' => $_POST['id_board'],
+										'board' => $_POST['id_board'],
+										'administrateur' => 'visiteur',
 	                                    'activation' => 0,
 	                                    'token' => sha1($_POST['id_board']),
 	                                    'consult' => 'not consulted'

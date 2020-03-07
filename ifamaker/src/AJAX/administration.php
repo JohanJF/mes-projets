@@ -55,11 +55,12 @@
                             SELECT *
                             FROM board_user
                             INNER JOIN user ON id_user_foreign = user_id
-                            WHERE id_board_foreign = :board AND administrateur IS NULL AND id_user_foreign != :user
+                            WHERE id_board_foreign = :board AND administrateur != :administrateur AND id_user_foreign != :user
                         ');
             $collaborateurs->execute(
                                  array(
                                     'board' => $_POST['id_tableau'],
+                                    'administrateur' => 'admin',
                                     'user' => $_POST['user']
                                 )
                             );

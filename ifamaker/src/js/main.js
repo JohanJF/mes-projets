@@ -119,6 +119,7 @@ function delete_board()
 	$.post(
         'src/AJAX/delete_board.php', 
         { 
+			user_actif : user_actif,
             id_board : $(this).attr('id')
         },
 
