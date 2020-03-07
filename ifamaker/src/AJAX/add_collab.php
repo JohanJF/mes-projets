@@ -73,7 +73,7 @@
 		$mail->Host = 'smtp.gmail.com';
 		$mail->SMTPAuth = true;
 		$mail->Username = 'johanjeanfrancois@gmail.com';
-		$mail->Password = 'Ed-axx-jojo972';
+		$mail->Password = 'Madrasdu-972';
 		$mail->SMTPSecure = 'ssl';
 		$mail->Port = 465;
 
