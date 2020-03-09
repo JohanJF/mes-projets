@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 06 sep. 2019 à 14:08
+-- Généré le :  lun. 09 mars 2020 à 20:30
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`user_id`, `name`, `firstname`, `address`, `mail`, `password`, `confirmation`, `token`) VALUES
-(1, 'JF', 'johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', 'e2a7d3f97342a924024f5312ab22f8a4ecf0d10d'),
-(2, 'test', 'test', 'test', 'test@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'actif', '8eaa75578e5aea8097a88c766f5b98170be1f242');
+(1, 'JEAN-FRANCOIS', 'Johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', 'e2a7d3f97342a924024f5312ab22f8a4ecf0d10d'),
+(2, 'JEAN-FRANCOIS', 'Johan', '4 rue du ruisseau', 'johanjeanfrancois@gmail.com', '6e477d686aec728ab40b63e4e6a60ab87b690657', 'actif', '295730318c2178fb79edc0eb724f344ede7d2dab');
 
 --
 -- Contraintes pour les tables déchargées
