@@ -1,0 +1,68 @@
+/* The Modal (background) */
+#myModal {
+    /*display: none;*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: none; /* Enable scroll if needed */
+    background-color: #2e628d; /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #2e628d;
+    height: 100%;
+    width: 100%; /* Could be more or less, depending on screen size */
+    border: #2e628d solid 1px;
+    border-radius: 40px;
+  }
+
+
+    /*----------------------------------------------------*/
+
+    #content, #containerModal {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #content {
+        height: 100%;
+        justify-content: center;
+    }
+
+    #containerModal {
+        justify-content: space-around;
+    }
+
+    #containerModal > section {
+        margin: 15px;
+    }
+
+    #title {
+        margin : 0;
+        padding : 5px 5px 0 0; /* haut, droite, bas, gauche (respectivement) */
+        color : rgba(0, 0, 0, 0.800);
+        font-size : 15vh;
+    }
+
+    input {
+        font-size: x-large;
+        text-align: center;
+    }
+
+    #Go {
+        border: #2e628d solid 0;
+        border-radius: 100% 100% 100% 100%;
+        padding: 20px 20px;
+    }
+
+    #Go:hover {
+     border: black solid 1px;
+     color : white;
+     background-color: rgb(128, 128, 128);
+     cursor: pointer;
+    }

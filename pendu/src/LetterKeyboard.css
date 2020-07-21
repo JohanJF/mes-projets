@@ -1,0 +1,25 @@
+.letterBox {
+    text-align: center;
+    padding: 14px;
+    margin: 5px;
+}
+
+.letter {
+    font-weight: bold;
+    font-size  : 1.5em;
+    padding: 10px;
+    margin: auto;
+}
+
+.letterDisable {
+    font-weight: bold;
+    font-size  : 1.5em;
+    padding: 10px;
+    margin: auto;
+}
+
+.letter:hover {
+    cursor: pointer;
+    background-color: grey;
+    outline: 0.08em solid black;
+}
