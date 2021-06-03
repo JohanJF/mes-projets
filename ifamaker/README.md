@@ -10,7 +10,7 @@ Installation étapes par étapes:
 
 - Aller sur 'http://localhost/phpmyadmin/'
 
-- Importer la base de donnée 'ifamaker.sql' présent au sein du dossier 'ifamaker/src' 
+- Créer une base de donnée avec pour nom Ifamaker puis importer le fichier'ifamaker.sql' présent au sein du dossier 'ifamaker/src' 
 
 - Lancer l'application wamp puis aller à l'addresse 'http://localhost/mes-projets/ifamaker/index.php
 
