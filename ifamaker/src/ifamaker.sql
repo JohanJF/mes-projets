@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 09 mars 2020 à 20:30
+-- Généré le :  jeu. 03 juin 2021 à 20:26
 -- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Version de PHP :  7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -104,15 +104,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `confirmation` varchar(100) DEFAULT NULL,
   `token` text NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`user_id`, `name`, `firstname`, `address`, `mail`, `password`, `confirmation`, `token`) VALUES
-(1, 'JEAN-FRANCOIS', 'Johan', '4 rue du ruisseau', 'jeanfrancois.johan@stagiairesifa.fr', 'a84d0af6aca8c3b116dd7e5c9fbac4ebbe0eb1bc', 'actif', 'e2a7d3f97342a924024f5312ab22f8a4ecf0d10d'),
-(2, 'JEAN-FRANCOIS', 'Johan', '4 rue du ruisseau', 'johanjeanfrancois@gmail.com', '6e477d686aec728ab40b63e4e6a60ab87b690657', 'actif', '295730318c2178fb79edc0eb724f344ede7d2dab');
+(1, 'JEAN-FRANCOIS', 'Johan', '4 rue du ruisseau, Borny', 'testifamaker@yopmail.com', '8bedf87d2a5bebc531262a0dc023e6aba41b42e7', 'actif', '295730318c2178fb79edc0eb724f344ede7d2dab');
 
 --
 -- Contraintes pour les tables déchargées
