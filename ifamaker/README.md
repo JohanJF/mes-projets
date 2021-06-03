@@ -1,4 +1,4 @@
-Projet IFAMAKER (Trello-like) effectué lors de notre projet final pour le titre RNCP Développeur web et web mobile
+Projet IFAMAKER (Trello-like) effectué lors de mon projet final pour le titre RNCP Développeur web et web mobile
 
 Installation étapes par étapes:
 
