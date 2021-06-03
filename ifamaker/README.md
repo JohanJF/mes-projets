@@ -6,9 +6,7 @@ Installation étapes par étapes:
 
 - Installer wamp
 
-- Créer un dossier 'mes-projets' et le placer à la racine du dossier d'installation 'wamp64/www'
-
-- Placer le dossier 'ifamaker' dans le dossier 'mes-projets'
+- Placer le dossier 'mes-projets' à la racine du dossier d'installation 'wamp64/www'
 
 - Aller sur 'http://localhost/phpmyadmin/'
 
