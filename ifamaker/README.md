@@ -1,6 +1,6 @@
 Projet IFAMAKER (Trello-like) effectué lors de mon projet final pour le titre RNCP Développeur web et web mobile
 
-Installation étapes par étapes:
+Installation étape par étape:
 
 - Penser à désactiver antivirus
 
