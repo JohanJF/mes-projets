@@ -3,5 +3,5 @@ Projet IFAMAKER (Trello-like) effectué lors de mon projet final pour le titre R
 Disponible ici : https://ifamaker.johanjf.fr/
 
 un compte est déja crée par défaut :
-- mail : testifamaker@yopmail.fr
+- mail : testifamaker@yopmail.com
 - mdp : Ifamakertest-1
